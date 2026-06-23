@@ -121,6 +121,10 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
                 <div class="asset-cat-title" onclick="toggleCat('catPokemon')">&#x25BC; Pokemon Cards</div>
                 <div id="catPokemon" class="asset-grid"></div>
             </div>
+            <div class="asset-cat">
+                <div class="asset-cat-title" onclick="toggleCat('catPokeDice')">&#x25BC; Poke Dice</div>
+                <div id="catPokeDice" class="asset-grid"></div>
+            </div>
         </div>
     </div>
 
@@ -147,6 +151,14 @@ const PANELS = [
     { name: 'DEX PANEL', file: 'Pokemon%20Assets/DEX%20PANEL.png' },
     { name: 'DEX NEXT', file: 'Pokemon%20Assets/DEX%20NEXT.png' },
     { name: 'BENCY', file: 'BENCY.png' },
+];
+const POKE_DICE_TYPES = [
+    { name: 'Grass (Dice)', file: 'Poke%20Dice/Types/Grass.png' },
+    { name: 'Poison (Dice)', file: 'Poke%20Dice/Types/Poison.png' },
+];
+const POKE_DICE_STATS = [
+    { name: 'HP (Dice)', file: 'Poke%20Dice/Stats/HP.png' },
+    { name: 'SP.ATK (Dice)', file: 'Poke%20Dice/Stats/SP.ATK.png' },
 ];
 const POKEMON_LIST_URL = GIT_BASE + '/Pokemon%20Assets/Slot%20Images/';
 
@@ -454,6 +466,19 @@ function initAssets() {
         p.appendChild(img);
     });
 
+    const pd = document.getElementById('catPokeDice');
+    [...POKE_DICE_TYPES, ...POKE_DICE_STATS].forEach(item => {
+        const img = document.createElement('img');
+        img.src = GIT_BASE + '/' + item.file;
+        img.title = item.name;
+        img.style.width = '50px';
+        img.style.height = '50px';
+        img.draggable = true;
+        img.ondragstart = e => e.dataTransfer.setData('text/plain', 'dice_' + item.name);
+        img.onclick = () => placeImage(item.name, GIT_BASE + '/' + item.file);
+        pd.appendChild(img);
+    });
+
     showPokemonResults();
 }
 
@@ -541,6 +566,12 @@ function onDrop(e) {
     if (data.startsWith('type_')) {
         const type = data.replace('type_','');
         placeImage('type_' + type, GIT_BASE + '/Pokemon%20Assets/Types/' + type + '.png', x-20, y-20, 40, 40);
+    } else if (data.startsWith('dice_')) {
+        const name = data.replace('dice_','');
+        const typeItem = POKE_DICE_TYPES.find(t => t.name === name);
+        const statItem = POKE_DICE_STATS.find(s => s.name === name);
+        const item = typeItem || statItem;
+        if (item) placeImage(name, GIT_BASE + '/' + item.file, x-85, y-75, 170, 150);
     } else if (data.startsWith('poke_')) {
         const name = data.replace('poke_','');
         const item = pokemonCache.find(p => p.name === name);
