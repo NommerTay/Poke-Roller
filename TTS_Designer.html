@@ -64,6 +64,8 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 <div class="toolbar">
     <button onclick="addText()">+ Text</button>
     <button onclick="addImage()">+ Image</button>
+    <button onclick="document.getElementById('fileInput').click()">📁 Upload</button>
+    <input id="fileInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" style="display:none" onchange="handleFileUpload(event)">
     <span style="flex:1"></span>
     <label>W:</label><input id="canvasW" type="number" value="1920" style="width:60px" onchange="resizeCanvas()">
     <label>H:</label><input id="canvasH" type="number" value="1080" style="width:60px" onchange="resizeCanvas()">
@@ -274,6 +276,33 @@ function addImage() {
     elements.push(el);
     render();
     selectElement(id);
+}
+
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        const id = nextId++;
+        const ext = file.name.split('.').pop();
+        const el = {
+            id: 'el' + id,
+            type: 'image',
+            name: file.name.replace('.' + ext, ''),
+            src: dataUrl,
+            tags: '',
+            imgColor: '#ffffff',
+            x: 100, y: 100,
+            w: 100, h: 140,
+            zIndex: elements.length + 1
+        };
+        elements.push(el);
+        render();
+        selectElement(id);
+    };
+    reader.readAsDataURL(file);
+    event.target.value = '';
 }
 
 function addText() {
