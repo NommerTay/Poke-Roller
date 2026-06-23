@@ -1423,7 +1423,7 @@ local BASE_ASSETS = {
     { name = "type_rock",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/rock.png" },
     { name = "type_steel",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/steel.png" },
     { name = "type_water",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/water.png" },
-    { name = "dexPanel",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/pokedex_ui.png" },
+    { name = "dexPanel",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/DEX%20PANEL.png" },
 }
 
 function onLoad()
