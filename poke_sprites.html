@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokemon Sprite Exporter</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+h1 { text-align: center; margin-bottom: 10px; color: #ffcb05; text-shadow: 2px 2px 0 #2a75bb; font-size: 32px; }
+#status { text-align: center; padding: 12px; background: #16213e; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+.toolbar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+.toolbar button { padding: 10px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.toolbar button:hover { transform: translateY(-2px); }
+.toolbar button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-zip { background: #e74c3c; color: #fff; }
+.btn-zip-normal { background: #2a75bb; color: #fff; }
+.btn-zip-shiny { background: #c8a020; color: #fff; }
+.btn-zip-both { background: #6c5ce7; color: #fff; }
+.btn-stop { background: #e74c3c; color: #fff; display: none; }
+.btn-stop.active { display: inline-block; }
+.progress-wrap { height: 4px; background: #333; border-radius: 2px; margin-bottom: 16px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #2a75bb, #ffcb05); transition: width 0.3s; }
+.phase-label { text-align: center; font-size: 12px; color: #888; margin-bottom: 8px; }
+.counts { text-align: center; font-size: 13px; color: #999; margin-bottom: 8px; }
+.search-wrap { text-align: center; margin-bottom: 16px; }
+.search-wrap input { padding: 8px 14px; border-radius: 20px; border: 1px solid #444; background: #16213e; color: #eee; width: 300px; font-size: 14px; outline: none; }
+.search-wrap input:focus { border-color: #2a75bb; }
+.category { margin-bottom: 20px; }
+.category-header { padding: 10px 14px; background: #0f3460; border-radius: 8px 8px 0 0; font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+.category-header .arrow { transition: transform 0.2s; }
+.category-header.collapsed .arrow { transform: rotate(-90deg); }
+.category-header .count { font-size: 12px; color: #999; font-weight: normal; margin-left: auto; }
+.category-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; padding: 8px; background: #16213e; border-radius: 0 0 8px 8px; }
+.category-body.collapsed { display: none; }
+.type-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+.card { background: #1a2744; border-radius: 6px; padding: 8px; text-align: center; cursor: pointer; transition: 0.2s; border: 2px solid transparent; }
+.card:hover { border-color: #2a75bb; transform: translateY(-2px); }
+.card img { width: 96px; height: 96px; image-rendering: pixelated; display: block; margin: 0 auto; }
+.card .name { font-size: 11px; margin-top: 4px; text-transform: capitalize; color: #ccc; }
+.card .id { font-size: 10px; color: #666; }
+.card.shiny { border-color: #c8a020; }
+.type-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; padding: 16px; background: #16213e; border-radius: 8px; margin-bottom: 20px; }
+.type-card { text-align: center; padding: 12px; background: #1a2744; border-radius: 8px; }
+.type-card img { width: 64px; height: 64px; display: block; margin: 0 auto 6px; }
+.type-card .name { font-size: 11px; text-transform: capitalize; color: #ccc; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #2ecc71; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: bold; z-index: 100; opacity: 0; transition: 0.3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<h1>Pokemon Sprite Exporter</h1>
+<div id="status">Loading Pokemon data...</div>
+<div class="phase-label" id="phaseLabel"></div>
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="counts" id="counts"></div>
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="Search Pokemon..." oninput="filterPokemon()">
+</div>
+
+<div class="toolbar">
+  <button class="btn-zip" onclick="exportZip('normal')">Download ALL as ZIP (Normal)</button>
+  <button class="btn-zip-shiny" onclick="exportZip('shiny')">Download ALL as ZIP (Shiny)</button>
+  <button class="btn-zip-both" onclick="exportZip('both')">Download ALL as ZIP (Both)</button>
+  <button class="btn-all" onclick="downloadTypeIcons()">Download Type Icons</button>
+  <button class="btn-stop" id="stopBtn" onclick="stopDownload()">Stop</button>
+</div>
+
+<div id="grid"></div>
+<div id="typeSection" style="display:none">
+  <div class="category-header" style="margin-top:20px;border-radius:8px 8px 0 0">
+    <span class="arrow">&#9660;</span>
+    <span>Type Icons</span>
+    <span class="count">18</span>
+  </div>
+  <div class="type-grid" id="typeGrid"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ----------------------------------------------------------------
+// Constants
+// ----------------------------------------------------------------
+const HOME = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home';
+const GAME = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
+const ARTWORK = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork';
+const ICON = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons';
+const POKE_API = 'https://pokeapi.co/api/v2/pokemon?limit=1350';
+const EVO_API = 'https://pokeapi.co/api/v2/evolution-chain?limit=600';
+const TYPE_SVG = 'https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons';
+const TYPE_ICONS = ['bug','dark','dragon','electric','fairy','fighting','fire','flying','ghost','grass','ground','ice','normal','poison','psychic','rock','steel','water'];
+
+const TYPE_COLORS = {
+  normal: '#A8A77A', fire: '#EE8130', water: '#6390F0', electric: '#F7D02C',
+  grass: '#7AC74C', ice: '#96D9D6', fighting: '#C22E28', poison: '#A33EA1',
+  ground: '#E2BF65', flying: '#A98FF3', psychic: '#F95587', bug: '#A6B91A',
+  rock: '#B6A136', ghost: '#735797', dragon: '#6F35FC', dark: '#705746',
+  steel: '#B7B7CE', fairy: '#D685AD',
+};
+
+const FALLBACKS = [
+  (id, shiny) => `${HOME}${shiny ? '/shiny' : ''}/${id}.png`,
+  (id, shiny) => `${GAME}${shiny ? '/shiny' : ''}/${id}.png`,
+  (id, shiny) => `${ARTWORK}${shiny ? '/shiny' : ''}/${id}.png`,
+  (id, shiny) => `${ICON}/${id}.png`,
+];
+
+const EXCLUDE = new Set([
+  ...Array.from({length: 2}, (_, i) => 10158 + i),
+  ...Array.from({length: 8}, (_, i) => 10264 + i),
+]);
+
+// ----------------------------------------------------------------
+// State
+// ----------------------------------------------------------------
+let allPokemon = [];
+let filtered = [];
+let categorized = {};
+let speciesStageMap = {};
+let pokemonDetailMap = {};
+let loading = false;
+let downloadActive = false;
+let downloadCancelled = false;
+
+// ----------------------------------------------------------------
+// Concurrency-limited parallel fetch
+// ----------------------------------------------------------------
+async function fetchAll(urls, onProgress) {
+  const results = [];
+  const queue = [...urls];
+  let idx = 0;
+  let done = 0;
+
+  async function worker() {
+    while (idx < queue.length) {
+      const i = idx++;
+      const url = queue[i];
+      try {
+        const res = await fetch(url);
+        results[i] = { ok: true, data: await res.json() };
+      } catch (e) {
+        results[i] = { ok: false };
+      }
+      done++;
+      if (onProgress) onProgress(done, queue.length);
+    }
+  }
+
+  const workers = Array.from({ length: 20 }, () => worker());
+  await Promise.all(workers);
+  return results;
+}
+
+// ----------------------------------------------------------------
+// Phase 1: Load evolution chains → speciesStageMap
+// ----------------------------------------------------------------
+async function loadEvolutionChains() {
+  const res = await fetch(EVO_API);
+  const list = await res.json();
+  const urls = list.results.map(r => r.url);
+
+  setPhase(`Loading evolution data... 0/${urls.length}`);
+  const chains = await fetchAll(urls, (done, total) => {
+    setPhase(`Loading evolution data... ${done}/${total}`);
+    setProgress(done / total);
+  });
+
+  const map = {};
+  for (const chain of chains) {
+    if (!chain.ok) continue;
+    traverseChain(chain.data.chain, 1, map);
+  }
+
+  // For solo species (chain length 1), mark as stage 3 (no evolution)
+  // We need to detect these. A solo chain has the species as the only member.
+  // Our traverseChain already marks solo species as stage 1.
+  // Fix: if a species appears in a chain of length 1, it should be stage 3.
+  for (const chain of chains) {
+    if (!chain.ok) continue;
+    const species = chain.data.chain.species;
+    if (!chain.data.chain.evolves_to || chain.data.chain.evolves_to.length === 0) {
+      map[species.name] = 3;
+    }
+  }
+
+  speciesStageMap = map;
+}
+
+function traverseChain(node, stage, map) {
+  map[node.species.name] = stage;
+  for (const next of node.evolves_to) {
+    traverseChain(next, stage + 1, map);
+  }
+}
+
+// ----------------------------------------------------------------
+// Phase 2: Load pokemon details → types, species name
+// ----------------------------------------------------------------
+async function loadPokemonDetails() {
+  const urls = allPokemon.map(p => p.url);
+  setPhase(`Loading Pokemon details... 0/${urls.length}`);
+  const results = await fetchAll(urls, (done, total) => {
+    setPhase(`Loading Pokemon details... ${done}/${total}`);
+    setProgress(done / total);
+  });
+
+  const map = {};
+  for (let i = 0; i < results.length; i++) {
+    const r = results[i];
+    if (!r.ok) continue;
+    const d = r.data;
+    map[d.id] = {
+      speciesName: d.species.name,
+      primaryType: d.types[0]?.type?.name || 'unknown',
+      allTypes: d.types.map(t => t.type.name),
+    };
+  }
+  pokemonDetailMap = map;
+}
+
+// ----------------------------------------------------------------
+// Categorize
+// ----------------------------------------------------------------
+function categorize() {
+  const groups = {};
+
+  for (const p of allPokemon) {
+    const detail = pokemonDetailMap[p.id];
+    if (!detail) continue;
+
+    const speciesName = detail.speciesName;
+    const type = detail.primaryType;
+    const stage = speciesStageMap[speciesName] || 3;
+
+    const isAlt = p.name !== speciesName;
+    const suffix = isAlt ? extractFormSuffix(p.name, speciesName) : null;
+
+    let prefix;
+    if (isAlt && suffix) {
+      prefix = capitalize(suffix);
+    } else if (isAlt) {
+      prefix = 'Other';
+    } else {
+      prefix = null;
+    }
+
+    const subcategory = prefix
+      ? `${prefix}/Stage${stage}/${type}`
+      : `Stage${stage}/${type}`;
+
+    if (!groups[subcategory]) {
+      groups[subcategory] = { display: subcategory, entries: [] };
+    }
+    groups[subcategory].entries.push(p);
+  }
+
+  for (const key of Object.keys(groups)) {
+    groups[key].entries.sort((a, b) => a.id - b.id);
+  }
+
+  // Sort: Stage1 < Stage2 < Stage3, then form names alphabetically
+  const sorted = {};
+  for (const key of Object.keys(groups).sort((a, b) => {
+    const aPrefix = a.split('/')[0];
+    const bPrefix = b.split('/')[0];
+    const aStage = aPrefix.startsWith('Stage') ? parseInt(aPrefix.replace('Stage', '')) : 99;
+    const bStage = bPrefix.startsWith('Stage') ? parseInt(bPrefix.replace('Stage', '')) : 99;
+    if (aStage !== bStage) return aStage - bStage;
+    if (aPrefix.startsWith('Stage') && bPrefix.startsWith('Stage')) return a.localeCompare(b);
+    if (aPrefix.startsWith('Stage')) return -1;
+    if (bPrefix.startsWith('Stage')) return 1;
+    return a.localeCompare(b);
+  })) {
+    sorted[key] = groups[key];
+  }
+
+  categorized = sorted;
+}
+
+function extractFormSuffix(pokemonName, speciesName) {
+  if (!pokemonName.startsWith(speciesName)) {
+    return pokemonName;
+  }
+  const remainder = pokemonName.slice(speciesName.length);
+  if (remainder.startsWith('-')) {
+    return remainder.slice(1).replace(/-/g, ' ');
+  }
+  return remainder || null;
+}
+
+function capitalize(s) {
+  return s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+// ----------------------------------------------------------------
+// Rendering
+// ----------------------------------------------------------------
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  const search = document.getElementById('search').value.toLowerCase();
+
+  for (const [catKey, cat] of Object.entries(categorized)) {
+    // Filter by search
+    const entries = search
+      ? cat.entries.filter(p => p.name.includes(search) || `#${p.id}`.includes(search))
+      : cat.entries;
+    if (entries.length === 0) continue;
+
+    const section = document.createElement('div');
+    section.className = 'category';
+
+    const parts = catKey.split('/');
+    const typeLabel = parts.pop();
+    const stageLabel = parts.pop();
+    const formLabel = parts.pop();
+
+    let headerLabel;
+    if (formLabel) {
+      headerLabel = `${formLabel} / ${stageLabel}`;
+    } else {
+      headerLabel = stageLabel;
+    }
+    const typeColor = TYPE_COLORS[typeLabel] || '#999';
+
+    const header = document.createElement('div');
+    header.className = 'category-header';
+    header.innerHTML = `
+      <span class="arrow">&#9660;</span>
+      <span>${headerLabel}</span>
+      <span class="type-badge" style="background:${typeColor};color:#fff">${typeLabel}</span>
+      <span class="count">${entries.length}</span>
+    `;
+    let collapsed = false;
+    header.addEventListener('click', () => {
+      collapsed = !collapsed;
+      header.classList.toggle('collapsed', collapsed);
+      body.classList.toggle('collapsed', collapsed);
+    });
+
+    const body = document.createElement('div');
+    body.className = 'category-body';
+
+    for (const p of entries) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${HOME}/${p.id}.png" alt="${p.name}" loading="lazy">
+        <div class="name">${p.name}</div>
+        <div class="id">#${p.id}</div>
+      `;
+      card.addEventListener('click', () => downloadOne(p.name, p.id, 'normal'));
+      body.appendChild(card);
+    }
+
+    // Fallback chain for images
+    body.querySelectorAll('img').forEach(img => {
+      let tries = 0;
+      img.addEventListener('error', function handleErr() {
+        tries++;
+        const card = this.closest('.card');
+        const idText = card.querySelector('.id').textContent;
+        const id = parseInt(idText.replace('#', ''));
+        if (tries <= FALLBACKS.length) {
+          this.src = FALLBACKS[tries - 1](id, false);
+        } else {
+          this.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+          this.removeEventListener('error', handleErr);
+        }
+      });
+    });
+
+    section.appendChild(header);
+    section.appendChild(body);
+    grid.appendChild(section);
+  }
+}
+
+function filterPokemon() {
+  renderGrid();
+  updateCounts();
+}
+
+function renderTypeIcons() {
+  const grid = document.getElementById('typeGrid');
+  grid.innerHTML = TYPE_ICONS.map(type => `
+    <div class="type-card">
+      <img src="${TYPE_SVG}/${type}.svg" alt="${type}">
+      <div class="name">${type}</div>
+    </div>
+  `).join('');
+  document.getElementById('typeSection').style.display = 'block';
+}
+
+function updateCounts() {
+  let total = 0;
+  for (const cat of Object.values(categorized)) {
+    total += cat.entries.length;
+  }
+  const search = document.getElementById('search').value;
+  if (search) {
+    let shown = 0;
+    for (const cat of Object.values(categorized)) {
+      shown += cat.entries.filter(p => p.name.includes(search) || `#${p.id}`.includes(search)).length;
+    }
+    document.getElementById('counts').textContent = `Showing ${shown} of ${total} sprites in ${Object.keys(categorized).length} categories`;
+  } else {
+    document.getElementById('counts').textContent = `${total} sprites in ${Object.keys(categorized).length} categories`;
+  }
+}
+
+// ----------------------------------------------------------------
+// Progress / status updates
+// ----------------------------------------------------------------
+function setPhase(msg) {
+  document.getElementById('phaseLabel').textContent = msg;
+}
+
+function setProgress(pct) {
+  document.getElementById('progressBar').style.width = `${pct * 100}%`;
+}
+
+function setStatus(msg) {
+  document.getElementById('status').textContent = msg;
+}
+
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = isError ? '#e74c3c' : '#2ecc71';
+  t.className = 'toast show';
+  setTimeout(() => t.className = 'toast', 2000);
+}
+
+// ----------------------------------------------------------------
+// Download single sprite
+// ----------------------------------------------------------------
+async function fetchSpriteBlob(id, shiny) {
+  for (const fn of FALLBACKS) {
+    const url = fn(id, shiny);
+    const res = await fetch(url);
+    if (res.ok) return res.blob();
+  }
+  throw new Error('Not found');
+}
+
+async function svgToPngBlob(type, size) {
+  const url = `${TYPE_SVG}/${type}.svg`;
+  const res = await fetch(url);
+  const svg = await res.text();
+  const img = new Image();
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+  const objUrl = URL.createObjectURL(blob);
+  await new Promise((resolve, reject) => {
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = objUrl;
+  });
+  const c = document.createElement('canvas');
+  c.width = size;
+  c.height = size;
+  c.getContext('2d').drawImage(img, 0, 0, size, size);
+  URL.revokeObjectURL(objUrl);
+  return new Promise(r => c.toBlob(r, 'image/png'));
+}
+
+async function downloadTypeIcons() {
+  const zip = new JSZip();
+  for (let i = 0; i < TYPE_ICONS.length; i++) {
+    const type = TYPE_ICONS[i];
+    setStatus(`Converting type icons... ${i + 1}/${TYPE_ICONS.length}`);
+    setProgress((i + 1) / TYPE_ICONS.length);
+    try {
+      const blob = await svgToPngBlob(type, 128);
+      zip.file(`Types/${type}.png`, blob);
+    } catch (e) {
+      console.error(`Failed to convert ${type}`, e);
+    }
+  }
+  setStatus('Saving type icons ZIP...');
+  const blob = await zip.generateAsync({ type: 'blob' });
+  saveAs(blob, 'pokemon_type_icons.zip');
+  setProgress(0);
+  setStatus('Done!');
+  showToast('Type icons downloaded!');
+}
+
+async function downloadOne(name, id, type) {
+  const types = type === 'both' ? ['normal', 'shiny'] : [type];
+  for (const t of types) {
+    const shiny = t === 'shiny';
+    const fname = shiny ? `${name}_shiny.png` : `${name}.png`;
+    try {
+      const blob = await fetchSpriteBlob(id, shiny);
+      triggerDownload(blob, fname);
+      await sleep(100);
+    } catch (e) {
+      showToast(`Failed: ${fname}`, true);
+    }
+  }
+}
+
+function triggerDownload(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function stopDownload() {
+  downloadCancelled = true;
+  downloadActive = false;
+  document.getElementById('stopBtn').classList.remove('active');
+}
+
+// ----------------------------------------------------------------
+// ZIP Export
+// ----------------------------------------------------------------
+async function exportZip(type) {
+  if (downloadActive) return;
+  downloadActive = true;
+  downloadCancelled = false;
+  document.getElementById('stopBtn').classList.add('active');
+  setStatus('Building ZIP archive...');
+
+  const zip = new JSZip();
+  const shinyTypes = type === 'both' ? [false, true] : [type === 'shiny'];
+  const entries = [];
+
+  for (const [catKey, cat] of Object.entries(categorized)) {
+    for (const p of cat.entries) {
+      for (const shiny of shinyTypes) {
+        const suffix = shiny ? '_shiny' : '';
+        const folderPath = catKey + '/';
+        entries.push({ p, shiny, folderPath, suffix });
+      }
+    }
+  }
+
+  const total = entries.length;
+  let completed = 0;
+  let failed = 0;
+
+  // Fetch all sprites with concurrency
+  const queue = entries.map((e, i) => ({ ...e, idx: i }));
+  let idx = 0;
+  let results = [];
+
+  async function zipWorker() {
+    while (idx < queue.length) {
+      const i = idx++;
+      const e = queue[i];
+      try {
+        const blob = await fetchSpriteBlob(e.p.id, e.shiny);
+        results[i] = { ok: true, blob };
+      } catch {
+        results[i] = { ok: false };
+        failed++;
+      }
+      completed++;
+      setProgress(completed / total);
+      setStatus(`Downloading sprites... ${completed}/${total}${failed ? ` (${failed} failed)` : ''}`);
+      if (downloadCancelled) break;
+    }
+  }
+
+  const workers = Array.from({ length: 10 }, () => zipWorker());
+  await Promise.all(workers);
+
+  if (downloadCancelled) {
+    downloadActive = false;
+    document.getElementById('stopBtn').classList.remove('active');
+    setStatus('Download cancelled.');
+    showToast('Download cancelled', true);
+    return;
+  }
+
+  // Add blobs to ZIP
+  setStatus('Compressing ZIP...');
+  for (let i = 0; i < results.length; i++) {
+    const r = results[i];
+    if (!r || !r.ok) continue;
+    const e = queue[i];
+    const filename = `${e.p.name}${e.suffix}.png`;
+    zip.file(e.folderPath + filename, r.blob);
+  }
+
+  // Add type icons
+  try {
+    setStatus('Adding type icons...');
+    for (const type of TYPE_ICONS) {
+      const blob = await svgToPngBlob(type, 128);
+      zip.file(`Types/${type}.png`, blob);
+    }
+  } catch (e) {
+    console.error('Failed to add type icons', e);
+  }
+
+  setStatus('Saving ZIP file...');
+  const blob = await zip.generateAsync({ type: 'blob' });
+  saveAs(blob, 'pokemon_sprites.zip');
+
+  downloadActive = false;
+  document.getElementById('stopBtn').classList.remove('active');
+  setProgress(0);
+  setStatus('Done!');
+  const msg = failed > 0 ? `ZIP saved with ${completed - failed} sprites (${failed} failed)` : `ZIP saved with ${completed} organized sprites!`;
+  showToast(msg, failed > 0);
+}
+
+// ----------------------------------------------------------------
+// Init
+// ----------------------------------------------------------------
+async function init() {
+  try {
+    // Load pokemon list
+    setStatus('Loading Pokemon list...');
+    const res = await fetch(POKE_API);
+    const data = await res.json();
+    allPokemon = data.results
+      .map(p => {
+        const segments = p.url.replace(/\/$/, '').split('/');
+        const id = parseInt(segments[segments.length - 1]);
+        return { name: p.name, id, url: p.url };
+      })
+      .filter(p => !EXCLUDE.has(p.id));
+
+    // Phase 1: Evolution chains
+    await loadEvolutionChains();
+
+    // Phase 2: Pokemon details
+    await loadPokemonDetails();
+
+    // Categorize
+    setPhase('Categorizing...');
+    categorize();
+    setPhase('');
+    setProgress(0);
+
+    // Render
+    filtered = [...allPokemon];
+    renderGrid();
+    renderTypeIcons();
+    updateCounts();
+    setStatus(`Loaded ${allPokemon.length} Pokemon into ${Object.keys(categorized).length} categories. Type icons ready.`);
+  } catch (e) {
+    setStatus('Error loading data. Check console.');
+    console.error(e);
+  }
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head><title>Aspect Ratio Tool</title></head>
+<body style="font-family:sans-serif;background:#222;color:#eee;padding:20px">
+<h3>Option A: Enter dimensions manually</h3>
+<table>
+<tr><td></td><th>Width</th><th>Height</th></tr>
+<tr><td>Original image:</td><td><input id="ow" size="6" value="1400" /></td><td><input id="oh" size="6" value="1000" /></td></tr>
+<tr><td>New image:</td><td><input id="nw" size="6" /></td><td><input id="nh" size="6" /></td></tr>
+</table>
+<button onclick="calc()">Calculate</button>
+<div id="out" style="margin-top:16px"></div>
+
+<h3>Option B: Try loading from URLs</h3>
+Original URL: <input id="url1" size="70" /><br/>
+New URL: <input id="url2" size="70" /><br/>
+<button onclick="loadUrls()">Load</button>
+<div id="urlout" style="margin-top:8px;color:#fa0"></div>
+
+<script>
+function calc() {
+  const ow = parseFloat(document.getElementById('ow').value);
+  const oh = parseFloat(document.getElementById('oh').value);
+  const nw = parseFloat(document.getElementById('nw').value);
+  const nh = parseFloat(document.getElementById('nh').value);
+  if (!ow || !oh) return;
+  
+  let html = '';
+  if (nw && nh) {
+    const aspect = ow/oh;
+    html += `New image: ${nw}x${nh} (aspect ${(nw/nh).toFixed(4)})<br/>`;
+    html += `Original aspect: ${aspect.toFixed(4)}<br/><br/>`;
+    html += `<b>Scale new to match original aspect:</b><br/>`;
+    html += `&nbsp;&nbsp;Width ${Math.round(nh * aspect)} x Height ${nh}<br/>`;
+    html += `&nbsp;&nbsp;Width ${nw} x Height ${Math.round(nw / aspect)}<br/><br/>`;
+  }
+  
+  // Panel scaling suggestion (if panel was 1400x1000 for original)
+  const pw = 1400, ph = 1000;
+  if (nw && nh) {
+    html += `<b>New panel size (same scale factor):</b><br/>`;
+    html += `&nbsp;&nbsp;${Math.round(pw * nw/ow)} x ${Math.round(ph * nh/oh)}<br/>`;
+    html += `(or just use ${pw}x${ph} and let TTS stretch it)`;
+  } else if (ow && oh) {
+    html += `<b>If you know one dimension of the new image:</b><br/>`;
+    html += `Enter its width or height above and calculate.`;
+  }
+  
+  document.getElementById('out').innerHTML = html;
+}
+
+function loadUrls() {
+  const u1 = document.getElementById('url1').value.trim();
+  const u2 = document.getElementById('url2').value.trim();
+  const out = document.getElementById('urlout');
+  if (!u1) { out.textContent = 'Enter original URL'; return; }
+  
+  const img1 = new Image();
+  img1.onload = function() {
+    document.getElementById('ow').value = img1.naturalWidth;
+    document.getElementById('oh').value = img1.naturalHeight;
+    if (u2) {
+      const img2 = new Image();
+      img2.onload = function() {
+        document.getElementById('nw').value = img2.naturalWidth;
+        document.getElementById('nh').value = img2.naturalHeight;
+        out.textContent = 'Loaded both images. Click Calculate.';
+        calc();
+      };
+      img2.onerror = function() { out.textContent = 'Could not load new URL (CORS or invalid URL). Enter dimensions manually.'; };
+      img2.src = u2;
+    } else {
+      out.textContent = 'Loaded original. Enter new URL or dimensions manually.';
+    }
+  };
+  img1.onerror = function() { out.textContent = 'Could not load original URL (CORS or invalid URL). Enter dimensions manually.'; };
+  img1.src = u1;
+}
+</script>
+</body>
+</html>

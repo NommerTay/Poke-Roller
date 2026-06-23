@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tmpfiles.org Batch Uploader</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00d4aa;
+            margin-bottom: 6px;
+            font-size: 1.8em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        .drop-zone {
+            border: 2px dashed #00d4aa;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            background: rgba(0, 212, 170, 0.08);
+        }
+
+        .drop-zone p { color: #aaa; margin-top: 8px; font-size: 0.9em; }
+
+        .drop-zone .icon { font-size: 2.5em; }
+
+        #file-input { display: none; }
+
+        .options {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .options label { color: #aaa; font-size: 0.9em; }
+
+        .options select, .options input[type="number"] {
+            background: #2a2a4a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.85; }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .btn-primary { background: #00d4aa; color: #1a1a2e; }
+        .btn-secondary { background: #444; color: #e0e0e0; }
+        .btn-copy { background: #6c63ff; color: #fff; padding: 6px 14px; font-size: 0.82em; }
+        .btn-copy-all { background: #6c63ff; color: #fff; }
+
+        .file-list {
+            margin-bottom: 20px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #2a2a4a;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+        }
+
+        .file-item .name {
+            flex: 1;
+            font-size: 0.9em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-item .size { color: #888; font-size: 0.8em; min-width: 60px; text-align: right; }
+
+        .file-item .status {
+            font-size: 0.8em;
+            min-width: 80px;
+            text-align: center;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .status-pending  { background: #333; color: #aaa; }
+        .status-uploading { background: #2a4a6a; color: #6ab4ff; }
+        .status-done     { background: #1a4a2a; color: #4aff8a; }
+        .status-error    { background: #4a1a1a; color: #ff6a6a; }
+
+        .file-item .url-box {
+            flex: 2;
+            font-size: 0.78em;
+            color: #00d4aa;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ff6a6a;
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 0 4px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .results-box {
+            background: #2a2a4a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .results-box h3 { color: #00d4aa; margin-bottom: 12px; }
+
+        .results-box textarea {
+            width: 100%;
+            height: 220px;
+            background: #1a1a2e;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            border-radius: 6px;
+            padding: 10px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.82em;
+            resize: vertical;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-wrap {
+            background: #333;
+            border-radius: 4px;
+            height: 4px;
+            width: 100%;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .progress-bar {
+            background: #00d4aa;
+            height: 4px;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .note {
+            background: rgba(255, 200, 0, 0.08);
+            border-left: 3px solid #ffc800;
+            border-radius: 4px;
+            padding: 10px 14px;
+            font-size: 0.85em;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🗂 tmpfiles.org Batch Uploader</h1>
+<p class="subtitle">Upload multiple files at once and get direct download links</p>
+
+<div class="note">
+    ⚠️ Files are temporary — default expiry is <strong>1 hour</strong>. Set a longer expiry below (max 48 hours / 172800 seconds).
+    The direct links use <code>/dl/</code> format, ready to paste into Tabletop Simulator.
+</div>
+
+<div class="drop-zone" id="drop-zone">
+    <div class="icon">📁</div>
+    <strong>Drop files here</strong>
+    <p>or click to select files</p>
+    <input type="file" id="file-input" multiple>
+</div>
+
+<div class="options">
+    <label>Expiry:</label>
+    <select id="expiry-preset">
+        <option value="3600">1 hour</option>
+        <option value="21600">6 hours</option>
+        <option value="43200">12 hours</option>
+        <option value="86400">24 hours</option>
+        <option value="172800" selected>48 hours (max)</option>
+        <option value="custom">Custom (seconds)</option>
+    </select>
+    <input type="number" id="expiry-custom" placeholder="seconds" min="60" max="172800"
+        style="display:none; width:130px;">
+</div>
+
+<div class="file-list" id="file-list"></div>
+
+<div class="controls">
+    <button class="btn btn-primary" id="upload-btn" disabled>⬆ Upload All</button>
+    <button class="btn btn-secondary" id="clear-btn">🗑 Clear</button>
+</div>
+
+<div class="progress-bar-wrap" id="progress-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<div class="results-box" id="results-box">
+    <div class="results-header">
+        <h3>📋 Results</h3>
+        <button class="btn btn-copy-all" id="copy-all-btn">Copy All URLs</button>
+    </div>
+    <textarea id="results-text" readonly></textarea>
+</div>
+
+<script>
+    const dropZone    = document.getElementById('drop-zone');
+    const fileInput   = document.getElementById('file-input');
+    const fileListEl  = document.getElementById('file-list');
+    const uploadBtn   = document.getElementById('upload-btn');
+    const clearBtn    = document.getElementById('clear-btn');
+    const resultsBox  = document.getElementById('results-box');
+    const resultsText = document.getElementById('results-text');
+    const copyAllBtn  = document.getElementById('copy-all-btn');
+    const progressWrap = document.getElementById('progress-wrap');
+    const progressBar  = document.getElementById('progress-bar');
+    const expiryPreset = document.getElementById('expiry-preset');
+    const expiryCustom = document.getElementById('expiry-custom');
+
+    let files = []; // { file, status, url, el }
+
+    // ── Expiry toggle ───────────────────────────────────────
+    expiryPreset.addEventListener('change', () => {
+        expiryCustom.style.display = expiryPreset.value === 'custom' ? 'inline-block' : 'none';
+    });
+
+    function getExpiry() {
+        const v = expiryPreset.value;
+        if (v === 'custom') {
+            const c = parseInt(expiryCustom.value);
+            return (!isNaN(c) && c >= 60 && c <= 172800) ? c : 3600;
+        }
+        return parseInt(v);
+    }
+
+    // ── Drag & drop ─────────────────────────────────────────
+    dropZone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => addFiles(Array.from(fileInput.files)));
+
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        addFiles(Array.from(e.dataTransfer.files));
+    });
+
+    function addFiles(newFiles) {
+        newFiles.forEach(f => {
+            if (files.find(x => x.file.name === f.name && x.file.size === f.size)) return;
+            const entry = { file: f, status: 'pending', url: null, el: null };
+            files.push(entry);
+            renderFileItem(entry);
+        });
+        uploadBtn.disabled = files.length === 0;
+    }
+
+    function renderFileItem(entry) {
+        const div = document.createElement('div');
+        div.className = 'file-item';
+        div.innerHTML = `
+            <span class="name" title="${entry.file.name}">${entry.file.name}</span>
+            <span class="size">${formatSize(entry.file.size)}</span>
+            <span class="status status-pending">Pending</span>
+            <span class="url-box">—</span>
+            <button class="btn btn-copy" disabled>Copy</button>
+            <button class="remove-btn" title="Remove">✕</button>
+        `;
+        const copyBtn   = div.querySelector('.btn-copy');
+        const removeBtn = div.querySelector('.remove-btn');
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(entry.url);
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => copyBtn.textContent = 'Copy', 1500);
+        });
+
+        removeBtn.addEventListener('click', () => {
+            files = files.filter(x => x !== entry);
+            div.remove();
+            uploadBtn.disabled = files.length === 0;
+        });
+
+        entry.el = div;
+        fileListEl.appendChild(div);
+    }
+
+    function updateFileItem(entry) {
+        const div      = entry.el;
+        const statusEl = div.querySelector('.status');
+        const urlEl    = div.querySelector('.url-box');
+        const copyBtn  = div.querySelector('.btn-copy');
+
+        statusEl.className = 'status status-' + entry.status;
+        statusEl.textContent = entry.status.charAt(0).toUpperCase() + entry.status.slice(1);
+
+        if (entry.url) {
+            urlEl.textContent = entry.url;
+            urlEl.title = entry.url;
+            copyBtn.disabled = false;
+        }
+
+        if (entry.status === 'error') {
+            urlEl.textContent = entry.error || 'Upload failed';
+            urlEl.style.color = '#ff6a6a';
+        }
+    }
+
+    // ── Upload ───────────────────────────────────────────────
+    uploadBtn.addEventListener('click', uploadAll);
+
+    async function uploadAll() {
+        uploadBtn.disabled = true;
+        clearBtn.disabled  = true;
+        progressWrap.style.display = 'block';
+
+        const pending = files.filter(f => f.status === 'pending');
+        let done = 0;
+
+        for (const entry of pending) {
+            entry.status = 'uploading';
+            updateFileItem(entry);
+
+            try {
+                const formData = new FormData();
+                formData.append('file', entry.file);
+                formData.append('expire', getExpiry());
+
+                const resp = await fetch('https://tmpfiles.org/api/v1/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const json = await resp.json();
+
+                if (json.status === 'success') {
+                    // Convert https://tmpfiles.org/123/file.png
+                    //      to https://tmpfiles.org/dl/123/file.png
+                    const raw = json.data.url;
+                    entry.url = raw.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+                    entry.status = 'done';
+                } else {
+                    throw new Error(json.message || 'Unknown error');
+                }
+            } catch (err) {
+                entry.status = 'error';
+                entry.error  = err.message;
+            }
+
+            updateFileItem(entry);
+            done++;
+            progressBar.style.width = Math.round((done / pending.length) * 100) + '%';
+        }
+
+        // Build results
+        const successful = files.filter(f => f.status === 'done');
+        if (successful.length > 0) {
+            resultsBox.style.display = 'block';
+            resultsText.value = successful
+                .map(f => `${f.file.name}\n${f.url}`)
+                .join('\n\n');
+        }
+
+        uploadBtn.disabled = false;
+        clearBtn.disabled  = false;
+    }
+
+    // ── Clear ────────────────────────────────────────────────
+    clearBtn.addEventListener('click', () => {
+        files = [];
+        fileListEl.innerHTML = '';
+        resultsBox.style.display = 'none';
+        progressWrap.style.display = 'none';
+        progressBar.style.width = '0%';
+        uploadBtn.disabled = true;
+        fileInput.value = '';
+    });
+
+    // ── Copy all ─────────────────────────────────────────────
+    copyAllBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(resultsText.value);
+        copyAllBtn.textContent = 'Copied!';
+        setTimeout(() => copyAllBtn.textContent = 'Copy All URLs', 1500);
+    });
+
+    function formatSize(bytes) {
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+</script>
+</body>
+</html>
