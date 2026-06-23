@@ -424,10 +424,10 @@
 <Button id="encyclopedia_btn_Green" onClick="toggleEncyclopedia" rectAlignment="LowerLeft" offsetXY="30 74" width="352" height="114" colors="#00000000|#00000000|#00000000|#00000000" outlineSize="0" visibility="Green" active="false" />
 
 <!-- ENCYCLOPEDIA PANELS — root-level, bottom center -->
-<Panel id="encyclopedia_panel_White" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="breederPerksEncyclopedia" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="White" />
-<Panel id="encyclopedia_panel_Red" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="breederPerksEncyclopedia" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="Red" />
-<Panel id="encyclopedia_panel_Blue" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="breederPerksEncyclopedia" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="Blue" />
-<Panel id="encyclopedia_panel_Green" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="breederPerksEncyclopedia" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="Green" />
+<Panel id="encyclopedia_panel_White" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="bency" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="White" />
+<Panel id="encyclopedia_panel_Red" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="bency" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="Red" />
+<Panel id="encyclopedia_panel_Blue" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="bency" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="Blue" />
+<Panel id="encyclopedia_panel_Green" active="false" rectAlignment="LowerCenter" offsetXY="0 -16" width="741" height="602" image="bency" color="#FFFFFF" interactable="false" padding="0 0 0 0" visibility="Green" />
 
 <!-- TEMP TEST SLOT at center screen for placement verification -->
 <Button id="test_encyclopedia_slot" active="true" rectAlignment="MiddleCenter" offsetXY="0 0" width="45" height="50" color="#FFFFFF" />

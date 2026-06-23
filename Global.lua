@@ -1404,7 +1404,7 @@ local BASE_ASSETS = {
     { name = "Relaxation",             url = "https://tmpfiles.org/dl/wtwFdiSjcBW3/relaxation.png" },
     { name = "The Shining Star",       url = "https://tmpfiles.org/dl/wqwfdASlcJ73/theshiningstar.png" },
     { name = "Training Ball",          url = "https://tmpfiles.org/dl/wDwSdxSqc9yr/trainingball.png" },
-    { name = "breederPerksEncyclopedia", url = "https://tmpfiles.org/dl/wLwvJLY6Hn1x/encyclopedia_cropped.png" },
+    { name = "bency", url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/BENCY.png" },
     { name = "type_bug",      url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/bug.png" },
     { name = "type_dark",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/dark.png" },
     { name = "type_dragon",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/dragon.png" },
@@ -1677,7 +1677,7 @@ function toggleEncyclopedia(player, value, id)
 
     encyclopedia_open[color] = not encyclopedia_open[color]
     if encyclopedia_open[color] then
-        UI.setAttribute("encyclopedia_panel_"..color, "image", "breederPerksEncyclopedia")
+        UI.setAttribute("encyclopedia_panel_"..color, "image", "bency")
     end
     UI.setAttribute("encyclopedia_panel_"..color, "active", encyclopedia_open[color] and "true" or "false")
     if not encyclopedia_open[color] then
