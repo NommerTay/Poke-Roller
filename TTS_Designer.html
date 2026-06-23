@@ -73,6 +73,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
     <span style="flex:1"></span>
     <button onclick="exportXML()">Export XML</button>
     <button onclick="exportLua()">Export Lua</button>
+    <button onclick="copyData()">📋 Copy Data</button>
     <button onclick="saveLayout()">Save</button>
     <button onclick="loadLayout()">Load</button>
     <button onclick="clearCanvas()" style="color:#ff6666;">Clear</button>
@@ -621,6 +622,23 @@ function exportLua() {
         }
     });
     showCode(lua);
+}
+
+function copyData() {
+    const cw = document.getElementById('canvasW').value;
+    const ch = document.getElementById('canvasH').value;
+    const data = JSON.stringify({ elements, nextId, canvasW: cw, canvasH: ch }, null, 2);
+    navigator.clipboard.writeText(data).then(() => {
+        alert('Layout data copied to clipboard! Paste it in chat for review.');
+    }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = data;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('Layout data copied!');
+    });
 }
 
 function showCode(code) {
