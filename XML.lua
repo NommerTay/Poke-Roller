@@ -679,7 +679,7 @@
 <Button id="pokedex_toggle_Green" onClick="toggleCategoryPanel" rectAlignment="LowerRight" offsetXY="-10 -5" width="120" height="50" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff3333" highlightedColor="#330000" outline="#ff3333" outlineSize="2" visibility="Green">POKEDEX</Button>
 
 <!-- WHITE -->
-<Panel id="pokedex_panel_White" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="3000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="White" />
+<Panel id="pokedex_panel_White" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="White" />
 <Button id="pokedex_card_16_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="White" />
 <Button id="pokedex_card_17_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="White" />
 <Button id="pokedex_card_18_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="White" />
@@ -701,10 +701,10 @@
 <Button id="pokedex_card_4_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="White" />
 <Button id="pokedex_card_5_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="White" />
 <Button id="pokedex_close_White" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="White">✕</Button>
-<Button id="pokedex_next_White" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="White">DEX NEXT</Button>
+<Button id="pokedex_next_White" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="140" height="50" image="dexNext" color="#FFFFFF" visibility="White" />
 
 <!-- RED -->
-<Panel id="pokedex_panel_Red" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="3000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Red" />
+<Panel id="pokedex_panel_Red" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Red" />
 <Button id="pokedex_card_16_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="Red" />
 <Button id="pokedex_card_17_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="Red" />
 <Button id="pokedex_card_18_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="Red" />
@@ -726,10 +726,10 @@
 <Button id="pokedex_card_4_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="Red" />
 <Button id="pokedex_card_5_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="Red" />
 <Button id="pokedex_close_Red" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Red">✕</Button>
-<Button id="pokedex_next_Red" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="Red">DEX NEXT</Button>
+<Button id="pokedex_next_Red" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="140" height="50" image="dexNext" color="#FFFFFF" visibility="Red" />
 
 <!-- BLUE -->
-<Panel id="pokedex_panel_Blue" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="3000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Blue" />
+<Panel id="pokedex_panel_Blue" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Blue" />
 <Button id="pokedex_card_16_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="Blue" />
 <Button id="pokedex_card_17_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="Blue" />
 <Button id="pokedex_card_18_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="Blue" />
@@ -751,10 +751,10 @@
 <Button id="pokedex_card_4_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="Blue" />
 <Button id="pokedex_card_5_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="Blue" />
 <Button id="pokedex_close_Blue" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Blue">✕</Button>
-<Button id="pokedex_next_Blue" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="Blue">DEX NEXT</Button>
+<Button id="pokedex_next_Blue" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="140" height="50" image="dexNext" color="#FFFFFF" visibility="Blue" />
 
 <!-- GREEN -->
-<Panel id="pokedex_panel_Green" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="3000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Green" />
+<Panel id="pokedex_panel_Green" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Green" />
 <Button id="pokedex_card_16_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="Green" />
 <Button id="pokedex_card_17_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="Green" />
 <Button id="pokedex_card_18_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="Green" />
@@ -776,6 +776,6 @@
 <Button id="pokedex_card_4_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="Green" />
 <Button id="pokedex_card_5_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="Green" />
 <Button id="pokedex_close_Green" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Green">✕</Button>
-<Button id="pokedex_next_Green" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="Green">DEX NEXT</Button>
+<Button id="pokedex_next_Green" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="140" height="50" image="dexNext" color="#FFFFFF" visibility="Green" />
 
 
