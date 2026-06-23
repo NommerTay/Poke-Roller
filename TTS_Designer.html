@@ -74,6 +74,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
     <button onclick="exportXML()">Export XML</button>
     <button onclick="exportLua()">Export Lua</button>
     <button onclick="copyData()">📋 Copy Data</button>
+    <button onclick="pasteData()">📥 Paste Data</button>
     <button onclick="saveLayout()">Save</button>
     <button onclick="loadLayout()">Load</button>
     <button onclick="clearCanvas()" style="color:#ff6666;">Clear</button>
@@ -639,6 +640,27 @@ function copyData() {
         document.body.removeChild(ta);
         alert('Layout data copied!');
     });
+}
+
+function pasteData() {
+    const input = prompt('Paste layout JSON data:');
+    if (!input) return;
+    try {
+        const obj = JSON.parse(input);
+        if (!obj.elements || !Array.isArray(obj.elements)) {
+            alert('Invalid layout data: missing elements array.');
+            return;
+        }
+        elements = obj.elements;
+        nextId = obj.nextId || 1;
+        if (obj.canvasW) document.getElementById('canvasW').value = obj.canvasW;
+        if (obj.canvasH) document.getElementById('canvasH').value = obj.canvasH;
+        resizeCanvas();
+        render();
+        alert('Layout loaded from pasted data!');
+    } catch(e) {
+        alert('Failed to parse layout data: ' + e.message);
+    }
 }
 
 function showCode(code) {
