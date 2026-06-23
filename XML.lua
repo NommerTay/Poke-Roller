@@ -31,12 +31,12 @@
 />
 
 <!-- WHITE PLAYER COUNTERS -->
-<Button id="res_White_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
-<Text id="res_val_White_white" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
-<Button id="res_White_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
-<Text id="res_val_White_green" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
-<Button id="res_White_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
-<Text id="res_val_White_pink" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
+<Button id="res_White_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
+<Text id="res_val_White_white" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
+<Button id="res_White_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
+<Text id="res_val_White_green" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
+<Button id="res_White_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
+<Text id="res_val_White_pink" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
 <Button id="res_White_yellow" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
 <Text id="res_val_White_yellow" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="White" />
 <Button id="res_White_blue" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="White" />
@@ -125,12 +125,12 @@
 />
 
 <!-- RED PLAYER COUNTERS -->
-<Button id="res_Red_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
-<Text id="res_val_Red_white" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
-<Button id="res_Red_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
-<Text id="res_val_Red_green" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
-<Button id="res_Red_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
-<Text id="res_val_Red_pink" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
+<Button id="res_Red_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
+<Text id="res_val_Red_white" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
+<Button id="res_Red_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
+<Text id="res_val_Red_green" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
+<Button id="res_Red_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
+<Text id="res_val_Red_pink" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
 <Button id="res_Red_yellow" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
 <Text id="res_val_Red_yellow" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Red" />
 <Button id="res_Red_blue" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Red" />
@@ -219,12 +219,12 @@
 />
 
 <!-- BLUE PLAYER COUNTERS -->
-<Button id="res_Blue_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
-<Text id="res_val_Blue_white" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
-<Button id="res_Blue_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
-<Text id="res_val_Blue_green" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
-<Button id="res_Blue_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
-<Text id="res_val_Blue_pink" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
+<Button id="res_Blue_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
+<Text id="res_val_Blue_white" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
+<Button id="res_Blue_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
+<Text id="res_val_Blue_green" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
+<Button id="res_Blue_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
+<Text id="res_val_Blue_pink" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
 <Button id="res_Blue_yellow" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
 <Text id="res_val_Blue_yellow" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Blue" />
 <Button id="res_Blue_blue" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Blue" />
@@ -313,12 +313,12 @@
 />
 
 <!-- GREEN PLAYER COUNTERS -->
-<Button id="res_Green_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
-<Text id="res_val_Green_white" rectAlignment="LowerLeft" offsetXY="192 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
-<Button id="res_Green_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
-<Text id="res_val_Green_green" rectAlignment="LowerLeft" offsetXY="132 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
-<Button id="res_Green_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
-<Text id="res_val_Green_pink" rectAlignment="LowerLeft" offsetXY="72 110" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
+<Button id="res_Green_white" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
+<Text id="res_val_Green_white" rectAlignment="LowerLeft" offsetXY="192 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
+<Button id="res_Green_green" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
+<Text id="res_val_Green_green" rectAlignment="LowerLeft" offsetXY="132 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
+<Button id="res_Green_pink" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
+<Text id="res_val_Green_pink" rectAlignment="LowerLeft" offsetXY="72 1-157" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
 <Button id="res_Green_yellow" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
 <Text id="res_val_Green_yellow" rectAlignment="LowerLeft" offsetXY="192 170" width="30" height="30" fontSize="18" fontStyle="Bold" color="#000000" outline="#FFFFFF" outlineSize="1 1" alignment="MiddleCenter" visibility="Green" />
 <Button id="res_Green_blue" onClick="adjustResource" rectAlignment="LowerLeft" offsetXY="132 170" width="30" height="30" fontSize="1" color="#00000000" textColor="#00000000" visibility="Green" />
@@ -667,3 +667,115 @@
 >
     <Text id="debug_coord_val" fontSize="1" color="#00000000">.</Text>
 </Panel>
+
+<!-- ══════════════════════════════════════════════════════════
+     POKEDEX — centered DEX Panel with 20 card buttons (4 rows × 5 cols)
+     ══════════════════════════════════════════════════════════ -->
+
+<!-- Pokedex toggle buttons — bottom-right -->
+<Button id="pokedex_toggle_White" onClick="toggleCategoryPanel" rectAlignment="LowerRight" offsetXY="-10 -5" width="120" height="50" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff3333" highlightedColor="#330000" outline="#ff3333" outlineSize="2" visibility="White">POKEDEX</Button>
+<Button id="pokedex_toggle_Red" onClick="toggleCategoryPanel" rectAlignment="LowerRight" offsetXY="-10 -5" width="120" height="50" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff3333" highlightedColor="#330000" outline="#ff3333" outlineSize="2" visibility="Red">POKEDEX</Button>
+<Button id="pokedex_toggle_Blue" onClick="toggleCategoryPanel" rectAlignment="LowerRight" offsetXY="-10 -5" width="120" height="50" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff3333" highlightedColor="#330000" outline="#ff3333" outlineSize="2" visibility="Blue">POKEDEX</Button>
+<Button id="pokedex_toggle_Green" onClick="toggleCategoryPanel" rectAlignment="LowerRight" offsetXY="-10 -5" width="120" height="50" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff3333" highlightedColor="#330000" outline="#ff3333" outlineSize="2" visibility="Green">POKEDEX</Button>
+
+<!-- WHITE -->
+<Panel id="pokedex_panel_White" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="1280" height="900" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="White" />
+<Button id="pokedex_card_16_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_17_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_18_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_19_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -300" width="100" height="140" image="pokeCard19" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_20_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -300" width="100" height="140" image="pokeCard20" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_11_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -157" width="100" height="140" image="pokeCard11" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_12_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -157" width="100" height="140" image="pokeCard12" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_13_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -157" width="100" height="140" image="pokeCard13" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_14_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -157" width="100" height="140" image="pokeCard14" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_15_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -157" width="100" height="140" image="pokeCard15" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_6_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -14" width="100" height="140" image="pokeCard6" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_7_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -14" width="100" height="140" image="pokeCard7" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_8_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -14" width="100" height="140" image="pokeCard8" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_9_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -14" width="100" height="140" image="pokeCard9" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_10_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -14" width="100" height="140" image="pokeCard10" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_1_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 130" width="100" height="140" image="pokeCard1" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_2_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 130" width="100" height="140" image="pokeCard2" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_3_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 130" width="100" height="140" image="pokeCard3" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_4_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_card_5_White" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="White" />
+<Button id="pokedex_close_White" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="White">✕</Button>
+<Button id="pokedex_next_White" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="White">DEX NEXT</Button>
+
+<!-- RED -->
+<Panel id="pokedex_panel_Red" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="1280" height="900" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Red" />
+<Button id="pokedex_card_16_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_17_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_18_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_19_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -300" width="100" height="140" image="pokeCard19" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_20_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -300" width="100" height="140" image="pokeCard20" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_11_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -157" width="100" height="140" image="pokeCard11" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_12_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -157" width="100" height="140" image="pokeCard12" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_13_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -157" width="100" height="140" image="pokeCard13" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_14_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -157" width="100" height="140" image="pokeCard14" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_15_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -157" width="100" height="140" image="pokeCard15" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_6_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -14" width="100" height="140" image="pokeCard6" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_7_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -14" width="100" height="140" image="pokeCard7" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_8_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -14" width="100" height="140" image="pokeCard8" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_9_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -14" width="100" height="140" image="pokeCard9" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_10_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -14" width="100" height="140" image="pokeCard10" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_1_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 130" width="100" height="140" image="pokeCard1" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_2_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 130" width="100" height="140" image="pokeCard2" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_3_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 130" width="100" height="140" image="pokeCard3" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_4_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_card_5_Red" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="Red" />
+<Button id="pokedex_close_Red" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Red">✕</Button>
+<Button id="pokedex_next_Red" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="Red">DEX NEXT</Button>
+
+<!-- BLUE -->
+<Panel id="pokedex_panel_Blue" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="1280" height="900" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Blue" />
+<Button id="pokedex_card_16_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_17_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_18_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_19_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -300" width="100" height="140" image="pokeCard19" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_20_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -300" width="100" height="140" image="pokeCard20" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_11_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -157" width="100" height="140" image="pokeCard11" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_12_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -157" width="100" height="140" image="pokeCard12" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_13_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -157" width="100" height="140" image="pokeCard13" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_14_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -157" width="100" height="140" image="pokeCard14" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_15_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -157" width="100" height="140" image="pokeCard15" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_6_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -14" width="100" height="140" image="pokeCard6" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_7_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -14" width="100" height="140" image="pokeCard7" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_8_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -14" width="100" height="140" image="pokeCard8" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_9_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -14" width="100" height="140" image="pokeCard9" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_10_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -14" width="100" height="140" image="pokeCard10" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_1_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 130" width="100" height="140" image="pokeCard1" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_2_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 130" width="100" height="140" image="pokeCard2" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_3_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 130" width="100" height="140" image="pokeCard3" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_4_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_card_5_Blue" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="Blue" />
+<Button id="pokedex_close_Blue" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Blue">✕</Button>
+<Button id="pokedex_next_Blue" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="Blue">DEX NEXT</Button>
+
+<!-- GREEN -->
+<Panel id="pokedex_panel_Green" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="1280" height="900" image="dexPanel" color="#FFFFFF" padding="0 0 0 0" interactable="false" visibility="Green" />
+<Button id="pokedex_card_16_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -300" width="100" height="140" image="pokeCard16" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_17_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -300" width="100" height="140" image="pokeCard17" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_18_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -300" width="100" height="140" image="pokeCard18" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_19_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -300" width="100" height="140" image="pokeCard19" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_20_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -300" width="100" height="140" image="pokeCard20" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_11_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -157" width="100" height="140" image="pokeCard11" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_12_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -157" width="100" height="140" image="pokeCard12" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_13_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -157" width="100" height="140" image="pokeCard13" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_14_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -157" width="100" height="140" image="pokeCard14" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_15_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -157" width="100" height="140" image="pokeCard15" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_6_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 -14" width="100" height="140" image="pokeCard6" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_7_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 -14" width="100" height="140" image="pokeCard7" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_8_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 -14" width="100" height="140" image="pokeCard8" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_9_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 -14" width="100" height="140" image="pokeCard9" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_10_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 -14" width="100" height="140" image="pokeCard10" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_1_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-350 130" width="100" height="140" image="pokeCard1" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_2_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-210 130" width="100" height="140" image="pokeCard2" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_3_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="-70 130" width="100" height="140" image="pokeCard3" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_4_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="70 130" width="100" height="140" image="pokeCard4" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_card_5_Green" onClick="pokedexCardClick" active="false" rectAlignment="MiddleCenter" offsetXY="210 130" width="100" height="140" image="pokeCard5" color="#FFFFFF" visibility="Green" />
+<Button id="pokedex_close_Green" onClick="closePokedex" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="16" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Green">✕</Button>
+<Button id="pokedex_next_Green" onClick="pokedexNEXT" active="false" rectAlignment="LowerRight" offsetXY="-140 -5" width="120" height="40" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#66ff66" highlightedColor="#003300" outline="#66ff66" outlineSize="2" visibility="Green">DEX NEXT</Button>
+
+
