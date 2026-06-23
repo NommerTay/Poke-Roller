@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TTS UI Designer</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+.toolbar { display: flex; align-items: center; gap: 10px; padding: 8px 16px; background: #16213e; border-bottom: 1px solid #0f3460; flex-shrink: 0; }
+.toolbar button, .toolbar select { background: #0f3460; color: #fff; border: 1px solid #1a5276; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.toolbar button:hover { background: #1a5276; }
+.toolbar label { font-size: 13px; color: #a0a0c0; }
+.main { display: flex; flex: 1; overflow: hidden; }
+.panel { background: #16213e; border-right: 1px solid #0f3460; display: flex; flex-direction: column; flex-shrink: 0; }
+.panel-left { width: 260px; }
+.panel-right { width: 300px; border-right: none; border-left: 1px solid #0f3460; }
+.panel-header { padding: 8px 12px; font-size: 13px; font-weight: 600; background: #0f3460; color: #a0c4ff; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+.panel-content { flex: 1; overflow-y: auto; padding: 8px; }
+.asset-cat { margin-bottom: 12px; }
+.asset-cat-title { font-size: 12px; color: #7a8aaa; padding: 4px 0; margin-bottom: 4px; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+.asset-cat-title:hover { color: #a0c4ff; }
+.asset-grid { display: flex; flex-wrap: wrap; gap: 4px; }
+.asset-grid img { width: 40px; height: 40px; object-fit: contain; cursor: grab; border: 1px solid transparent; border-radius: 3px; background: #0d1b2a; padding: 2px; }
+.asset-grid img:hover { border-color: #4a7aaa; background: #1a2a4a; }
+.search-box { width: 100%; padding: 6px 8px; background: #0d1b2a; border: 1px solid #1a5276; color: #fff; border-radius: 4px; font-size: 13px; margin-bottom: 8px; }
+.search-box::placeholder { color: #5a6a8a; }
+.canvas-wrap { flex: 1; display: flex; align-items: center; justify-content: center; background: #0d1117; position: relative; overflow: hidden; }
+.canvas { position: relative; background: #1a1a2e; box-shadow: 0 0 40px rgba(0,0,0,0.5); overflow: hidden; }
+.canvas-element { position: absolute; cursor: move; user-select: none; }
+.canvas-element:hover { outline: 2px solid #4a7aaa; }
+.canvas-element.selected { outline: 2px solid #ffaa33; z-index: 9999 !important; }
+.canvas-element img { width: 100%; height: 100%; pointer-events: none; }
+.canvas-element .text-content { width: 100%; height: 100%; overflow: hidden; word-wrap: break-word; pointer-events: none; }
+.resize-handle { position: absolute; width: 8px; height: 8px; background: #ffaa33; border: 1px solid #fff; border-radius: 1px; }
+.resize-handle.nw { top: -4px; left: -4px; cursor: nw-resize; }
+.resize-handle.ne { top: -4px; right: -4px; cursor: ne-resize; }
+.resize-handle.sw { bottom: -4px; left: -4px; cursor: sw-resize; }
+.resize-handle.se { bottom: -4px; right: -4px; cursor: se-resize; }
+.prop-group { margin-bottom: 10px; }
+.prop-group label { display: block; font-size: 11px; color: #7a8aaa; margin-bottom: 2px; }
+.prop-group input, .prop-group select, .prop-group textarea { width: 100%; padding: 4px 6px; background: #0d1b2a; border: 1px solid #1a5276; color: #fff; border-radius: 3px; font-size: 12px; }
+.prop-group textarea { height: 50px; resize: vertical; }
+.prop-row { display: flex; gap: 6px; }
+.prop-row>* { flex: 1; }
+.prop-row .prop-group { flex: 1; }
+.layer-list { font-size: 12px; }
+.layer-item { display: flex; align-items: center; gap: 6px; padding: 3px 6px; cursor: pointer; border-radius: 3px; }
+.layer-item:hover { background: #1a2a4a; }
+.layer-item.active { background: #0f3460; }
+.layer-item .thumb { width: 24px; height: 24px; object-fit: contain; background: #0d1b2a; border-radius: 2px; }
+.layer-item .label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.layer-item .btn { cursor: pointer; color: #7a8aaa; font-size: 11px; padding: 1px 4px; }
+.layer-item .btn:hover { color: #ff6666; }
+.empty-state { display: flex; align-items: center; justify-content: center; height: 100%; color: #3a4a6a; text-align: center; padding: 20px; font-size: 13px; }
+.color-picker { display: flex; gap: 4px; flex-wrap: wrap; }
+.color-picker button { width: 20px; height: 20px; border: 1px solid #333; border-radius: 2px; cursor: pointer; padding: 0; }
+.color-picker button:hover { border-color: #ffaa33; }
+.color-picker button.active { border-color: #fff; outline: 2px solid #ffaa33; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+    <button onclick="addText()">+ Text</button>
+    <button onclick="addImage()">+ Image</button>
+    <span style="flex:1"></span>
+    <label>W:</label><input id="canvasW" type="number" value="1920" style="width:60px" onchange="resizeCanvas()">
+    <label>H:</label><input id="canvasH" type="number" value="1080" style="width:60px" onchange="resizeCanvas()">
+    <button onclick="resizeCanvas()">Resize</button>
+    <span style="flex:1"></span>
+    <button onclick="exportXML()">Export XML</button>
+    <button onclick="exportLua()">Export Lua</button>
+    <button onclick="saveLayout()">Save</button>
+    <button onclick="loadLayout()">Load</button>
+    <button onclick="clearCanvas()" style="color:#ff6666;">Clear</button>
+</div>
+
+<div class="main">
+    <div class="panel panel-left">
+        <div class="panel-header">Assets</div>
+        <div class="panel-content">
+            <input class="search-box" id="pokemonSearch" placeholder="Search Pokemon..." oninput="showPokemonResults()">
+            <div class="asset-cat">
+                <div class="asset-cat-title" onclick="toggleCat('catTypes')">▼ Type Icons</div>
+                <div id="catTypes" class="asset-grid"></div>
+            </div>
+            <div class="asset-cat">
+                <div class="asset-cat-title" onclick="toggleCat('catPanels')">▼ Panels & UI</div>
+                <div id="catPanels" class="asset-grid"></div>
+            </div>
+            <div class="asset-cat">
+                <div class="asset-cat-title" onclick="toggleCat('catPokemon')">▼ Pokemon Cards</div>
+                <div id="catPokemon" class="asset-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-wrap">
+        <div class="canvas" id="canvas" ondrop="onDrop(event)" ondragover="onDragOver(event)"></div>
+    </div>
+
+    <div class="panel panel-right">
+        <div class="panel-header">Properties</div>
+        <div class="panel-content" id="propsPanel">
+            <div class="empty-state">Select an element on the canvas to edit its properties</div>
+        </div>
+        <div class="panel-header" style="border-top:1px solid #0f3460;">Layers</div>
+        <div class="panel-content" id="layerPanel"></div>
+    </div>
+</div>
+
+<script>
+const GIT_BASE = 'https://raw.githubusercontent.com/NommerTay/Poke-Roller/master';
+const TYPES = ['bug','dark','dragon','electric','fairy','fighting','fire','flying','ghost','grass','ground','ice','normal','poison','psychic','rock','steel','water'];
+const PANELS = [
+    { name: 'DEX PANEL', file: 'Pokemon%20Assets/DEX%20PANEL.png' },
+    { name: 'DEX NEXT', file: 'Pokemon%20Assets/DEX%20NEXT.png' },
+    { name: 'BENCY', file: 'BENCY.png' },
+];
+const POKEMON_LIST_URL = GIT_BASE + '/Pokemon%20Assets/Slot%20Images/';
+
+let elements = [];
+let nextId = 1;
+let selectedId = null;
+let dragData = null;
+
+// ── Asset Panel Init ──────────────────────────────────────
+function initAssets() {
+    const t = document.getElementById('catTypes');
+    TYPES.forEach(type => {
+        const img = document.createElement('img');
+        img.src = GIT_BASE + '/Pokemon%20Assets/Types/' + type + '.png';
+        img.title = 'type_' + type;
+        img.draggable = true;
+        img.ondragstart = e => e.dataTransfer.setData('text/plain', 'type_' + type);
+        img.onclick = () => placeImage('type_' + type, GIT_BASE + '/Pokemon%20Assets/Types/' + type + '.png');
+        t.appendChild(img);
+    });
+
+    const p = document.getElementById('catPanels');
+    PANELS.forEach(panel => {
+        const img = document.createElement('img');
+        img.src = GIT_BASE + '/' + panel.file;
+        img.title = panel.name;
+        img.style.width = '60px';
+        img.style.height = 'auto';
+        img.draggable = true;
+        img.ondragstart = e => e.dataTransfer.setData('text/plain', panel.name);
+        img.onclick = () => placeImage(panel.name, GIT_BASE + '/' + panel.file);
+        p.appendChild(img);
+    });
+
+    showPokemonResults();
+}
+
+let pokemonCache = [];
+let pokemonLoaded = false;
+
+async function loadPokemonList() {
+    if (pokemonLoaded) return;
+    try {
+        const resp = await fetch('https://api.github.com/repos/NommerTay/Poke-Roller/contents/Pokemon%20Assets/Slot%20Images');
+        const data = await resp.json();
+        if (Array.isArray(data)) {
+            pokemonCache = data.filter(f => f.name.endsWith('.png')).map(f => ({
+                name: f.name.replace('.png',''),
+                url: f.download_url
+            }));
+        }
+        pokemonLoaded = true;
+    } catch(e) {
+        for (let i = 1; i <= 1025; i++) {
+            const padded = String(i).padStart(3,'0');
+            pokemonCache.push({ name: padded + '_pokemon', url: GIT_BASE + '/Pokemon%20Assets/Slot%20Images/' + padded + '_pokemon.png' });
+        }
+        pokemonLoaded = true;
+    }
+    showPokemonResults();
+}
+
+function showPokemonResults() {
+    const q = document.getElementById('pokemonSearch').value.toLowerCase();
+    const grid = document.getElementById('catPokemon');
+    grid.innerHTML = '';
+    const results = pokemonCache.filter(p => p.name.toLowerCase().includes(q)).slice(0, 50);
+    results.forEach(p => {
+        const img = document.createElement('img');
+        img.src = p.url;
+        img.title = p.name;
+        img.onerror = () => { img.style.display = 'none'; };
+        img.draggable = true;
+        img.ondragstart = e => e.dataTransfer.setData('text/plain', 'poke_' + p.name);
+        img.onclick = () => placeImage(p.name, p.url);
+        grid.appendChild(img);
+    });
+    if (results.length === 0) grid.innerHTML = '<div style="color:#5a6a8a;font-size:12px;padding:8px;">No results</div>';
+}
+
+function toggleCat(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+}
+
+// ── Canvas ────────────────────────────────────────────────
+function resizeCanvas() {
+    const w = parseInt(document.getElementById('canvasW').value) || 1920;
+    const h = parseInt(document.getElementById('canvasH').value) || 1080;
+    const c = document.getElementById('canvas');
+    c.style.width = w + 'px';
+    c.style.height = h + 'px';
+}
+resizeCanvas();
+
+function onDragOver(e) { e.preventDefault(); }
+
+function onDrop(e) {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
+    if (!data) return;
+    const rect = document.getElementById('canvas').getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 1920;
+    const y = ((e.clientY - rect.top) / rect.height) * 1080;
+    if (data.startsWith('type_')) {
+        const type = data.replace('type_','');
+        placeImage('type_' + type, GIT_BASE + '/Pokemon%20Assets/Types/' + type + '.png', x-20, y-20, 40, 40);
+    } else if (data.startsWith('poke_')) {
+        const name = data.replace('poke_','');
+        const item = pokemonCache.find(p => p.name === name);
+        if (item) placeImage(name, item.url, x-50, y-70, 100, 140);
+    } else {
+        const panel = PANELS.find(p => p.name === data);
+        if (panel) placeImage(panel.name, GIT_BASE + '/' + panel.file, x-100, y-100, 200, 140);
+    }
+}
+
+function placeImage(name, url, x, y, w, h) {
+    const id = nextId++;
+    const el = {
+        id: 'el' + id,
+        type: 'image',
+        name: name,
+        src: url,
+        x: x || 100, y: y || 100,
+        w: w || 100, h: h || 140,
+        zIndex: elements.length + 1
+    };
+    if (x === undefined) {
+        const c = document.getElementById('canvas');
+        el.x = (parseInt(c.style.width) || 1920) / 2 - 50;
+        el.y = (parseInt(c.style.height) || 1080) / 2 - 70;
+    }
+    elements.push(el);
+ render();
+    selectElement(id);
+ return el;
+}
+
+function addImage() {
+    const id = nextId++;
+    const el = {
+        id: 'el' + id,
+        type: 'image',
+        name: 'Image ' + id,
+        src: '',
+        x: 100, y: 100,
+        w: 100, h: 140,
+        zIndex: elements.length + 1
+    };
+    elements.push(el);
+    render();
+    selectElement(id);
+}
+
+function addText() {
+    const id = nextId++;
+    const el = {
+        id: 'el' + id,
+        type: 'text',
+        name: 'Text ' + id,
+        text: 'Sample Text',
+        font: 'Arial',
+        size: 24,
+        bold: false,
+        italic: false,
+        color: '#ffffff',
+        align: 'center',
+        x: 100, y: 100,
+        w: 200, h: 40,
+        zIndex: elements.length + 1
+    };
+    elements.push(el);
+    render();
+    selectElement(id);
+}
+
+// ── Rendering ─────────────────────────────────────────────
+function render() {
+    const c = document.getElementById('canvas');
+    // Sort by zIndex for rendering
+    const sorted = [...elements].sort((a,b) => a.zIndex - b.zIndex);
+    c.innerHTML = '';
+    sorted.forEach(el => {
+        const div = document.createElement('div');
+        div.className = 'canvas-element' + (el.id === selectedId ? ' selected' : '');
+        div.id = el.id;
+        div.style.left = el.x + 'px';
+        div.style.top = el.y + 'px';
+        div.style.width = el.w + 'px';
+        div.style.height = el.h + 'px';
+        div.style.zIndex = el.zIndex;
+        div.onmousedown = e => { e.stopPropagation(); selectElement(el.id); startDrag(e, el.id); };
+
+        if (el.type === 'image') {
+            if (el.src) {
+                const img = document.createElement('img');
+                img.src = el.src;
+                img.onerror = () => { img.style.display = 'none'; };
+                div.appendChild(img);
+            } else {
+                div.style.background = '#2a3050';
+                div.style.border = '1px dashed #4a7aaa';
+                div.style.display = 'flex';
+                div.style.alignItems = 'center';
+                div.style.justifyContent = 'center';
+                div.style.fontSize = '11px';
+                div.style.color = '#7a8aaa';
+                div.textContent = 'No image set';
+            }
+        } else if (el.type === 'text') {
+            const tc = document.createElement('div');
+            tc.className = 'text-content';
+            tc.textContent = el.text;
+            tc.style.fontFamily = el.font;
+            tc.style.fontSize = el.size + 'px';
+            tc.style.fontWeight = el.bold ? 'bold' : 'normal';
+            tc.style.fontStyle = el.italic ? 'italic' : 'normal';
+            tc.style.color = el.color;
+            tc.style.textAlign = el.align;
+            tc.style.padding = '4px';
+            div.appendChild(tc);
+        }
+
+        if (el.id === selectedId) {
+            ['nw','ne','sw','se'].forEach(pos => {
+                const h = document.createElement('div');
+                h.className = 'resize-handle ' + pos;
+                h.onmousedown = e => { e.stopPropagation(); startResize(e, el.id, pos); };
+                div.appendChild(h);
+            });
+        }
+
+        c.appendChild(div);
+    });
+    updateLayers();
+    updateProps();
+}
+
+// ── Selection ─────────────────────────────────────────────
+function selectElement(id) {
+    selectedId = id;
+    render();
+}
+
+function deselectAll() {
+    selectedId = null;
+    render();
+}
+
+document.getElementById('canvas').onmousedown = () => deselectAll();
+
+// ── Drag ──────────────────────────────────────────────────
+let dragState = null;
+
+function startDrag(e, id) {
+    const el = elements.find(ev => ev.id === id);
+    if (!el) return;
+    dragState = { id, ox: e.clientX, oy: e.clientY, ex: el.x, ey: el.y };
+    document.onmousemove = onDrag;
+    document.onmouseup = stopDrag;
+    e.preventDefault();
+}
+
+function onDrag(e) {
+    if (!dragState) return;
+    const dx = e.clientX - dragState.ox;
+    const dy = e.clientY - dragState.oy;
+    const el = elements.find(ev => ev.id === dragState.id);
+    if (el) {
+        el.x = Math.max(0, dragState.ex + dx);
+        el.y = Math.max(0, dragState.ey + dy);
+        render();
+    }
+}
+
+function stopDrag() {
+    dragState = null;
+    document.onmousemove = null;
+    document.onmouseup = null;
+}
+
+// ── Resize ────────────────────────────────────────────────
+let resizeState = null;
+
+function startResize(e, id, pos) {
+    const el = elements.find(ev => ev.id === id);
+    if (!el) return;
+    resizeState = { id, pos, ox: e.clientX, oy: e.clientY, ex: el.x, ey: el.y, ew: el.w, eh: el.h };
+    document.onmousemove = onResize;
+    document.onmouseup = stopResize;
+    e.stopPropagation();
+    e.preventDefault();
+}
+
+function onResize(e) {
+    if (!resizeState) return;
+    const dx = e.clientX - resizeState.ox;
+    const dy = e.clientY - resizeState.oy;
+    const el = elements.find(ev => ev.id === resizeState.id);
+    if (!el) return;
+    const p = resizeState.pos;
+    if (p.includes('e')) { el.w = Math.max(20, resizeState.ew + dx); }
+    if (p.includes('w')) { el.w = Math.max(20, resizeState.ew - dx); el.x = resizeState.ex + dx; }
+    if (p.includes('s')) { el.h = Math.max(20, resizeState.eh + dy); }
+    if (p.includes('n')) { el.h = Math.max(20, resizeState.eh - dy); el.y = resizeState.ey + dy; }
+    render();
+}
+
+function stopResize() {
+    resizeState = null;
+    document.onmousemove = null;
+    document.onmouseup = null;
+}
+
+// ── Properties Panel ──────────────────────────────────────
+function updateProps() {
+    const panel = document.getElementById('propsPanel');
+    const el = elements.find(e => e.id === selectedId);
+    if (!el) {
+        panel.innerHTML = '<div class="empty-state">Select an element on the canvas to edit its properties</div>';
+        return;
+    }
+
+    let html = '';
+    html += '<div class="prop-group"><label>Name</label><input value="' + escapeHtml(el.name) + '" onchange="updateEl(\'' + el.id + '\',\'name\',this.value)"></div>';
+    html += '<div class="prop-row">';
+    html += '<div class="prop-group"><label>X</label><input type="number" value="' + Math.round(el.x) + '" onchange="updateElNum(\'' + el.id + '\',\'x\',this.value)"></div>';
+    html += '<div class="prop-group"><label>Y</label><input type="number" value="' + Math.round(el.y) + '" onchange="updateElNum(\'' + el.id + '\',\'y\',this.value)"></div>';
+    html += '</div><div class="prop-row">';
+    html += '<div class="prop-group"><label>W</label><input type="number" value="' + Math.round(el.w) + '" onchange="updateElNum(\'' + el.id + '\',\'w\',this.value)"></div>';
+    html += '<div class="prop-group"><label>H</label><input type="number" value="' + Math.round(el.h) + '" onchange="updateElNum(\'' + el.id + '\',\'h\',this.value)"></div>';
+    html += '</div>';
+    html += '<div class="prop-group"><label>Z-Index</label><input type="number" value="' + el.zIndex + '" onchange="updateElNum(\'' + el.id + '\',\'zIndex\',this.value)"></div>';
+
+    if (el.type === 'image') {
+        html += '<div class="prop-group"><label>Image URL</label><input value="' + escapeHtml(el.src) + '" placeholder="Drag from assets or paste URL" onchange="updateEl(\'' + el.id + '\',\'src\',this.value)"></div>';
+    } else if (el.type === 'text') {
+        html += '<div class="prop-group"><label>Text</label><textarea onchange="updateEl(\'' + el.id + '\',\'text\',this.value)">' + escapeHtml(el.text) + '</textarea></div>';
+        html += '<div class="prop-row">';
+        html += '<div class="prop-group"><label>Font</label><select onchange="updateEl(\'' + el.id + '\',\'font\',this.value)">' +
+            ['Arial','Verdana','Tahoma','Trebuchet MS','Times New Roman','Georgia','Courier New','Impact','Comic Sans MS'].map(f =>
+                '<option' + (el.font === f ? ' selected' : '') + '>' + f + '</option>'
+            ).join('') + '</select></div>';
+        html += '<div class="prop-group"><label>Size</label><input type="number" value="' + el.size + '" onchange="updateElNum(\'' + el.id + '\',\'size\',this.value)"></div>';
+        html += '</div><div class="prop-row">';
+        html += '<div class="prop-group"><label><input type="checkbox"' + (el.bold ? ' checked' : '') + ' onchange="updateElBool(\'' + el.id + '\',\'bold\',this.checked)"> Bold</label></div>';
+        html += '<div class="prop-group"><label><input type="checkbox"' + (el.italic ? ' checked' : '') + ' onchange="updateElBool(\'' + el.id + '\',\'italic\',this.checked)"> Italic</label></div>';
+        html += '<div class="prop-group"><label>Align</label><select onchange="updateEl(\'' + el.id + '\',\'align\',this.value)">' +
+            ['left','center','right'].map(a => '<option' + (el.align === a ? ' selected' : '') + '>' + a + '</option>'
+        ).join('') + '</select></div>';
+        html += '</div><div class="prop-group"><label>Color</label><div class="color-picker">';
+        const colors = ['#ffffff','#000000','#ff3333','#ff8833','#ffdd33','#33ff33','#33ddff','#3388ff','#9933ff','#ff33cc','#ff6666','#8B4513','#c8a882','#a0c4ff'];
+        colors.forEach(c => {
+            html += '<button style="background:' + c + '"' + (el.color === c ? ' class="active"' : '') + ' onclick="updateEl(\'' + el.id + '\',\'color\',\'' + c + '\')"></button>';
+        });
+        html += '</div><input value="' + el.color + '" style="margin-top:4px;width:100%" onchange="updateEl(\'' + el.id + '\',\'color\',this.value)"></div>';
+    }
+
+    html += '<div style="margin-top:8px;"><button onclick="deleteElement(\'' + el.id + '\')" style="background:#662222;color:#ff8888;border:1px solid #884444;padding:4px 12px;border-radius:3px;cursor:pointer;">Delete</button></div>';
+    panel.innerHTML = html;
+}
+
+function updateEl(id, key, val) {
+    const el = elements.find(e => e.id === id);
+    if (el) { el[key] = val; render(); }
+}
+
+function updateElNum(id, key, val) {
+    const el = elements.find(e => e.id === id);
+    if (el) { el[key] = parseFloat(val) || 0; render(); }
+}
+
+function updateElBool(id, key, val) {
+    const el = elements.find(e => e.id === id);
+    if (el) { el[key] = val; render(); }
+}
+
+function deleteElement(id) {
+    elements = elements.filter(e => e.id !== id);
+    if (selectedId === id) selectedId = null;
+    render();
+}
+
+// ── Layers Panel ──────────────────────────────────────────
+function updateLayers() {
+    const panel = document.getElementById('layerPanel');
+    if (elements.length === 0) {
+        panel.innerHTML = '<div style="color:#3a4a6a;font-size:12px;padding:8px;">No elements</div>';
+        return;
+    }
+    const sorted = [...elements].sort((a,b) => b.zIndex - a.zIndex);
+    let html = '';
+    sorted.forEach(el => {
+        html += '<div class="layer-item' + (el.id === selectedId ? ' active' : '') + '" onclick="selectElement(\'' + el.id + '\')">';
+        if (el.type === 'image' && el.src) {
+            html += '<img class="thumb" src="' + el.src + '" onerror="this.style.display=\'none\'">';
+        } else {
+            html += '<div class="thumb" style="background:#2a3050;display:flex;align-items:center;justify-content:center;font-size:10px;color:#7a8aaa;">T</div>';
+        }
+        html += '<span class="label">' + escapeHtml(el.name || el.id) + '</span>';
+        html += '<span class="btn" onclick="event.stopPropagation();moveLayerUp(\'' + el.id + '\')">▲</span>';
+        html += '<span class="btn" onclick="event.stopPropagation();moveLayerDown(\'' + el.id + '\')">▼</span>';
+        html += '<span class="btn" onclick="event.stopPropagation();deleteElement(\'' + el.id + '\')">✕</span>';
+        html += '</div>';
+    });
+    panel.innerHTML = html;
+}
+
+function moveLayerUp(id) {
+    const el = elements.find(e => e.id === id);
+    if (el) { el.zIndex = Math.min(9999, el.zIndex + 1); render(); }
+}
+
+function moveLayerDown(id) {
+    const el = elements.find(e => e.id === id);
+    if (el) { el.zIndex = Math.max(1, el.zIndex - 1); render(); }
+}
+
+// ── Export ────────────────────────────────────────────────
+function exportXML() {
+    let xml = '<!-- TTS UI Designer Export -->\n';
+    elements.forEach(el => {
+        if (el.type === 'image' && el.src) {
+            const assetName = el.name.replace(/[^a-zA-Z0-9_]/g,'_');
+            xml += '<Button id="' + el.id + '" rectAlignment="MiddleCenter" offsetXY="' + Math.round(el.x - 960) + ' ' + Math.round(el.y - 540) + '" width="' + Math.round(el.w) + '" height="' + Math.round(el.h) + '" image="' + assetName + '" color="#FFFFFF" />\n';
+        } else if (el.type === 'text') {
+            const style = [];
+            if (el.bold) style.push('Bold');
+            if (el.italic) style.push('Italic');
+            xml += '<Text id="' + el.id + '" rectAlignment="MiddleCenter" offsetXY="' + Math.round(el.x - 960) + ' ' + Math.round(el.y - 540) + '" width="' + Math.round(el.w) + '" height="' + Math.round(el.h) + '" fontSize="' + el.size + '" fontStyle="' + style.join('|') + '" color="' + el.color + '" alignment="Middle' + el.align.charAt(0).toUpperCase() + el.align.slice(1) + '">' + escapeXml(el.text) + '</Text>\n';
+        }
+    });
+    showCode(xml);
+}
+
+function exportLua() {
+    let lua = '-- TTS UI Designer Export\n';
+    lua += 'local function createUI()\n';
+    elements.forEach(el => {
+        if (el.type === 'image' && el.src) {
+            const assetName = el.name.replace(/[^a-zA-Z0-9_]/g,'_');
+            lua += '    UI.createButton("' + el.id + '", { rectAlignment="MiddleCenter", offsetXY={' + Math.round(el.x - 960) + ',' + Math.round(el.y - 540) + '}, width=' + Math.round(el.w) + ', height=' + Math.round(el.h) + ', image="' + assetName + '" })\n';
+        } else if (el.type === 'text') {
+            const style = [];
+            if (el.bold) style.push('Bold');
+            if (el.italic) style.push('Italic');
+            lua += '    UI.createText("' + el.id + '", "' + escapeLua(el.text) + '", { rectAlignment="MiddleCenter", offsetXY={' + Math.round(el.x - 960) + ',' + Math.round(el.y - 540) + '}, width=' + Math.round(el.w) + ', height=' + Math.round(el.h) + ', fontSize=' + el.size + ', fontStyle="' + style.join('|') + '", color="' + el.color + '", alignment="Middle' + el.align.charAt(0).toUpperCase() + el.align.slice(1) + '" })\n';
+        }
+    });
+    lua += 'end\n';
+    showCode(lua);
+}
+
+function showCode(code) {
+    const w = window.open('', '_blank', 'width=800,height=600');
+    w.document.write('<html><head><title>Exported Code</title><style>body{background:#1a1a2e;color:#e0e0e0;font-family:monospace;padding:20px;white-space:pre-wrap;font-size:13px;}</style></head><body>' + escapeHtml(code) + '</body></html>');
+    w.document.close();
+}
+
+// ── Save/Load ─────────────────────────────────────────────
+function saveLayout() {
+    const data = JSON.stringify({ elements, nextId, canvasW: document.getElementById('canvasW').value, canvasH: document.getElementById('canvasH').value });
+    localStorage.setItem('tts_designer_layout', data);
+    alert('Layout saved!');
+}
+
+function loadLayout() {
+    const data = localStorage.getItem('tts_designer_layout');
+    if (!data) { alert('No saved layout found.'); return; }
+    try {
+        const obj = JSON.parse(data);
+        elements = obj.elements || [];
+        nextId = obj.nextId || 1;
+        if (obj.canvasW) document.getElementById('canvasW').value = obj.canvasW;
+        if (obj.canvasH) document.getElementById('canvasH').value = obj.canvasH;
+        resizeCanvas();
+        render();
+        alert('Layout loaded!');
+    } catch(e) { alert('Failed to load layout.'); }
+}
+
+function clearCanvas() {
+    if (!confirm('Clear all elements?')) return;
+    elements = [];
+    nextId = 1;
+    selectedId = null;
+    render();
+}
+
+// ── Helpers ───────────────────────────────────────────────
+function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escapeXml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escapeLua(s) { return String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"'); }
+
+// ── Keyboard shortcuts ────────────────────────────────────
+document.onkeydown = e => {
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+        if (selectedId && !e.target.matches('input,textarea,select')) {
+            deleteElement(selectedId);
+        }
+    }
+};
+
+// ── Init ──────────────────────────────────────────────────
+initAssets();
+loadPokemonList();
+</script>
+</body>
+</html>
