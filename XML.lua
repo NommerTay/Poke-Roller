@@ -780,60 +780,24 @@
 <Button id="pokedex_toggle_Green" onClick="toggleCategoryPanel" rectAlignment="LowerRight" offsetXY="-10 5" width="160" height="55" fontSize="18" fontStyle="Bold" color="#1a0000" textColor="#ff3333" highlightedColor="#330000" outline="#ff3333" outlineSize="2" visibility="Green">POKEDEX</Button>
 
 <!-- ══════════════════════════════════════════════════════════
-     POKEMON VIEW PANEL — per-player, shown when pokedex card clicked
-     Positions: panel at UpperLeft (68,216) 1196x700
+     POKEMON VIEW PANEL — snapshot-based, same scale as pokedex
+     Shows a pre-rendered snap from the designer tool
      ══════════════════════════════════════════════════════════ -->
 
 <!-- WHITE -->
-<Panel id="pokeview_panel_White" active="false" rectAlignment="UpperLeft" offsetXY="68 216" width="1196" height="700" image="pokeViewPanel" color="#FFFFFF" padding="0" interactable="false" visibility="White" />
-<Button id="pokeview_card_White" active="false" rectAlignment="UpperLeft" offsetXY="437 446" width="100" height="140" color="#FFFFFF" visibility="White" />
-<Button id="pokeview_type1_White" active="false" rectAlignment="UpperLeft" offsetXY="643 415" width="170" height="150" color="#FFFFFF" visibility="White" />
-<Button id="pokeview_type2_White" active="false" rectAlignment="UpperLeft" offsetXY="714 415" width="170" height="150" color="#FFFFFF" visibility="White" />
-<Button id="pokeview_stat1_White" active="false" rectAlignment="UpperLeft" offsetXY="643 480" width="170" height="150" color="#FFFFFF" visibility="White" />
-<Button id="pokeview_stat2_White" active="false" rectAlignment="UpperLeft" offsetXY="714 480" width="170" height="150" color="#FFFFFF" visibility="White" />
-<Text id="pokeview_type1text_White" active="false" rectAlignment="UpperLeft" offsetXY="595 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="White" />
-<Text id="pokeview_type2text_White" active="false" rectAlignment="UpperLeft" offsetXY="665 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="White" />
-<Text id="pokeview_stat1text_White" active="false" rectAlignment="UpperLeft" offsetXY="594 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="White" />
-<Text id="pokeview_stat2text_White" active="false" rectAlignment="UpperLeft" offsetXY="665 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="White" />
-<Button id="pokeview_close_White" onClick="closePokemonView" active="false" rectAlignment="UpperLeft" offsetXY="1210 240" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="White">✕</Button>
+<Panel id="pokeview_panel_White" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="White" />
+<Button id="pokeview_close_White" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="White">✕</Button>
 
 <!-- RED -->
-<Panel id="pokeview_panel_Red" active="false" rectAlignment="UpperLeft" offsetXY="68 216" width="1196" height="700" image="pokeViewPanel" color="#FFFFFF" padding="0" interactable="false" visibility="Red" />
-<Button id="pokeview_card_Red" active="false" rectAlignment="UpperLeft" offsetXY="437 446" width="100" height="140" color="#FFFFFF" visibility="Red" />
-<Button id="pokeview_type1_Red" active="false" rectAlignment="UpperLeft" offsetXY="643 415" width="170" height="150" color="#FFFFFF" visibility="Red" />
-<Button id="pokeview_type2_Red" active="false" rectAlignment="UpperLeft" offsetXY="714 415" width="170" height="150" color="#FFFFFF" visibility="Red" />
-<Button id="pokeview_stat1_Red" active="false" rectAlignment="UpperLeft" offsetXY="643 480" width="170" height="150" color="#FFFFFF" visibility="Red" />
-<Button id="pokeview_stat2_Red" active="false" rectAlignment="UpperLeft" offsetXY="714 480" width="170" height="150" color="#FFFFFF" visibility="Red" />
-<Text id="pokeview_type1text_Red" active="false" rectAlignment="UpperLeft" offsetXY="595 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Red" />
-<Text id="pokeview_type2text_Red" active="false" rectAlignment="UpperLeft" offsetXY="665 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Red" />
-<Text id="pokeview_stat1text_Red" active="false" rectAlignment="UpperLeft" offsetXY="594 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Red" />
-<Text id="pokeview_stat2text_Red" active="false" rectAlignment="UpperLeft" offsetXY="665 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Red" />
-<Button id="pokeview_close_Red" onClick="closePokemonView" active="false" rectAlignment="UpperLeft" offsetXY="1210 240" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Red">✕</Button>
+<Panel id="pokeview_panel_Red" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="Red" />
+<Button id="pokeview_close_Red" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Red">✕</Button>
 
 <!-- BLUE -->
-<Panel id="pokeview_panel_Blue" active="false" rectAlignment="UpperLeft" offsetXY="68 216" width="1196" height="700" image="pokeViewPanel" color="#FFFFFF" padding="0" interactable="false" visibility="Blue" />
-<Button id="pokeview_card_Blue" active="false" rectAlignment="UpperLeft" offsetXY="437 446" width="100" height="140" color="#FFFFFF" visibility="Blue" />
-<Button id="pokeview_type1_Blue" active="false" rectAlignment="UpperLeft" offsetXY="643 415" width="170" height="150" color="#FFFFFF" visibility="Blue" />
-<Button id="pokeview_type2_Blue" active="false" rectAlignment="UpperLeft" offsetXY="714 415" width="170" height="150" color="#FFFFFF" visibility="Blue" />
-<Button id="pokeview_stat1_Blue" active="false" rectAlignment="UpperLeft" offsetXY="643 480" width="170" height="150" color="#FFFFFF" visibility="Blue" />
-<Button id="pokeview_stat2_Blue" active="false" rectAlignment="UpperLeft" offsetXY="714 480" width="170" height="150" color="#FFFFFF" visibility="Blue" />
-<Text id="pokeview_type1text_Blue" active="false" rectAlignment="UpperLeft" offsetXY="595 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Blue" />
-<Text id="pokeview_type2text_Blue" active="false" rectAlignment="UpperLeft" offsetXY="665 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Blue" />
-<Text id="pokeview_stat1text_Blue" active="false" rectAlignment="UpperLeft" offsetXY="594 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Blue" />
-<Text id="pokeview_stat2text_Blue" active="false" rectAlignment="UpperLeft" offsetXY="665 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Blue" />
-<Button id="pokeview_close_Blue" onClick="closePokemonView" active="false" rectAlignment="UpperLeft" offsetXY="1210 240" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Blue">✕</Button>
+<Panel id="pokeview_panel_Blue" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="Blue" />
+<Button id="pokeview_close_Blue" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Blue">✕</Button>
 
 <!-- GREEN -->
-<Panel id="pokeview_panel_Green" active="false" rectAlignment="UpperLeft" offsetXY="68 216" width="1196" height="700" image="pokeViewPanel" color="#FFFFFF" padding="0" interactable="false" visibility="Green" />
-<Button id="pokeview_card_Green" active="false" rectAlignment="UpperLeft" offsetXY="437 446" width="100" height="140" color="#FFFFFF" visibility="Green" />
-<Button id="pokeview_type1_Green" active="false" rectAlignment="UpperLeft" offsetXY="643 415" width="170" height="150" color="#FFFFFF" visibility="Green" />
-<Button id="pokeview_type2_Green" active="false" rectAlignment="UpperLeft" offsetXY="714 415" width="170" height="150" color="#FFFFFF" visibility="Green" />
-<Button id="pokeview_stat1_Green" active="false" rectAlignment="UpperLeft" offsetXY="643 480" width="170" height="150" color="#FFFFFF" visibility="Green" />
-<Button id="pokeview_stat2_Green" active="false" rectAlignment="UpperLeft" offsetXY="714 480" width="170" height="150" color="#FFFFFF" visibility="Green" />
-<Text id="pokeview_type1text_Green" active="false" rectAlignment="UpperLeft" offsetXY="595 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Green" />
-<Text id="pokeview_type2text_Green" active="false" rectAlignment="UpperLeft" offsetXY="665 461" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Green" />
-<Text id="pokeview_stat1text_Green" active="false" rectAlignment="UpperLeft" offsetXY="594 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Green" />
-<Text id="pokeview_stat2text_Green" active="false" rectAlignment="UpperLeft" offsetXY="665 523" width="200" height="40" fontSize="19" fontStyle="Normal" color="#8B4513" alignment="MiddleCenter" visibility="Green" />
-<Button id="pokeview_close_Green" onClick="closePokemonView" active="false" rectAlignment="UpperLeft" offsetXY="1210 240" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Green">✕</Button>
+<Panel id="pokeview_panel_Green" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="Green" />
+<Button id="pokeview_close_Green" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Green">✕</Button>
 
 

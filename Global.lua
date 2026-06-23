@@ -1912,93 +1912,33 @@ local POKEMON_STATS = {
 local pokeview_open = {}
 
 function showPokemonView(color, poke_id, poke_name)
-    -- Look up from POKEMON_DATA
-    local entry
-    for _, e in ipairs(POKEMON_DATA) do
-        if e[1] == poke_id then
-            entry = e
-            break
-        end
-    end
-    if not entry then return end
+    local snapshot_url = string.format(
+        "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Snapshots/%03d_%s.png",
+        poke_id, poke_name:lower()
+    )
 
-    local type1 = entry[3]
-    local type2 = entry[4]
-
-    -- Look up base stats
-    local stats = POKEMON_STATS[poke_id]
-    if not stats then
-        broadcastToColor("No stat data for " .. entry[2], color, {1,0.4,0.4})
-        return
-    end
-
-    local type1_val = stats.type1_val
-    local type2_val = stats.type2_val
-    local stat1_key = stats.stat1_key
-    local stat1_val = stats.stat1_val
-    local stat2_key = stats.stat2_key
-    local stat2_val = stats.stat2_val
-
-    -- Set card image
-    local card_asset = string.format("pokeCard_%03d", poke_id)
-    UI.setAttribute("pokeview_card_" .. color, "image", card_asset)
-
-    -- Set type dice
-    UI.setAttribute("pokeview_type1_" .. color, "image", "diceType_" .. type1)
-    UI.setAttribute("pokeview_type1text_" .. color, "text", type1_val .. "x")
-
-    if type2 then
-        UI.setAttribute("pokeview_type2_" .. color, "image", "diceType_" .. type2)
-        UI.setAttribute("pokeview_type2_" .. color, "active", "true")
-        UI.setAttribute("pokeview_type2text_" .. color, "text", type2_val .. "x")
-        UI.setAttribute("pokeview_type2text_" .. color, "active", "true")
-        -- Dual-type positions
-        UI.setAttribute("pokeview_type1_" .. color, "offsetXY", "643 415")
-        UI.setAttribute("pokeview_type1text_" .. color, "offsetXY", "595 461")
-        UI.setAttribute("pokeview_type2_" .. color, "offsetXY", "714 415")
-        UI.setAttribute("pokeview_type2text_" .. color, "offsetXY", "665 461")
-    else
-        -- Mono-type: center the die
-        UI.setAttribute("pokeview_type2_" .. color, "active", "false")
-        UI.setAttribute("pokeview_type2text_" .. color, "active", "false")
-        UI.setAttribute("pokeview_type1_" .. color, "offsetXY", "675 415")
-        UI.setAttribute("pokeview_type1text_" .. color, "offsetXY", "630 461")
-    end
-
-    -- Set stat dice
-    UI.setAttribute("pokeview_stat1_" .. color, "image", "diceStat_" .. stat1_key)
-    UI.setAttribute("pokeview_stat1text_" .. color, "text", stat1_val .. "x")
-    UI.setAttribute("pokeview_stat2_" .. color, "image", "diceStat_" .. stat2_key)
-    UI.setAttribute("pokeview_stat2text_" .. color, "text", stat2_val .. "x")
-
-    -- Show all elements
+    UI.setAttribute("pokeview_panel_" .. color, "image", snapshot_url)
     UI.setAttribute("pokeview_panel_" .. color, "active", "true")
-    UI.setAttribute("pokeview_card_" .. color, "active", "true")
-    UI.setAttribute("pokeview_type1_" .. color, "active", "true")
-    UI.setAttribute("pokeview_type1text_" .. color, "active", "true")
-    UI.setAttribute("pokeview_stat1_" .. color, "active", "true")
-    UI.setAttribute("pokeview_stat2_" .. color, "active", "true")
-    UI.setAttribute("pokeview_stat1text_" .. color, "active", "true")
-    UI.setAttribute("pokeview_stat2text_" .. color, "active", "true")
     UI.setAttribute("pokeview_close_" .. color, "active", "true")
 
     pokeview_open[color] = true
+
+    if pokedex_open[color] then
+        togglePokedex(color)
+    end
 end
 
 function closePokemonView(player, value, id)
     local color = id and id:match("pokeview_close_(%a+)")
     if not color then return end
 
-    local ids = {
-        "pokeview_panel_", "pokeview_card_", "pokeview_type1_", "pokeview_type2_",
-        "pokeview_type1text_", "pokeview_type2text_", "pokeview_stat1_",
-        "pokeview_stat2_", "pokeview_stat1text_", "pokeview_stat2text_",
-        "pokeview_close_"
-    }
-    for _, prefix in ipairs(ids) do
-        UI.setAttribute(prefix .. color, "active", "false")
-    end
+    UI.setAttribute("pokeview_panel_" .. color, "active", "false")
+    UI.setAttribute("pokeview_close_" .. color, "active", "false")
     pokeview_open[color] = false
+
+    if not pokedex_open[color] then
+        togglePokedex(color)
+    end
 end
 
 -- ── POKEDEX ─────────────────────────────────────────────────
