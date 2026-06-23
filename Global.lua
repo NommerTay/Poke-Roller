@@ -1441,15 +1441,19 @@ function onLoad()
                 name = string.format("pokeCard_%03d", poke_id),
                 url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Slot%20Images/" .. string.format("%03d", poke_id) .. "_" .. poke_name .. ".png"
             })
-            print(string.format("Card #%03d: %s", poke_id, poke_name))
         end
 
+        print("PokeRoller: registering " .. #POKEMON_DATA .. " card assets...")
         UI.setCustomAssets(all_assets)
         _cached_assets = all_assets
+        print("PokeRoller: assets registered. Refreshing UI...")
 
         Wait.time(function()
             UI.setXml(UI.getXml())
-            refreshPokedexPage()
+            Wait.frames(function()
+                refreshPokedexPage()
+                print("PokeRoller: pokedex ready — all cards pre-loaded.")
+            end, 5)
         end, 2.0)
     end, 10)
 
