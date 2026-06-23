@@ -241,6 +241,8 @@ function placeImage(name, url, x, y, w, h) {
         type: 'image',
         name: name,
         src: url,
+        tags: '',
+        imgColor: '#ffffff',
         x: x || 100, y: y || 100,
         w: w || 100, h: h || 140,
         zIndex: elements.length + 1
@@ -263,6 +265,8 @@ function addImage() {
         type: 'image',
         name: 'Image ' + id,
         src: '',
+        tags: '',
+        imgColor: '#ffffff',
         x: 100, y: 100,
         w: 100, h: 140,
         zIndex: elements.length + 1
@@ -279,6 +283,7 @@ function addText() {
         type: 'text',
         name: 'Text ' + id,
         text: 'Sample Text',
+        tags: '',
         font: 'Arial',
         size: 24,
         bold: false,
@@ -316,6 +321,9 @@ function render() {
                 const img = document.createElement('img');
                 img.src = el.src;
                 img.onerror = () => { img.style.display = 'none'; };
+                if (el.imgColor && el.imgColor !== '#ffffff') {
+                    img.style.filter = 'drop-shadow(0 0 0 ' + el.imgColor + ') saturate(2)';
+                }
                 div.appendChild(img);
             } else {
                 div.style.background = '#2a3050';
@@ -451,9 +459,19 @@ function updateProps() {
     html += '<div class="prop-group"><label>H</label><input type="number" value="' + Math.round(el.h) + '" onchange="updateElNum(\'' + el.id + '\',\'h\',this.value)"></div>';
     html += '</div>';
     html += '<div class="prop-group"><label>Z-Index</label><input type="number" value="' + el.zIndex + '" onchange="updateElNum(\'' + el.id + '\',\'zIndex\',this.value)"></div>';
+    html += '<div class="prop-group"><label>Tags</label><input value="' + escapeHtml(el.tags || '') + '" placeholder="e.g. type=fire slot=1 main" onchange="updateEl(\'' + el.id + '\',\'tags\',this.value)"></div>';
+
+    const colors = ['#ffffff','#000000','#ff3333','#ff8833','#ffdd33','#33ff33','#33ddff','#3388ff','#9933ff','#ff33cc','#ff6666','#8B4513','#c8a882','#a0c4ff'];
+    const colorKey = el.type === 'image' ? 'imgColor' : 'color';
+    const curColor = el.type === 'image' ? (el.imgColor || '#ffffff') : el.color;
 
     if (el.type === 'image') {
         html += '<div class="prop-group"><label>Image URL</label><input value="' + escapeHtml(el.src) + '" placeholder="Drag from assets or paste URL" onchange="updateEl(\'' + el.id + '\',\'src\',this.value)"></div>';
+        html += '<div class="prop-group"><label>Tint Color</label><div class="color-picker">';
+        colors.forEach(c => {
+            html += '<button style="background:' + c + '"' + (curColor === c ? ' class="active"' : '') + ' onclick="updateEl(\'' + el.id + '\',\'imgColor\',\'' + c + '\')"></button>';
+        });
+        html += '</div><input value="' + curColor + '" style="margin-top:4px;width:100%" onchange="updateEl(\'' + el.id + '\',\'imgColor\',this.value)"></div>';
     } else if (el.type === 'text') {
         html += '<div class="prop-group"><label>Text</label><textarea onchange="updateEl(\'' + el.id + '\',\'text\',this.value)">' + escapeHtml(el.text) + '</textarea></div>';
         html += '<div class="prop-row">';
@@ -469,11 +487,10 @@ function updateProps() {
             ['left','center','right'].map(a => '<option' + (el.align === a ? ' selected' : '') + '>' + a + '</option>'
         ).join('') + '</select></div>';
         html += '</div><div class="prop-group"><label>Color</label><div class="color-picker">';
-        const colors = ['#ffffff','#000000','#ff3333','#ff8833','#ffdd33','#33ff33','#33ddff','#3388ff','#9933ff','#ff33cc','#ff6666','#8B4513','#c8a882','#a0c4ff'];
         colors.forEach(c => {
-            html += '<button style="background:' + c + '"' + (el.color === c ? ' class="active"' : '') + ' onclick="updateEl(\'' + el.id + '\',\'color\',\'' + c + '\')"></button>';
+            html += '<button style="background:' + c + '"' + (curColor === c ? ' class="active"' : '') + ' onclick="updateEl(\'' + el.id + '\',\'color\',\'' + c + '\')"></button>';
         });
-        html += '</div><input value="' + el.color + '" style="margin-top:4px;width:100%" onchange="updateEl(\'' + el.id + '\',\'color\',this.value)"></div>';
+        html += '</div><input value="' + curColor + '" style="margin-top:4px;width:100%" onchange="updateEl(\'' + el.id + '\',\'color\',this.value)"></div>';
     }
 
     html += '<div style="margin-top:8px;"><button onclick="deleteElement(\'' + el.id + '\')" style="background:#662222;color:#ff8888;border:1px solid #884444;padding:4px 12px;border-radius:3px;cursor:pointer;">Delete</button></div>';
@@ -540,9 +557,13 @@ function moveLayerDown(id) {
 function exportXML() {
     let xml = '<!-- TTS UI Designer Export -->\n';
     elements.forEach(el => {
+        if (el.tags) {
+            xml += '<!-- Tags: ' + escapeXml(el.tags) + ' -->\n';
+        }
         if (el.type === 'image' && el.src) {
             const assetName = el.name.replace(/[^a-zA-Z0-9_]/g,'_');
-            xml += '<Button id="' + el.id + '" rectAlignment="MiddleCenter" offsetXY="' + Math.round(el.x - 960) + ' ' + Math.round(el.y - 540) + '" width="' + Math.round(el.w) + '" height="' + Math.round(el.h) + '" image="' + assetName + '" color="#FFFFFF" />\n';
+            const color = el.imgColor && el.imgColor !== '#ffffff' ? el.imgColor : '#FFFFFF';
+            xml += '<Button id="' + el.id + '" rectAlignment="MiddleCenter" offsetXY="' + Math.round(el.x - 960) + ' ' + Math.round(el.y - 540) + '" width="' + Math.round(el.w) + '" height="' + Math.round(el.h) + '" image="' + assetName + '" color="' + color + '" />\n';
         } else if (el.type === 'text') {
             const style = [];
             if (el.bold) style.push('Bold');
@@ -555,19 +576,21 @@ function exportXML() {
 
 function exportLua() {
     let lua = '-- TTS UI Designer Export\n';
-    lua += 'local function createUI()\n';
     elements.forEach(el => {
+        if (el.tags) {
+            lua += '-- Tags: ' + el.tags + '\n';
+        }
         if (el.type === 'image' && el.src) {
             const assetName = el.name.replace(/[^a-zA-Z0-9_]/g,'_');
-            lua += '    UI.createButton("' + el.id + '", { rectAlignment="MiddleCenter", offsetXY={' + Math.round(el.x - 960) + ',' + Math.round(el.y - 540) + '}, width=' + Math.round(el.w) + ', height=' + Math.round(el.h) + ', image="' + assetName + '" })\n';
+            const color = el.imgColor && el.imgColor !== '#ffffff' ? (', color="' + el.imgColor + '"') : '';
+            lua += 'UI.createButton("' + el.id + '", { rectAlignment="MiddleCenter", offsetXY={' + Math.round(el.x - 960) + ',' + Math.round(el.y - 540) + '}, width=' + Math.round(el.w) + ', height=' + Math.round(el.h) + ', image="' + assetName + '"' + color + ' })\n';
         } else if (el.type === 'text') {
             const style = [];
             if (el.bold) style.push('Bold');
             if (el.italic) style.push('Italic');
-            lua += '    UI.createText("' + el.id + '", "' + escapeLua(el.text) + '", { rectAlignment="MiddleCenter", offsetXY={' + Math.round(el.x - 960) + ',' + Math.round(el.y - 540) + '}, width=' + Math.round(el.w) + ', height=' + Math.round(el.h) + ', fontSize=' + el.size + ', fontStyle="' + style.join('|') + '", color="' + el.color + '", alignment="Middle' + el.align.charAt(0).toUpperCase() + el.align.slice(1) + '" })\n';
+            lua += 'UI.createText("' + el.id + '", "' + escapeLua(el.text) + '", { rectAlignment="MiddleCenter", offsetXY={' + Math.round(el.x - 960) + ',' + Math.round(el.y - 540) + '}, width=' + Math.round(el.w) + ', height=' + Math.round(el.h) + ', fontSize=' + el.size + ', fontStyle="' + style.join('|') + '", color="' + el.color + '", alignment="Middle' + el.align.charAt(0).toUpperCase() + el.align.slice(1) + '" })\n';
         }
     });
-    lua += 'end\n';
     showCode(lua);
 }
 
