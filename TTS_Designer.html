@@ -90,6 +90,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
     <div class="toolbar-divider"></div>
     <button onclick="exportXML()">Export XML</button>
     <button onclick="exportLua()">Export Lua</button>
+    <button onclick="downloadSnapshot()">Snapshot PNG</button>
     <button onclick="copyData()">Copy Data</button>
     <button onclick="pasteData()">Paste Data</button>
     <button onclick="saveLayout()">Save</button>
@@ -972,6 +973,51 @@ function exportLua() {
         }
     });
     showCode(lua);
+}
+
+function downloadSnapshot() {
+    const cw = parseInt(document.getElementById('canvasW').value) || 1920;
+    const ch = parseInt(document.getElementById('canvasH').value) || 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = cw;
+    canvas.height = ch;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#1a1a2e';
+    ctx.fillRect(0, 0, cw, ch);
+    const sorted = [...elements].sort(function(a,b) { return a.zIndex - b.zIndex; });
+    var promises = sorted.map(function(el) {
+        if (el.type === 'image' && el.src) {
+            return new Promise(function(resolve) {
+                var img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = function() { resolve({ el: el, img: img }); };
+                img.onerror = function() { resolve({ el: el, img: null }); };
+                img.src = el.src;
+            });
+        }
+        return Promise.resolve({ el: el, img: null });
+    });
+    Promise.all(promises).then(function(results) {
+        results.forEach(function(item) {
+            var el = item.el;
+            if (el.type === 'image' && item.img) {
+                ctx.drawImage(item.img, el.x, el.y, el.w, el.h);
+            } else if (el.type === 'text') {
+                var style = (el.bold ? 'bold ' : '') + (el.italic ? 'italic ' : '') + el.size + 'px ' + (el.font || 'sans-serif');
+                ctx.font = style;
+                ctx.fillStyle = el.color || '#ffffff';
+                ctx.textAlign = el.align === 'center' ? 'center' : el.align === 'right' ? 'right' : 'left';
+                ctx.textBaseline = 'middle';
+                var x = el.align === 'center' ? el.x + el.w / 2 : el.align === 'right' ? el.x + el.w : el.x + 4;
+                var y = el.y + el.h / 2;
+                ctx.fillText(el.text || '', x, y);
+            }
+        });
+        var link = document.createElement('a');
+        link.download = 'template_snapshot.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
 }
 
 function resolveSrc(el) {

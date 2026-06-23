@@ -1425,6 +1425,7 @@ local BASE_ASSETS = {
     { name = "type_water",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/water.png" },
     { name = "dexPanel",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/DEX%20PANEL.png" },
     { name = "dexNext",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/DEX%20NEXT.png" },
+    { name = "pokeViewPanel", url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20View%20Panel.png" },
 }
 
 function onLoad()
@@ -1441,6 +1442,28 @@ function onLoad()
             table.insert(all_assets, {
                 name = string.format("pokeCard_%03d", poke_id),
                 url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Slot%20Images/" .. string.format("%03d", poke_id) .. "_" .. poke_name .. ".png"
+            })
+        end
+
+        -- Register Poke Dice (types + stats)
+        local DICE_TYPE_FILES = {
+            bug="Bug", dark="Dark", dragon="Dragon", electric="Electric",
+            fairy="Fairy", fighting="Fighting", fire="Fire", flying="Flying",
+            ghost="Ghost", grass="Grass", ground="Ground", ice="Ice",
+            normal="Normal", poison="Poison", psychic="Psychic", rock="Rock",
+            steel="Steel", water="Water"
+        }
+        for type_lower, type_cap in pairs(DICE_TYPE_FILES) do
+            table.insert(all_assets, {
+                name = "diceType_" .. type_lower,
+                url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Types/" .. type_cap .. ".png"
+            })
+        end
+        local DICE_STATS = {hp="HP", atk="ATK", def="DEF", spatk="SP.ATK", spdef="SP.DEF", spd="SPD"}
+        for stat_lower, stat_upper in pairs(DICE_STATS) do
+            table.insert(all_assets, {
+                name = "diceStat_" .. stat_lower,
+                url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Stats/" .. stat_upper .. ".png"
             })
         end
 
@@ -1871,6 +1894,113 @@ function clickEncyclopediaSlot(player, value, id)
     end
 end
 
+-- ── POKEMON BASE STATS ──────────────────────────────────────
+-- Keyed by pokemon id with explicit dice values from designer templates
+local POKEMON_STATS = {
+    -- Charizard (#006): 3-stage 3rd evo, dual Fire/Flying
+    -- Template: type=5x/3x, stat=SP.ATK 5x / SPD 3x
+    [6] = {
+        hp=78, atk=84, def=78, spatk=109, spdef=85, spd=100,
+        type1_val=5, type2_val=3,
+        stat1_key="spatk", stat1_val=5,
+        stat2_key="spd", stat2_val=3,
+    },
+}
+
+-- ── POKEMON VIEW PANEL ──────────────────────────────────────
+
+local pokeview_open = {}
+
+function showPokemonView(color, poke_id, poke_name)
+    -- Look up from POKEMON_DATA
+    local entry
+    for _, e in ipairs(POKEMON_DATA) do
+        if e[1] == poke_id then
+            entry = e
+            break
+        end
+    end
+    if not entry then return end
+
+    local type1 = entry[3]
+    local type2 = entry[4]
+
+    -- Look up base stats
+    local stats = POKEMON_STATS[poke_id]
+    if not stats then
+        broadcastToColor("No stat data for " .. entry[2], color, {1,0.4,0.4})
+        return
+    end
+
+    local type1_val = stats.type1_val
+    local type2_val = stats.type2_val
+    local stat1_key = stats.stat1_key
+    local stat1_val = stats.stat1_val
+    local stat2_key = stats.stat2_key
+    local stat2_val = stats.stat2_val
+
+    -- Set card image
+    local card_asset = string.format("pokeCard_%03d", poke_id)
+    UI.setAttribute("pokeview_card_" .. color, "image", card_asset)
+
+    -- Set type dice
+    UI.setAttribute("pokeview_type1_" .. color, "image", "diceType_" .. type1)
+    UI.setAttribute("pokeview_type1text_" .. color, "text", type1_val .. "x")
+
+    if type2 then
+        UI.setAttribute("pokeview_type2_" .. color, "image", "diceType_" .. type2)
+        UI.setAttribute("pokeview_type2_" .. color, "active", "true")
+        UI.setAttribute("pokeview_type2text_" .. color, "text", type2_val .. "x")
+        UI.setAttribute("pokeview_type2text_" .. color, "active", "true")
+        -- Dual-type positions
+        UI.setAttribute("pokeview_type1_" .. color, "offsetXY", "643 415")
+        UI.setAttribute("pokeview_type1text_" .. color, "offsetXY", "595 461")
+        UI.setAttribute("pokeview_type2_" .. color, "offsetXY", "714 415")
+        UI.setAttribute("pokeview_type2text_" .. color, "offsetXY", "665 461")
+    else
+        -- Mono-type: center the die
+        UI.setAttribute("pokeview_type2_" .. color, "active", "false")
+        UI.setAttribute("pokeview_type2text_" .. color, "active", "false")
+        UI.setAttribute("pokeview_type1_" .. color, "offsetXY", "675 415")
+        UI.setAttribute("pokeview_type1text_" .. color, "offsetXY", "630 461")
+    end
+
+    -- Set stat dice
+    UI.setAttribute("pokeview_stat1_" .. color, "image", "diceStat_" .. stat1_key)
+    UI.setAttribute("pokeview_stat1text_" .. color, "text", stat1_val .. "x")
+    UI.setAttribute("pokeview_stat2_" .. color, "image", "diceStat_" .. stat2_key)
+    UI.setAttribute("pokeview_stat2text_" .. color, "text", stat2_val .. "x")
+
+    -- Show all elements
+    UI.setAttribute("pokeview_panel_" .. color, "active", "true")
+    UI.setAttribute("pokeview_card_" .. color, "active", "true")
+    UI.setAttribute("pokeview_type1_" .. color, "active", "true")
+    UI.setAttribute("pokeview_type1text_" .. color, "active", "true")
+    UI.setAttribute("pokeview_stat1_" .. color, "active", "true")
+    UI.setAttribute("pokeview_stat2_" .. color, "active", "true")
+    UI.setAttribute("pokeview_stat1text_" .. color, "active", "true")
+    UI.setAttribute("pokeview_stat2text_" .. color, "active", "true")
+    UI.setAttribute("pokeview_close_" .. color, "active", "true")
+
+    pokeview_open[color] = true
+end
+
+function closePokemonView(player, value, id)
+    local color = id and id:match("pokeview_close_(%a+)")
+    if not color then return end
+
+    local ids = {
+        "pokeview_panel_", "pokeview_card_", "pokeview_type1_", "pokeview_type2_",
+        "pokeview_type1text_", "pokeview_type2text_", "pokeview_stat1_",
+        "pokeview_stat2_", "pokeview_stat1text_", "pokeview_stat2text_",
+        "pokeview_close_"
+    }
+    for _, prefix in ipairs(ids) do
+        UI.setAttribute(prefix .. color, "active", "false")
+    end
+    pokeview_open[color] = false
+end
+
 -- ── POKEDEX ─────────────────────────────────────────────────
 local pokedex_open = {}
 local pokedex_page_offset = 0
@@ -1927,8 +2057,8 @@ function pokedexCardClick(player, value, id)
     local card_idx, color = id:match("pokedex_card_(%d+)_(%a+)")
     if not card_idx or not color then return end
     local poke = POKEDEX_CARDS[tonumber(card_idx)]
-    if not poke then return end
-    broadcastToColor("🔍 " .. poke.name .. " selected!", color, {0.4, 1, 0.4})
+    if not poke or poke.id == 0 then return end
+    showPokemonView(color, poke.id, poke.name)
 end
 
 function refreshPokedexPage()
