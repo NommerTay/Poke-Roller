@@ -1427,18 +1427,29 @@ local BASE_ASSETS = {
 }
 
 function onLoad()
-    -- Register custom UI assets after a delay so UI is ready
+    -- Register all custom UI assets after a delay so UI is ready
     Wait.frames(function()
-        UI.setCustomAssets(BASE_ASSETS)
-
-        _cached_assets = {}
+        local all_assets = {}
         for _, a in ipairs(BASE_ASSETS) do
-            table.insert(_cached_assets, { name = a.name, url = a.url })
+            table.insert(all_assets, { name = a.name, url = a.url })
         end
 
-        -- Force Tabletop Simulator to refresh and bind the registered images to the XML UI elements
+        for _, entry in ipairs(POKEMON_DATA) do
+            local poke_id = entry[1]
+            local poke_name = entry[2]
+            table.insert(all_assets, {
+                name = string.format("pokeCard_%03d", poke_id),
+                url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Slot%20Images/" .. string.format("%03d", poke_id) .. "_" .. poke_name .. ".png"
+            })
+            print(string.format("Card #%03d: %s", poke_id, poke_name))
+        end
+
+        UI.setCustomAssets(all_assets)
+        _cached_assets = all_assets
+
         Wait.time(function()
             UI.setXml(UI.getXml())
+            refreshPokedexPage()
         end, 2.0)
     end, 10)
 
@@ -1858,6 +1869,7 @@ end
 -- ── POKEDEX ─────────────────────────────────────────────────
 local pokedex_open = {}
 local pokedex_page_offset = 0
+local POKEDEX_COLORS = {"White", "Red", "Blue", "Green"}
 
 local POKEDEX_CARDS = {
     { id=1,  name="Bulbasaur",  asset="pokeCard1" },
@@ -1919,52 +1931,20 @@ function refreshPokedexPage()
     for slot = 1, 20 do
         local data_idx = start_idx + slot - 1
         local entry = POKEMON_DATA[data_idx]
+        local asset_name
         if entry then
             local poke_id = entry[1]
             local poke_name = entry[2]
-            POKEDEX_CARDS[slot] = { id=poke_id, name=poke_name, asset="pokeCard"..slot }
+            asset_name = string.format("pokeCard_%03d", poke_id)
+            POKEDEX_CARDS[slot] = { id=poke_id, name=poke_name, asset=asset_name }
         else
-            POKEDEX_CARDS[slot] = { id=0, name="???", asset="pokeCard"..slot }
+            asset_name = ""
+            POKEDEX_CARDS[slot] = { id=0, name="???", asset="" }
+        end
+        for _, color in ipairs(POKEDEX_COLORS) do
+            UI.setAttribute("pokedex_card_" .. slot .. "_" .. color, "image", asset_name)
         end
     end
-
-    local assets = {}
-    for slot = 1, 20 do
-        local entry = POKEMON_DATA[start_idx + slot - 1]
-        if entry then
-            local poke_id = entry[1]
-            local poke_name = entry[2]
-            table.insert(assets, {
-                name = "pokeCard"..slot,
-                url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Slot%20Images/" .. string.format("%03d", poke_id) .. "_" .. poke_name .. ".png"
-            })
-        end
-    end
-
-    local existing = {}
-    if _cached_assets then
-        for _, a in ipairs(_cached_assets) do
-            table.insert(existing, { name = a.name, url = a.url })
-        end
-    end
-    for _, a in ipairs(assets) do
-        local found = false
-        for _, e in ipairs(existing) do
-            if e.name == a.name then
-                e.url = a.url
-                found = true
-                break
-            end
-        end
-        if not found then
-            table.insert(existing, a)
-        end
-    end
-
-    UI.setCustomAssets(existing)
-    Wait.frames(function()
-        UI.setXml(UI.getXml())
-    end, 5)
 end
 
 function pokedexNEXT(player, value, id)
