@@ -7,7 +7,7 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
-.toolbar { display: flex; align-items: center; gap: 10px; padding: 8px 16px; background: #16213e; border-bottom: 1px solid #0f3460; flex-shrink: 0; }
+.toolbar { display: flex; align-items: center; gap: 10px; padding: 8px 16px; background: #16213e; border-bottom: 1px solid #0f3460; flex-shrink: 0; flex-wrap: wrap; }
 .toolbar button, .toolbar select { background: #0f3460; color: #fff; border: 1px solid #1a5276; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; }
 .toolbar button:hover { background: #1a5276; }
 .toolbar label { font-size: 13px; color: #a0a0c0; }
@@ -15,7 +15,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 .panel { background: #16213e; border-right: 1px solid #0f3460; display: flex; flex-direction: column; flex-shrink: 0; }
 .panel-left { width: 260px; }
 .panel-right { width: 300px; border-right: none; border-left: 1px solid #0f3460; }
-.panel-header { padding: 8px 12px; font-size: 13px; font-weight: 600; background: #0f3460; color: #a0c4ff; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+.panel-header { padding: 8px 12px; font-size: 13px; font-weight: 600; background: #0f3460; color: #a0c4ff; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
 .panel-content { flex: 1; overflow-y: auto; padding: 8px; }
 .asset-cat { margin-bottom: 12px; }
 .asset-cat-title { font-size: 12px; color: #7a8aaa; padding: 4px 0; margin-bottom: 4px; cursor: pointer; display: flex; align-items: center; gap: 4px; }
@@ -28,11 +28,11 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 .canvas-wrap { flex: 1; display: flex; align-items: center; justify-content: center; background: #0d1117; position: relative; overflow: hidden; }
 .canvas { position: relative; background: #1a1a2e; box-shadow: 0 0 40px rgba(0,0,0,0.5); overflow: hidden; }
 .canvas-element { position: absolute; cursor: move; user-select: none; }
-.canvas-element:hover { outline: 2px solid #4a7aaa; }
-.canvas-element.selected { outline: 2px solid #ffaa33; z-index: 9999 !important; }
-.canvas-element img { width: 100%; height: 100%; pointer-events: none; }
-.canvas-element .text-content { width: 100%; height: 100%; overflow: hidden; word-wrap: break-word; pointer-events: none; }
-.resize-handle { position: absolute; width: 8px; height: 8px; background: #ffaa33; border: 1px solid #fff; border-radius: 1px; }
+.canvas-element:hover { outline: 2px solid #4a7aaa; outline-offset: -1px; }
+.canvas-element.selected { outline: 2px solid #ffaa33; outline-offset: -1px; z-index: 9999 !important; }
+.canvas-element img { width: 100%; height: 100%; pointer-events: none; display: block; }
+.canvas-element .text-content { width: 100%; height: 100%; overflow: hidden; word-wrap: break-word; pointer-events: none; padding: 4px; }
+.resize-handle { position: absolute; width: 8px; height: 8px; background: #ffaa33; border: 1px solid #fff; border-radius: 1px; z-index: 10; }
 .resize-handle.nw { top: -4px; left: -4px; cursor: nw-resize; }
 .resize-handle.ne { top: -4px; right: -4px; cursor: ne-resize; }
 .resize-handle.sw { bottom: -4px; left: -4px; cursor: sw-resize; }
@@ -48,7 +48,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 .layer-item { display: flex; align-items: center; gap: 6px; padding: 3px 6px; cursor: pointer; border-radius: 3px; }
 .layer-item:hover { background: #1a2a4a; }
 .layer-item.active { background: #0f3460; }
-.layer-item .thumb { width: 24px; height: 24px; object-fit: contain; background: #0d1b2a; border-radius: 2px; }
+.layer-item .thumb { width: 24px; height: 24px; object-fit: contain; background: #0d1b2a; border-radius: 2px; flex-shrink: 0; }
 .layer-item .label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .layer-item .btn { cursor: pointer; color: #7a8aaa; font-size: 11px; padding: 1px 4px; }
 .layer-item .btn:hover { color: #ff6666; }
@@ -57,6 +57,23 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 .color-picker button { width: 20px; height: 20px; border: 1px solid #333; border-radius: 2px; cursor: pointer; padding: 0; }
 .color-picker button:hover { border-color: #ffaa33; }
 .color-picker button.active { border-color: #fff; outline: 2px solid #ffaa33; }
+.status-badge { font-size: 11px; padding: 3px 10px; border-radius: 10px; display: flex; align-items: center; gap: 5px; }
+.status-badge.synced { background: #1a3a2a; color: #4ade80; border: 1px solid #2a5a3a; }
+.status-badge.unsaved { background: #3a2a1a; color: #fbbf24; border: 1px solid #5a4a2a; }
+.status-badge.saving { background: #1a2a3a; color: #60a5fa; border: 1px solid #2a4a6a; }
+.status-badge.error { background: #3a1a1a; color: #f87171; border: 1px solid #5a2a2a; }
+.status-badge .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.status-badge.synced .dot { background: #4ade80; }
+.status-badge.unsaved .dot { background: #fbbf24; }
+.status-badge.saving .dot { background: #60a5fa; animation: pulse 0.8s infinite; }
+.status-badge.error .dot { background: #f87171; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.toolbar-divider { width: 1px; height: 24px; background: #0f3460; }
+.coords-display { font-size: 11px; color: #5a6a8a; padding: 2px 8px; background: #0d1b2a; border-radius: 3px; font-family: monospace; }
+.element-count { font-size: 11px; color: #5a6a8a; }
+.ts-ribbon { position: absolute; top: 0; left: 0; right: 0; height: 22px; background: #0f3460; display: flex; align-items: center; padding: 0 8px; font-size: 10px; color: #5a7aaa; gap: 8px; z-index: 99999; pointer-events: none; }
+.ts-ribbon span { pointer-events: auto; }
+.grid-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(circle, rgba(79, 122, 170, 0.08) 1px, transparent 1px); background-size: 20px 20px; }
 </style>
 </head>
 <body>
@@ -64,20 +81,27 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
 <div class="toolbar">
     <button onclick="addText()">+ Text</button>
     <button onclick="addImage()">+ Image</button>
-    <button onclick="document.getElementById('fileInput').click()">📁 Upload</button>
+    <button onclick="document.getElementById('fileInput').click()">Upload</button>
     <input id="fileInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" style="display:none" onchange="handleFileUpload(event)">
-    <span style="flex:1"></span>
+    <div class="toolbar-divider"></div>
     <label>W:</label><input id="canvasW" type="number" value="1920" style="width:60px" onchange="resizeCanvas()">
     <label>H:</label><input id="canvasH" type="number" value="1080" style="width:60px" onchange="resizeCanvas()">
     <button onclick="resizeCanvas()">Resize</button>
-    <span style="flex:1"></span>
+    <div class="toolbar-divider"></div>
     <button onclick="exportXML()">Export XML</button>
     <button onclick="exportLua()">Export Lua</button>
-    <button onclick="copyData()">📋 Copy Data</button>
-    <button onclick="pasteData()">📥 Paste Data</button>
+    <button onclick="copyData()">Copy Data</button>
+    <button onclick="pasteData()">Paste Data</button>
     <button onclick="saveLayout()">Save</button>
     <button onclick="loadLayout()">Load</button>
+    <div class="toolbar-divider"></div>
+    <button onclick="saveToFile()">Save to File</button>
+    <button onclick="document.getElementById('loadFileInput').click()">Load from File</button>
+    <input id="loadFileInput" type="file" accept=".json" style="display:none" onchange="loadFromFile(event)">
     <button onclick="clearCanvas()" style="color:#ff6666;">Clear</button>
+    <div class="toolbar-divider"></div>
+    <span id="statusBadge" class="status-badge synced"><span class="dot"></span> Synced</span>
+    <span class="element-count" id="elementCount">0 elements</span>
 </div>
 
 <div class="main">
@@ -86,28 +110,30 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
         <div class="panel-content">
             <input class="search-box" id="pokemonSearch" placeholder="Search Pokemon..." oninput="showPokemonResults()">
             <div class="asset-cat">
-                <div class="asset-cat-title" onclick="toggleCat('catTypes')">▼ Type Icons</div>
+                <div class="asset-cat-title" onclick="toggleCat('catTypes')">&#x25BC; Type Icons</div>
                 <div id="catTypes" class="asset-grid"></div>
             </div>
             <div class="asset-cat">
-                <div class="asset-cat-title" onclick="toggleCat('catPanels')">▼ Panels & UI</div>
+                <div class="asset-cat-title" onclick="toggleCat('catPanels')">&#x25BC; Panels & UI</div>
                 <div id="catPanels" class="asset-grid"></div>
             </div>
             <div class="asset-cat">
-                <div class="asset-cat-title" onclick="toggleCat('catPokemon')">▼ Pokemon Cards</div>
+                <div class="asset-cat-title" onclick="toggleCat('catPokemon')">&#x25BC; Pokemon Cards</div>
                 <div id="catPokemon" class="asset-grid"></div>
             </div>
         </div>
     </div>
 
-    <div class="canvas-wrap">
-        <div class="canvas" id="canvas" ondrop="onDrop(event)" ondragover="onDragOver(event)"></div>
+    <div class="canvas-wrap" id="canvasWrap">
+        <div class="canvas" id="canvas" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+            <div class="grid-overlay"></div>
+        </div>
     </div>
 
     <div class="panel panel-right">
         <div class="panel-header">Properties</div>
         <div class="panel-content" id="propsPanel">
-            <div class="empty-state">Select an element on the canvas to edit its properties</div>
+            <div class="empty-state">Select an element to edit its properties</div>
         </div>
         <div class="panel-header" style="border-top:1px solid #0f3460;">Layers</div>
         <div class="panel-content" id="layerPanel"></div>
@@ -128,6 +154,279 @@ let elements = [];
 let nextId = 1;
 let selectedId = null;
 let dragData = null;
+let dirty = false;
+let saveTimer = null;
+let fsFileHandle = null;
+let fsFileSupported = false;
+
+const STATUS = { SYNCED: 'synced', UNSAVED: 'unsaved', SAVING: 'saving', ERROR: 'error' };
+
+// ── File System Access API ──────────────────────────────────
+async function initFileSystemAccess() {
+    fsFileSupported = 'showDirectoryPicker' in window;
+    if (!fsFileSupported) return;
+    try {
+        const saved = localStorage.getItem('tts_fs_handle');
+        if (saved) {
+            const handles = [];
+            const stored = JSON.parse(saved);
+            for (const entry of stored) {
+                if (entry.kind === 'file') {
+                    try {
+                        const perm = await navigator.storage.getDirectory();
+                    } catch(e) {}
+                }
+            }
+        }
+        const storedHandle = localStorage.getItem('tts_fs_file_handle');
+        if (storedHandle) {
+            try {
+                const fileData = JSON.parse(storedHandle);
+                if (fileData.id) {
+                    fsFileHandle = await retrieveFileHandle(fileData);
+                    if (fsFileHandle) {
+                        const perm = await fsFileHandle.queryPermission({ mode: 'readwrite' });
+                        if (perm === 'granted') {
+                            const data = await loadFromFileHandle(fsFileHandle);
+                            if (data) return data;
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+    } catch(e) {}
+    return null;
+}
+
+async function retrieveFileHandle(data) {
+    if (!data.id) return null;
+    try {
+        const root = await navigator.storage.getDirectory();
+        const draft = await root.getFileHandle(data.name, { create: false });
+        return draft;
+    } catch(e) {
+        return null;
+    }
+}
+
+async function requestFileSave() {
+    if (!fsFileSupported) {
+        setStatus(STATUS.ERROR, 'File API not supported in this browser');
+        return false;
+    }
+    try {
+        const handle = await window.showSaveFilePicker({
+            suggestedName: '_designer_live_state.json',
+            types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+            startIn: 'documents',
+        });
+        const perm = await handle.queryPermission({ mode: 'readwrite' });
+        if (perm !== 'granted') {
+            const granted = await handle.requestPermission({ mode: 'readwrite' });
+            if (granted !== 'granted') {
+                setStatus(STATUS.ERROR, 'Permission denied for file save');
+                return false;
+            }
+        }
+        fsFileHandle = handle;
+        try {
+            localStorage.setItem('tts_fs_file_handle', JSON.stringify({ name: handle.name, id: Date.now() }));
+        } catch(e) {}
+        return true;
+    } catch(e) {
+        if (e.name !== 'AbortError' && e.name !== 'SecurityError') {
+            setStatus(STATUS.ERROR, 'Could not access file system');
+        }
+        return false;
+    }
+}
+
+async function loadFromFileHandle(handle) {
+    try {
+        const file = await handle.getFile();
+        const text = await file.text();
+        if (!text.trim()) return null;
+        return JSON.parse(text);
+    } catch(e) {
+        return null;
+    }
+}
+
+async function writeToFileHandle(handle, data) {
+    try {
+        const writable = await handle.createWritable();
+        await writable.write(JSON.stringify(data, null, 2));
+        await writable.close();
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
+// ── Server API ──────────────────────────────────────────────
+async function serverSave(data) {
+    try {
+        const resp = await fetch('/api/state', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return resp.ok;
+    } catch(e) {
+        return false;
+    }
+}
+
+async function serverLoad() {
+    try {
+        const resp = await fetch('/api/state?_=' + Date.now());
+        if (resp.ok) {
+            return await resp.json();
+        }
+    } catch(e) {}
+    return null;
+}
+
+// ── Live State Auto-Save ────────────────────────────────────
+function markDirty() {
+    if (!dirty) {
+        dirty = true;
+        setStatus(STATUS.UNSAVED, 'Unsaved changes');
+    }
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => autoSave(), 1000);
+    updateElementCount();
+}
+
+function setStatus(state, msg) {
+    const badge = document.getElementById('statusBadge');
+    badge.className = 'status-badge ' + state;
+    const dot = badge.querySelector('.dot');
+    if (state === STATUS.SYNCED) badge.innerHTML = '<span class="dot"></span> ' + (msg || 'Synced');
+    else if (state === STATUS.UNSAVED) badge.innerHTML = '<span class="dot"></span> ' + (msg || 'Unsaved');
+    else if (state === STATUS.SAVING) badge.innerHTML = '<span class="dot"></span> ' + (msg || 'Saving...');
+    else if (state === STATUS.ERROR) badge.innerHTML = '<span class="dot"></span> ' + (msg || 'Error');
+}
+
+function updateElementCount() {
+    document.getElementById('elementCount').textContent = elements.length + ' element' + (elements.length !== 1 ? 's' : '');
+}
+
+async function autoSave() {
+    saveTimer = null;
+    if (!dirty) return;
+    setStatus(STATUS.SAVING, 'Saving...');
+
+    const data = {
+        elements: elements.map(stripElement),
+        nextId,
+        canvasW: document.getElementById('canvasW').value,
+        canvasH: document.getElementById('canvasH').value,
+        _timestamp: new Date().toISOString(),
+        _version: '2.0'
+    };
+
+    let saved = false;
+
+    // Save to localStorage
+    try {
+        localStorage.setItem('tts_designer_layout', JSON.stringify({
+            elements: data.elements,
+            nextId: data.nextId,
+            canvasW: data.canvasW,
+            canvasH: data.canvasH,
+            _timestamp: data._timestamp,
+            _version: data._version
+        }));
+        saved = true;
+    } catch(e) {}
+
+    // Save via server API
+    const serverOk = await serverSave(data);
+    if (serverOk) saved = true;
+
+    // Save to file via File System Access API
+    if (fsFileHandle) {
+        const ok = await writeToFileHandle(fsFileHandle, data);
+        if (ok) saved = true;
+    }
+
+    dirty = false;
+    setStatus(saved ? STATUS.SYNCED : STATUS.UNSAVED, saved ? 'Auto-saved' : 'localStorage only');
+}
+
+async function setupLiveSave() {
+    // Try loading from server API first
+    const apiData = await serverLoad();
+    if (apiData && apiData.elements && apiData.elements.length > 0) {
+        applyLayoutData(apiData);
+        setStatus(STATUS.SYNCED, 'Loaded from server');
+        return;
+    }
+
+    // Try loading from File System API second
+    const fsData = await initFileSystemAccess();
+    if (fsData && fsData.elements) {
+        applyLayoutData(fsData);
+        setStatus(STATUS.SYNCED, 'Loaded from live file');
+        return;
+    }
+
+    // Fallback: load from localStorage
+    const lsData = localStorage.getItem('tts_designer_layout');
+    if (lsData) {
+        try {
+            const obj = JSON.parse(lsData);
+            if (obj.elements && Array.isArray(obj.elements)) {
+                applyLayoutData(obj);
+                setStatus(STATUS.SYNCED, 'Loaded from storage');
+            }
+        } catch(e) {}
+    }
+
+    // Check if file exists next to this HTML (fetch approach)
+    try {
+        const resp = await fetch('_designer_live_state.json?_=' + Date.now());
+        if (resp.ok) {
+            const data = await resp.json();
+            if (data && data.elements && Array.isArray(data.elements) && data.elements.length > 0) {
+                if (!lsData || confirm('Found _designer_live_state.json with ' + data.elements.length + ' elements. Load it?')) {
+                    applyLayoutData(data);
+                    setStatus(STATUS.SYNCED, 'Loaded from live file');
+                }
+            }
+        }
+    } catch(e) {}
+
+    // Offer to set up file system save
+    if (fsFileSupported && !fsFileHandle) {
+        setTimeout(() => {
+            if (confirm('Enable auto-save to file? This lets AI see your design live.\n\nClick OK to choose where to save _designer_live_state.json')) {
+                requestFileSave().then(ok => {
+                    if (ok) {
+                        markDirty();
+                        setTimeout(() => autoSave(), 500);
+                    }
+                });
+            }
+        }, 1500);
+    }
+}
+
+function applyLayoutData(obj) {
+    elements = (obj.elements || []).map(el => {
+        if (el.type === 'image' && !el.src) {
+            el.src = resolveSrc(el);
+        }
+        return el;
+    });
+    nextId = obj.nextId || 1;
+    selectedId = null;
+    if (obj.canvasW) document.getElementById('canvasW').value = obj.canvasW;
+    if (obj.canvasH) document.getElementById('canvasH').value = obj.canvasH;
+    resizeCanvas();
+    render();
+}
 
 // ── Asset Panel Init ──────────────────────────────────────
 function initAssets() {
@@ -213,8 +512,22 @@ function resizeCanvas() {
     const c = document.getElementById('canvas');
     c.style.width = w + 'px';
     c.style.height = h + 'px';
+    fitCanvas();
 }
-resizeCanvas();
+
+function fitCanvas() {
+    const wrap = document.getElementById('canvasWrap');
+    const c = document.getElementById('canvas');
+    const cw = parseInt(c.style.width) || 1920;
+    const ch = parseInt(c.style.height) || 1080;
+    const wrapW = wrap.clientWidth - 20;
+    const wrapH = wrap.clientHeight - 20;
+    const scale = Math.min(1, wrapW / cw, wrapH / ch);
+    c.style.transform = 'scale(' + scale + ')';
+    c.style.transformOrigin = 'center center';
+}
+
+window.addEventListener('resize', fitCanvas);
 
 function onDragOver(e) { e.preventDefault(); }
 
@@ -257,9 +570,10 @@ function placeImage(name, url, x, y, w, h) {
         el.y = (parseInt(c.style.height) || 1080) / 2 - 70;
     }
     elements.push(el);
- render();
+    render();
     selectElement(id);
- return el;
+    markDirty();
+    return el;
 }
 
 function addImage() {
@@ -278,6 +592,7 @@ function addImage() {
     elements.push(el);
     render();
     selectElement(id);
+    markDirty();
 }
 
 function handleFileUpload(event) {
@@ -302,6 +617,7 @@ function handleFileUpload(event) {
         elements.push(el);
         render();
         selectElement(id);
+        markDirty();
     };
     reader.readAsDataURL(file);
     event.target.value = '';
@@ -328,14 +644,14 @@ function addText() {
     elements.push(el);
     render();
     selectElement(id);
+    markDirty();
 }
 
 // ── Rendering ─────────────────────────────────────────────
 function render() {
     const c = document.getElementById('canvas');
-    // Sort by zIndex for rendering
     const sorted = [...elements].sort((a,b) => a.zIndex - b.zIndex);
-    c.innerHTML = '';
+    c.innerHTML = '<div class="grid-overlay"></div>';
     sorted.forEach(el => {
         const div = document.createElement('div');
         div.className = 'canvas-element' + (el.id === selectedId ? ' selected' : '');
@@ -351,7 +667,7 @@ function render() {
             if (el.src) {
                 const img = document.createElement('img');
                 img.src = el.src;
-                img.onerror = () => { img.style.display = 'none'; };
+                img.onerror = function() { this.style.display = 'none'; };
                 if (el.imgColor && el.imgColor !== '#ffffff') {
                     img.style.filter = 'drop-shadow(0 0 0 ' + el.imgColor + ') saturate(2)';
                 }
@@ -376,7 +692,6 @@ function render() {
             tc.style.fontStyle = el.italic ? 'italic' : 'normal';
             tc.style.color = el.color;
             tc.style.textAlign = el.align;
-            tc.style.padding = '4px';
             div.appendChild(tc);
         }
 
@@ -433,6 +748,7 @@ function onDrag(e) {
 }
 
 function stopDrag() {
+    if (dragState) markDirty();
     dragState = null;
     document.onmousemove = null;
     document.onmouseup = null;
@@ -466,6 +782,7 @@ function onResize(e) {
 }
 
 function stopResize() {
+    if (resizeState) markDirty();
     resizeState = null;
     document.onmousemove = null;
     document.onmouseup = null;
@@ -476,7 +793,7 @@ function updateProps() {
     const panel = document.getElementById('propsPanel');
     const el = elements.find(e => e.id === selectedId);
     if (!el) {
-        panel.innerHTML = '<div class="empty-state">Select an element on the canvas to edit its properties</div>';
+        panel.innerHTML = '<div class="empty-state">Select an element to edit its properties</div>';
         return;
     }
 
@@ -530,23 +847,24 @@ function updateProps() {
 
 function updateEl(id, key, val) {
     const el = elements.find(e => e.id === id);
-    if (el) { el[key] = val; render(); }
+    if (el) { el[key] = val; render(); markDirty(); }
 }
 
 function updateElNum(id, key, val) {
     const el = elements.find(e => e.id === id);
-    if (el) { el[key] = parseFloat(val) || 0; render(); }
+    if (el) { el[key] = parseFloat(val) || 0; render(); markDirty(); }
 }
 
 function updateElBool(id, key, val) {
     const el = elements.find(e => e.id === id);
-    if (el) { el[key] = val; render(); }
+    if (el) { el[key] = val; render(); markDirty(); }
 }
 
 function deleteElement(id) {
     elements = elements.filter(e => e.id !== id);
     if (selectedId === id) selectedId = null;
     render();
+    markDirty();
 }
 
 // ── Layers Panel ──────────────────────────────────────────
@@ -566,9 +884,9 @@ function updateLayers() {
             html += '<div class="thumb" style="background:#2a3050;display:flex;align-items:center;justify-content:center;font-size:10px;color:#7a8aaa;">T</div>';
         }
         html += '<span class="label">' + escapeHtml(el.name || el.id) + '</span>';
-        html += '<span class="btn" onclick="event.stopPropagation();moveLayerUp(\'' + el.id + '\')">▲</span>';
-        html += '<span class="btn" onclick="event.stopPropagation();moveLayerDown(\'' + el.id + '\')">▼</span>';
-        html += '<span class="btn" onclick="event.stopPropagation();deleteElement(\'' + el.id + '\')">✕</span>';
+        html += '<span class="btn" onclick="event.stopPropagation();moveLayerUp(\'' + el.id + '\')">&#x25B2;</span>';
+        html += '<span class="btn" onclick="event.stopPropagation();moveLayerDown(\'' + el.id + '\')">&#x25BC;</span>';
+        html += '<span class="btn" onclick="event.stopPropagation();deleteElement(\'' + el.id + '\')">&#x2715;</span>';
         html += '</div>';
     });
     panel.innerHTML = html;
@@ -576,12 +894,12 @@ function updateLayers() {
 
 function moveLayerUp(id) {
     const el = elements.find(e => e.id === id);
-    if (el) { el.zIndex = Math.min(9999, el.zIndex + 1); render(); }
+    if (el) { el.zIndex = Math.min(9999, el.zIndex + 1); render(); markDirty(); }
 }
 
 function moveLayerDown(id) {
     const el = elements.find(e => e.id === id);
-    if (el) { el.zIndex = Math.max(1, el.zIndex - 1); render(); }
+    if (el) { el.zIndex = Math.max(1, el.zIndex - 1); render(); markDirty(); }
 }
 
 // ── Export ────────────────────────────────────────────────
@@ -625,12 +943,43 @@ function exportLua() {
     showCode(lua);
 }
 
+function resolveSrc(el) {
+    if (el.src && !el.src.startsWith('data:')) return el.src;
+    const name = el.name || '';
+    if (name.startsWith('type_')) {
+        return GIT_BASE + '/Pokemon%20Assets/Types/' + name.replace('type_', '') + '.png';
+    }
+    const panel = PANELS.find(p => p.name === name);
+    if (panel) return GIT_BASE + '/' + panel.file;
+    if (name.match(/^\d{3}_/)) {
+        return GIT_BASE + '/Pokemon%20Assets/Slot%20Images/' + name + '.png';
+    }
+    return el.src || '';
+}
+
+function canReconstructSrc(el) {
+    if (el.type !== 'image') return false;
+    const name = el.name || '';
+    if (name.startsWith('type_')) return true;
+    if (PANELS.find(p => p.name === name)) return true;
+    if (name.match(/^\d{3}_/)) return true;
+    return false;
+}
+
+function stripElement(el) {
+    const copy = Object.assign({}, el);
+    if (copy.type === 'image' && copy.src && canReconstructSrc(copy)) {
+        delete copy.src;
+    }
+    if (!copy.tags) delete copy.tags;
+    if (copy.imgColor === '#ffffff') delete copy.imgColor;
+    return copy;
+}
+
 function copyData() {
-    const cw = document.getElementById('canvasW').value;
-    const ch = document.getElementById('canvasH').value;
-    const data = JSON.stringify({ elements, nextId, canvasW: cw, canvasH: ch }, null, 2);
+    const data = JSON.stringify(getLayoutData());
     navigator.clipboard.writeText(data).then(() => {
-        alert('Layout data copied to clipboard! Paste it in chat for review.');
+        alert('Layout data copied! (' + data.length + ' chars)');
     }).catch(() => {
         const ta = document.createElement('textarea');
         ta.value = data;
@@ -638,7 +987,7 @@ function copyData() {
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        alert('Layout data copied!');
+        alert('Layout data copied! (' + data.length + ' chars)');
     });
 }
 
@@ -651,13 +1000,9 @@ function pasteData() {
             alert('Invalid layout data: missing elements array.');
             return;
         }
-        elements = obj.elements;
-        nextId = obj.nextId || 1;
-        if (obj.canvasW) document.getElementById('canvasW').value = obj.canvasW;
-        if (obj.canvasH) document.getElementById('canvasH').value = obj.canvasH;
-        resizeCanvas();
-        render();
-        alert('Layout loaded from pasted data!');
+        applyLayoutData(obj);
+        markDirty();
+        alert('Layout loaded from pasted data (' + elements.length + ' elements)!');
     } catch(e) {
         alert('Failed to parse layout data: ' + e.message);
     }
@@ -671,9 +1016,11 @@ function showCode(code) {
 
 // ── Save/Load ─────────────────────────────────────────────
 function saveLayout() {
-    const data = JSON.stringify({ elements, nextId, canvasW: document.getElementById('canvasW').value, canvasH: document.getElementById('canvasH').value });
+    const data = JSON.stringify({ elements, nextId, canvasW: document.getElementById('canvasW').value, canvasH: document.getElementById('canvasH').value, _timestamp: new Date().toISOString() });
     localStorage.setItem('tts_designer_layout', data);
-    alert('Layout saved!');
+    dirty = false;
+    setStatus(STATUS.SYNCED, 'Saved to storage');
+    alert('Layout saved to browser storage!');
 }
 
 function loadLayout() {
@@ -681,14 +1028,57 @@ function loadLayout() {
     if (!data) { alert('No saved layout found.'); return; }
     try {
         const obj = JSON.parse(data);
-        elements = obj.elements || [];
-        nextId = obj.nextId || 1;
-        if (obj.canvasW) document.getElementById('canvasW').value = obj.canvasW;
-        if (obj.canvasH) document.getElementById('canvasH').value = obj.canvasH;
-        resizeCanvas();
-        render();
-        alert('Layout loaded!');
+        applyLayoutData(obj);
+        markDirty();
+        alert('Layout loaded from storage (' + elements.length + ' elements)!');
     } catch(e) { alert('Failed to load layout.'); }
+}
+
+// ── File Save/Load ─────────────────────────────────────────
+function getLayoutData() {
+    return {
+        elements: elements.map(stripElement),
+        nextId,
+        canvasW: document.getElementById('canvasW').value,
+        canvasH: document.getElementById('canvasH').value,
+        _timestamp: new Date().toISOString(),
+        _version: '2.0'
+    };
+}
+
+function saveToFile() {
+    const data = JSON.stringify(getLayoutData(), null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'tts_layout.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function loadFromFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const obj = JSON.parse(e.target.result);
+            if (!obj.elements || !Array.isArray(obj.elements)) {
+                alert('Invalid layout file: missing elements array.');
+                return;
+            }
+            applyLayoutData(obj);
+            markDirty();
+            alert('Layout loaded from file (' + elements.length + ' elements)!');
+        } catch(err) {
+            alert('Failed to parse layout file: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
 }
 
 function clearCanvas() {
@@ -697,6 +1087,7 @@ function clearCanvas() {
     nextId = 1;
     selectedId = null;
     render();
+    markDirty();
 }
 
 // ── Helpers ───────────────────────────────────────────────
@@ -711,11 +1102,21 @@ document.onkeydown = e => {
             deleteElement(selectedId);
         }
     }
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        saveLayout();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+        e.preventDefault();
+    }
 };
 
 // ── Init ──────────────────────────────────────────────────
 initAssets();
 loadPokemonList();
+resizeCanvas();
+setupLiveSave();
+updateElementCount();
 </script>
 </body>
 </html>
