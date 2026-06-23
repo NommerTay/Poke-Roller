@@ -1390,49 +1390,51 @@ local POKEMON_DATA = {
 
 local _cached_assets = nil
 
+local BASE_ASSETS = {
+    { name = "craftingBoardBG",       url = "https://tmpfiles.org/dl/w0waJrY5cGaO/craftingbg_cropped.png" },
+    { name = "breederBG",              url = "https://tmpfiles.org/dl/wEw6J8YJce7D/breederbg_cropped.png" },
+    { name = "obtainBtn",              url = "https://tmpfiles.org/dl/wowPdhzpOh4P/obtain-btn.png" },
+    { name = "breederIcon",            url = "https://tmpfiles.org/dl/w6wAdBzDOfxq/icon_breeder_1781973639243.png" },
+    { name = "The Hatcher",            url = "https://tmpfiles.org/dl/wawodkSNcQ06/thehatcher.png" },
+    { name = "Offer Up",               url = "https://tmpfiles.org/dl/wFwgd4SWcvJx/offerup.png" },
+    { name = "Another Monday",         url = "https://tmpfiles.org/dl/wowkdWSTcRLp/anothermondy.png" },
+    { name = "Chow Down",              url = "https://tmpfiles.org/dl/w4wkdGSfcxHw/chowdown.png" },
+    { name = "Mew-Nip",               url = "https://tmpfiles.org/dl/wlwPd7SScsTa/mew-nip.png" },
+    { name = "Nocturnal Endeavours",   url = "https://tmpfiles.org/dl/wpwddLSuc4oQ/nocturnalendevours.png" },
+    { name = "Relaxation",             url = "https://tmpfiles.org/dl/wtwFdiSjcBW3/relaxation.png" },
+    { name = "The Shining Star",       url = "https://tmpfiles.org/dl/wqwfdASlcJ73/theshiningstar.png" },
+    { name = "Training Ball",          url = "https://tmpfiles.org/dl/wDwSdxSqc9yr/trainingball.png" },
+    { name = "breederPerksEncyclopedia", url = "https://tmpfiles.org/dl/wLwvJLY6Hn1x/encyclopedia_cropped.png" },
+    { name = "type_bug",      url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/bug.png" },
+    { name = "type_dark",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/dark.png" },
+    { name = "type_dragon",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/dragon.png" },
+    { name = "type_electric", url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/electric.png" },
+    { name = "type_fairy",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/fairy.png" },
+    { name = "type_fighting", url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/fighting.png" },
+    { name = "type_fire",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/fire.png" },
+    { name = "type_flying",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/flying.png" },
+    { name = "type_ghost",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/ghost.png" },
+    { name = "type_grass",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/grass.png" },
+    { name = "type_ground",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/ground.png" },
+    { name = "type_ice",      url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/ice.png" },
+    { name = "type_normal",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/normal.png" },
+    { name = "type_poison",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/poison.png" },
+    { name = "type_psychic",  url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/psychic.png" },
+    { name = "type_rock",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/rock.png" },
+    { name = "type_steel",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/steel.png" },
+    { name = "type_water",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/water.png" },
+    { name = "dexPanel",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/pokedex_ui.png" },
+}
+
 function onLoad()
     -- Register custom UI assets after a delay so UI is ready
     Wait.frames(function()
-        UI.setCustomAssets({
-{ name = "craftingBoardBG",       url = "https://tmpfiles.org/dl/w0waJrY5cGaO/craftingbg_cropped.png" },
-            { name = "breederBG",              url = "https://tmpfiles.org/dl/wEw6J8YJce7D/breederbg_cropped.png" },
-            { name = "obtainBtn",              url = "https://tmpfiles.org/dl/wowPdhzpOh4P/obtain-btn.png" },
-            { name = "breederIcon",            url = "https://tmpfiles.org/dl/w6wAdBzDOfxq/icon_breeder_1781973639243.png" },
-            { name = "The Hatcher",            url = "https://tmpfiles.org/dl/wawodkSNcQ06/thehatcher.png" },
-            { name = "Offer Up",               url = "https://tmpfiles.org/dl/wFwgd4SWcvJx/offerup.png" },
-            { name = "Another Monday",         url = "https://tmpfiles.org/dl/wowkdWSTcRLp/anothermondy.png" },
-            { name = "Chow Down",              url = "https://tmpfiles.org/dl/w4wkdGSfcxHw/chowdown.png" },
-            { name = "Mew-Nip",               url = "https://tmpfiles.org/dl/wlwPd7SScsTa/mew-nip.png" },
-            { name = "Nocturnal Endeavours",   url = "https://tmpfiles.org/dl/wpwddLSuc4oQ/nocturnalendevours.png" },
-            { name = "Relaxation",             url = "https://tmpfiles.org/dl/wtwFdiSjcBW3/relaxation.png" },
-            { name = "The Shining Star",       url = "https://tmpfiles.org/dl/wqwfdASlcJ73/theshiningstar.png" },
-            { name = "Training Ball",          url = "https://tmpfiles.org/dl/wDwSdxSqc9yr/trainingball.png" },
-            { name = "breederPerksEncyclopedia", url = "https://tmpfiles.org/dl/wLwvJLY6Hn1x/encyclopedia_cropped.png" },
-            { name = "type_bug",      url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/bug.png" },
-            { name = "type_dark",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/dark.png" },
-            { name = "type_dragon",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/dragon.png" },
-            { name = "type_electric", url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/electric.png" },
-            { name = "type_fairy",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/fairy.png" },
-            { name = "type_fighting", url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/fighting.png" },
-            { name = "type_fire",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/fire.png" },
-            { name = "type_flying",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/flying.png" },
-            { name = "type_ghost",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/ghost.png" },
-            { name = "type_grass",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/grass.png" },
-            { name = "type_ground",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/ground.png" },
-            { name = "type_ice",      url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/ice.png" },
-            { name = "type_normal",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/normal.png" },
-            { name = "type_poison",   url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/poison.png" },
-            { name = "type_psychic",  url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/psychic.png" },
-            { name = "type_rock",     url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/rock.png" },
-            { name = "type_steel",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/steel.png" },
-            { name = "type_water",    url = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Pokemon%20Assets/Types/water.png" },
-            { name = "dexPanel",   url = "https://tmpfiles.org/dl/wYwBJ0ivzU1D/pokedex_ui.png" },
-        })
+        UI.setCustomAssets(BASE_ASSETS)
 
-        -- Cache assets list so pagination doesn't accidentally wipe non-pokeCard assets
-        Wait.frames(function()
-            _cached_assets = UI.getCustomAssets() or {}
-        end, 3)
+        _cached_assets = {}
+        for _, a in ipairs(BASE_ASSETS) do
+            table.insert(_cached_assets, { name = a.name, url = a.url })
+        end
 
         -- Force Tabletop Simulator to refresh and bind the registered images to the XML UI elements
         Wait.time(function()
@@ -1939,13 +1941,10 @@ function refreshPokedexPage()
         end
     end
 
-    local existing = UI.getCustomAssets()
-    if not existing or #existing == 0 then
-        existing = {}
-        if _cached_assets then
-            for _, a in ipairs(_cached_assets) do
-                table.insert(existing, { name = a.name, url = a.url })
-            end
+    local existing = {}
+    if _cached_assets then
+        for _, a in ipairs(_cached_assets) do
+            table.insert(existing, { name = a.name, url = a.url })
         end
     end
     for _, a in ipairs(assets) do
