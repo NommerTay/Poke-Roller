@@ -6,20 +6,35 @@ param(
 Add-Type -AssemblyName System.Drawing
 
 $json = Get-Content $InputFile -Raw | ConvertFrom-Json
-$cw = [int]$json.canvasW
-$ch = [int]$json.canvasH
 
-$bmp = New-Object System.Drawing.Bitmap($cw, $ch)
+$boundary = $json.elements | Where-Object { $_.tags -and $_.tags.Contains("panel=") } | Select-Object -First 1
+if ($boundary) {
+    $cropX = [int][double]::Parse($boundary.x)
+    $cropY = [int][double]::Parse($boundary.y)
+    $cropW = [int][double]::Parse($boundary.w)
+    $cropH = [int][double]::Parse($boundary.h)
+} else {
+    $cropX = 0
+    $cropY = 0
+    $cropW = [int]$json.canvasW
+    $cropH = [int]$json.canvasH
+}
+
+$bmp = New-Object System.Drawing.Bitmap($cropW, $cropH)
 $g = [System.Drawing.Graphics]::FromImage($bmp)
-$g.Clear([System.Drawing.Color]::FromArgb(0x1a, 0x1a, 0x2e))
+$g.Clear([System.Drawing.Color]::FromArgb(0, 0, 0, 0))
 
 $sorted = $json.elements | Sort-Object zIndex
 
 foreach ($el in $sorted) {
-    $x = [int][double]::Parse($el.x)
-    $y = [int][double]::Parse($el.y)
-    $w = [int][double]::Parse($el.w)
-    $h = [int][double]::Parse($el.h)
+    $ex = [int][double]::Parse($el.x)
+    $ey = [int][double]::Parse($el.y)
+    $ew = [int][double]::Parse($el.w)
+    $eh = [int][double]::Parse($el.h)
+    $x = $ex - $cropX
+    $y = $ey - $cropY
+    $w = $ew
+    $h = $eh
 
     if ($el.type -eq "image" -and $el.src) {
         try {
@@ -55,13 +70,12 @@ foreach ($el in $sorted) {
         $format = New-Object System.Drawing.StringFormat
         $align = if ([string]::IsNullOrEmpty($el.align)) { "left" } else { $el.align }
         switch ($align) {
-            "center" { $format.Alignment = [System.Drawing.StringAlignment]::Center; $drawX = $x + $w / 2 }
-            "right"  { $format.Alignment = [System.Drawing.StringAlignment]::Far; $drawX = $x + $w }
-            default  { $format.Alignment = [System.Drawing.StringAlignment]::Near; $drawX = $x + 4 }
+            "center" { $format.Alignment = [System.Drawing.StringAlignment]::Center }
+            "right"  { $format.Alignment = [System.Drawing.StringAlignment]::Far }
+            default  { $format.Alignment = [System.Drawing.StringAlignment]::Near }
         }
         $format.LineAlignment = [System.Drawing.StringAlignment]::Center
-        $drawY = $y + $h / 2
-        $rect = New-Object System.Drawing.RectangleF($drawX, $drawY, $w, $h)
+        $rect = New-Object System.Drawing.RectangleF($x, $y, $w, $h)
         $g.DrawString($el.text, $font, $brush, $rect, $format)
         
         $font.Dispose()
@@ -73,4 +87,4 @@ foreach ($el in $sorted) {
 $g.Dispose()
 $bmp.Save($OutputFile, [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
-Write-Host "Snapshot saved to $OutputFile ($cw x $ch)"
+Write-Host "Snapshot saved to $OutputFile ($cropW x $cropH)"

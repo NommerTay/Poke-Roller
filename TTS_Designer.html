@@ -976,14 +976,18 @@ function exportLua() {
 }
 
 function downloadSnapshot() {
-    const cw = parseInt(document.getElementById('canvasW').value) || 1920;
-    const ch = parseInt(document.getElementById('canvasH').value) || 1080;
+    const boundary = elements.find(function(el) {
+        return el.tags && el.tags.indexOf('panel=') !== -1;
+    });
+    const cropX = boundary ? Math.floor(boundary.x) : 0;
+    const cropY = boundary ? Math.floor(boundary.y) : 0;
+    const cropW = boundary ? Math.floor(boundary.w) : (parseInt(document.getElementById('canvasW').value) || 1920);
+    const cropH = boundary ? Math.floor(boundary.h) : (parseInt(document.getElementById('canvasH').value) || 1080);
     const canvas = document.createElement('canvas');
-    canvas.width = cw;
-    canvas.height = ch;
+    canvas.width = cropW;
+    canvas.height = cropH;
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#1a1a2e';
-    ctx.fillRect(0, 0, cw, ch);
+    ctx.clearRect(0, 0, cropW, cropH);
     const sorted = [...elements].sort(function(a,b) { return a.zIndex - b.zIndex; });
     var promises = sorted.map(function(el) {
         if (el.type === 'image' && el.src) {
@@ -1000,16 +1004,18 @@ function downloadSnapshot() {
     Promise.all(promises).then(function(results) {
         results.forEach(function(item) {
             var el = item.el;
+            var rx = (el.x || 0) - cropX;
+            var ry = (el.y || 0) - cropY;
             if (el.type === 'image' && item.img) {
-                ctx.drawImage(item.img, el.x, el.y, el.w, el.h);
+                ctx.drawImage(item.img, rx, ry, el.w, el.h);
             } else if (el.type === 'text') {
                 var style = (el.bold ? 'bold ' : '') + (el.italic ? 'italic ' : '') + el.size + 'px ' + (el.font || 'sans-serif');
                 ctx.font = style;
                 ctx.fillStyle = el.color || '#ffffff';
                 ctx.textAlign = el.align === 'center' ? 'center' : el.align === 'right' ? 'right' : 'left';
                 ctx.textBaseline = 'middle';
-                var x = el.align === 'center' ? el.x + el.w / 2 : el.align === 'right' ? el.x + el.w : el.x + 4;
-                var y = el.y + el.h / 2;
+                var x = el.align === 'center' ? rx + el.w / 2 : el.align === 'right' ? rx + el.w : rx + 4;
+                var y = ry + el.h / 2;
                 ctx.fillText(el.text || '', x, y);
             }
         });
