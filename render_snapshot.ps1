@@ -76,49 +76,63 @@ foreach ($el in $sorted) {
         } catch {
             Write-Warning "Failed to load: $($el.name) - $($el.src)"
         }
-    } elseif ($el.type -eq "text") {
-        $fontStyle = [System.Drawing.FontStyle]::Regular
-        if ($el.bold -eq $true) { $fontStyle = $fontStyle -bor [System.Drawing.FontStyle]::Bold }
-        if ($el.italic -eq $true) { $fontStyle = $fontStyle -bor [System.Drawing.FontStyle]::Italic }
-        
-        $fontSize = [int][double]::Parse($el.size)
-        $fontName = if ([string]::IsNullOrEmpty($el.font)) { "Georgia" } else { $el.font }
-        
-        try {
-            $font = New-Object System.Drawing.Font($fontName, $fontSize, $fontStyle)
-        } catch {
-            $font = New-Object System.Drawing.Font("Arial", $fontSize, $fontStyle)
-        }
-        
-        $colorCode = if ([string]::IsNullOrEmpty($el.color)) { "#FFFFFF" } else { $el.color }
-        $argb = [System.Drawing.ColorTranslator]::FromHtml($colorCode)
-        $brush = New-Object System.Drawing.SolidBrush($argb)
-        
-        $format = New-Object System.Drawing.StringFormat
-        $align = if ([string]::IsNullOrEmpty($el.align)) { "left" } else { $el.align }
-        switch ($align) {
-            "center" { $format.Alignment = [System.Drawing.StringAlignment]::Center }
-            "right"  { $format.Alignment = [System.Drawing.StringAlignment]::Far }
-            default  { $format.Alignment = [System.Drawing.StringAlignment]::Near }
-        }
-        $format.LineAlignment = [System.Drawing.StringAlignment]::Center
-        $rect = New-Object System.Drawing.RectangleF($x, $y, $w, $h)
-        $g.DrawString($el.text, $font, $brush, $rect, $format)
-        
-        $font.Dispose()
-        $brush.Dispose()
-        $format.Dispose()
     }
 }
 
 $g.Dispose()
 
+$scaleX = 2000.0 / $cropW
+$scaleY = 1300.0 / $cropH
+$scaleF = ($scaleX + $scaleY) / 2.0
+
 $finalBmp = New-Object System.Drawing.Bitmap(2000, 1300)
 $finalG = [System.Drawing.Graphics]::FromImage($finalBmp)
 $finalG.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
 $finalG.DrawImage($bmp, 0, 0, 2000, 1300)
-$finalG.Dispose()
 $bmp.Dispose()
+
+# Render text at final 2000x1300 resolution for crisp quality
+foreach ($el in $sorted) {
+    if ($el.type -ne "text") { continue }
+    $tx = [int]( ([double]::Parse($el.x) - $cropX) * $scaleX )
+    $ty = [int]( ([double]::Parse($el.y) - $cropY) * $scaleY )
+    $tw = [int]( [double]::Parse($el.w) * $scaleX )
+    $th = [int]( [double]::Parse($el.h) * $scaleY )
+    
+    $fontStyle = [System.Drawing.FontStyle]::Regular
+    if ($el.bold -eq $true) { $fontStyle = $fontStyle -bor [System.Drawing.FontStyle]::Bold }
+    if ($el.italic -eq $true) { $fontStyle = $fontStyle -bor [System.Drawing.FontStyle]::Italic }
+    
+    $fontSize = [int]( [double]::Parse($el.size) * $scaleF )
+    $fontName = if ([string]::IsNullOrEmpty($el.font)) { "Georgia" } else { $el.font }
+    
+    try {
+        $font = New-Object System.Drawing.Font($fontName, $fontSize, $fontStyle)
+    } catch {
+        $font = New-Object System.Drawing.Font("Arial", $fontSize, $fontStyle)
+    }
+    
+    $colorCode = if ([string]::IsNullOrEmpty($el.color)) { "#FFFFFF" } else { $el.color }
+    $argb = [System.Drawing.ColorTranslator]::FromHtml($colorCode)
+    $brush = New-Object System.Drawing.SolidBrush($argb)
+    
+    $format = New-Object System.Drawing.StringFormat
+    $align = if ([string]::IsNullOrEmpty($el.align)) { "left" } else { $el.align }
+    switch ($align) {
+        "center" { $format.Alignment = [System.Drawing.StringAlignment]::Center }
+        "right"  { $format.Alignment = [System.Drawing.StringAlignment]::Far }
+        default  { $format.Alignment = [System.Drawing.StringAlignment]::Near }
+    }
+    $format.LineAlignment = [System.Drawing.StringAlignment]::Center
+    $rect = New-Object System.Drawing.RectangleF($tx, $ty, $tw, $th)
+    $finalG.DrawString($el.text, $font, $brush, $rect, $format)
+    
+    $font.Dispose()
+    $brush.Dispose()
+    $format.Dispose()
+}
+
+$finalG.Dispose()
 $finalBmp.Save($OutputFile, [System.Drawing.Imaging.ImageFormat]::Png)
 $finalBmp.Dispose()
 Write-Host "Snapshot saved to $OutputFile (2000 x 1300)"
