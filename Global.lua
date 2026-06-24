@@ -1912,7 +1912,7 @@ local POKEMON_STATS = {
 local pokeview_open = {}
 local pokedex_open = {}
 
-local SNAPSHOT_VER = 18
+local SNAPSHOT_VER = 19
 
 function showPokemonView(color, poke_id, poke_name)
     local snapshot_url = string.format(
