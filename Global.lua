@@ -1939,8 +1939,13 @@ function showPokemonView(color, poke_id, poke_name)
     UI.setAttribute("pokeview_panel_" .. color, "image", snapshot_url)
     UI.setAttribute("pokeview_panel_" .. color, "active", "true")
     UI.setAttribute("pokeview_close_" .. color, "active", "true")
-    UI.setAttribute("pokeview_grassdie_" .. color, "active", "true")
+    for _, id in ipairs({"grassdie", "poisondie", "spatkdie", "spdefdie"}) do
+        UI.setAttribute("pokeview_" .. id .. "_" .. color, "active", "true")
+    end
     UI.setAttribute("pokeview_grassdie_" .. color, "tooltip", "Grass Type Die")
+    UI.setAttribute("pokeview_poisondie_" .. color, "tooltip", "Poison Type Die")
+    UI.setAttribute("pokeview_spatkdie_" .. color, "tooltip", "SP.ATK Stat Die")
+    UI.setAttribute("pokeview_spdefdie_" .. color, "tooltip", "SP.DEF Stat Die")
 
     pokeview_open[color] = true
 
@@ -1955,7 +1960,9 @@ function closePokemonView(player, value, id)
 
     UI.setAttribute("pokeview_panel_" .. color, "active", "false")
     UI.setAttribute("pokeview_close_" .. color, "active", "false")
-    UI.setAttribute("pokeview_grassdie_" .. color, "active", "false")
+    for _, id in ipairs({"grassdie", "poisondie", "spatkdie", "spdefdie"}) do
+        UI.setAttribute("pokeview_" .. id .. "_" .. color, "active", "false")
+    end
     pokeview_open[color] = false
 
     if not pokedex_open[color] then
