@@ -450,6 +450,122 @@ $FAIRY_MOVES = @(
     @{ name="Sweet Kiss";       desc="A sweet kiss that confuses the target.";                                     cat="Status" }
 )
 
+$DARK_MOVES = @(
+    @{ name="Assurance";        desc="A vengeful strike that doubles power if the target was damaged.";              cat="Physical" }
+    @{ name="Baddy Bad";        desc="A bad blast that damages and sets up a protective barrier.";                   cat="Special" }
+    @{ name="Beat Up";          desc="All party members join in to attack the target.";                              cat="Physical" }
+    @{ name="Bite";             desc="A biting attack that may flinch the target.";                                  cat="Physical" }
+    @{ name="Brutal Swing";     desc="A wild swing that damages all nearby Pokemon.";                                cat="Physical" }
+    @{ name="Ceaseless Edge";   desc="A slicing attack that scatters shards to inflict residual damage.";            cat="Physical" }
+    @{ name="Comeuppance";      desc="Deals double damage to the last attacker.";                                    cat="Physical" }
+    @{ name="Crunch";           desc="A crushing bite that may lower the target's Defense.";                         cat="Physical" }
+    @{ name="Dark Pulse";       desc="A dark blast that may flinch the target.";                                    cat="Special" }
+    @{ name="Dark Void";        desc="A dark void that puts multiple targets to sleep.";                             cat="Status" }
+    @{ name="Darkest Lariat";   desc="A spinning lariat that ignores the target's stat changes.";                    cat="Physical" }
+    @{ name="Embargo";          desc="Prevents the target from using its held item.";                                cat="Status" }
+    @{ name="Fake Tears";       desc="A crying act that sharply lowers the target's Sp.Def.";                        cat="Status" }
+    @{ name="False Surrender";  desc="A sneaky strike that never misses the target.";                                cat="Physical" }
+    @{ name="Feint Attack";     desc="A deceptive attack that never misses the target.";                             cat="Physical" }
+    @{ name="Fiery Wrath";      desc="A wrathful blaze that may flinch the target.";                                 cat="Special" }
+    @{ name="Flatter";          desc="Confuses the target but sharply raises its Sp.Atk.";                           cat="Status" }
+    @{ name="Fling";            desc="Throws the user's held item at the target.";                                   cat="Physical" }
+    @{ name="Foul Play";        desc="Attacks using the target's own Attack stat.";                                  cat="Physical" }
+    @{ name="Hone Claws";       desc="Raises the user's Attack and accuracy.";                                       cat="Status" }
+    @{ name="Hyperspace Fury";  desc="A fury of attacks that bypass protection but lower Defense.";                  cat="Special" }
+    @{ name="Jaw Lock";         desc="Locks jaws with the target to trap both in battle.";                           cat="Physical" }
+    @{ name="Knock Off";        desc="Knocks off the target's held item and damages it.";                            cat="Physical" }
+    @{ name="Kowtow Cleave";    desc="A humble cleave that never misses the target.";                                cat="Physical" }
+    @{ name="Lash Out";         desc="A lashing strike that doubles power after a stat drop.";                       cat="Physical" }
+    @{ name="Memento";          desc="The user faints but sharply lowers the target's offenses.";                    cat="Status" }
+    @{ name="Nasty Plot";       desc="A plotting move that sharply raises the user's Sp.Atk.";                       cat="Status" }
+    @{ name="Night Daze";       desc="A dark shock wave that may lower the target's accuracy.";                      cat="Special" }
+    @{ name="Night Slash";      desc="A swift slash with a high critical hit rate.";                                 cat="Physical" }
+    @{ name="Obstruct";         desc="Protects the user and lowers the attacker's Defense on contact.";              cat="Status" }
+    @{ name="Parting Shot";     desc="Lowers the target's offenses and switches the user out.";                      cat="Status" }
+    @{ name="Payback";          desc="A revenge strike that doubles power if the user moves second.";                cat="Physical" }
+    @{ name="Power Trip";       desc="An attack that grows stronger with more raised stats.";                        cat="Physical" }
+    @{ name="Punishment";       desc="An attack that grows stronger with more raised stats.";                        cat="Physical" }
+    @{ name="Pursuit";          desc="A strike that hits harder when the target tries to switch.";                   cat="Physical" }
+    @{ name="Quash";            desc="Forces the target to move last this turn.";                                    cat="Status" }
+    @{ name="Ruination";        desc="A ruinous strike that always cuts the target's HP in half.";                   cat="Special" }
+    @{ name="Snarl";            desc="A snarl that damages and lowers the target's Sp.Atk.";                         cat="Special" }
+    @{ name="Snatch";           desc="Steals the effect of the target's next status move.";                          cat="Status" }
+    @{ name="Sucker Punch";     desc="A sneaky punch that strikes before the target's move.";                        cat="Physical" }
+    @{ name="Switcheroo";       desc="Swaps held items with the target.";                                            cat="Status" }
+    @{ name="Taunt";            desc="Taunts the target, forcing it to use only attacking moves.";                   cat="Status" }
+    @{ name="Thief";            desc="A stealing attack that takes the target's held item.";                         cat="Physical" }
+    @{ name="Throat Chop";      desc="A chopping strike that prevents the target from using sound moves.";           cat="Physical" }
+    @{ name="Topsy-Turvy";      desc="Inverts the target's stat changes.";                                           cat="Status" }
+    @{ name="Torment";          desc="Prevents the target from using the same move twice.";                          cat="Status" }
+    @{ name="Wicked Blow";      desc="A wicked punch that always lands a critical hit.";                             cat="Physical" }
+    @{ name="Wicked Torque";    desc="A wicked attack that may put the target to sleep.";                            cat="Physical" }
+)
+
+$DRAGON_MOVES = @(
+    @{ name="Breaking Swipe";   desc="A sweeping tail that lowers the target's Attack.";                             cat="Physical" }
+    @{ name="Clanging Scales";  desc="A loud clanging scale that lowers the user's Defense.";                       cat="Special" }
+    @{ name="Clangorous Soul";  desc="Raises all of the user's stats by sacrificing some HP.";                      cat="Status" }
+    @{ name="Core Enforcer";    desc="A core blast that suppresses the target's Ability.";                           cat="Special" }
+    @{ name="Draco Meteor";     desc="A meteor shower that sharply lowers the user's Sp.Atk.";                      cat="Special" }
+    @{ name="Dragon Breath";    desc="A breath of dragon fire that may paralyze the target.";                        cat="Special" }
+    @{ name="Dragon Cheer";     desc="A cheer that raises the ally's critical hit rate.";                           cat="Status" }
+    @{ name="Dragon Claw";      desc="A sharp dragon claw that tears at the target.";                                cat="Physical" }
+    @{ name="Dragon Dance";     desc="A dance that raises the user's Attack and Speed.";                             cat="Status" }
+    @{ name="Dragon Darts";     desc="A dart attack that strikes twice in one turn.";                                cat="Physical" }
+    @{ name="Dragon Energy";    desc="A draconic blast stronger when the user has more HP.";                         cat="Special" }
+    @{ name="Dragon Hammer";    desc="A hammer strike using the user's body.";                                       cat="Physical" }
+    @{ name="Dragon Pulse";     desc="A pulse of draconic energy that damages the target.";                          cat="Special" }
+    @{ name="Dragon Rage";      desc="A rage that always inflicts 40 HP of damage.";                                 cat="Special" }
+    @{ name="Dragon Rush";      desc="A devastating charge that may flinch the target.";                             cat="Physical" }
+    @{ name="Dragon Tail";      desc="A tail strike that forces the target to switch out.";                          cat="Physical" }
+    @{ name="Dual Chop";        desc="A double chopping strike that hits twice.";                                    cat="Physical" }
+    @{ name="Dynamax Cannon";   desc="A cannon blast that deals double damage to Dynamax targets.";                  cat="Special" }
+    @{ name="Eternabeam";       desc="An eternal beam that leaves the user unable to move next turn.";               cat="Special" }
+    @{ name="Fickle Beam";      desc="A beam that may sometimes deal double damage.";                                cat="Special" }
+    @{ name="Glaive Rush";      desc="A glaive rush that leaves the user vulnerable to double damage.";              cat="Physical" }
+    @{ name="Nihil Light";      desc="A nihil light that leaves the user unable to move next turn.";                 cat="Special" }
+    @{ name="Order Up";         desc="An order that damages and may raise the user's stats.";                        cat="Physical" }
+    @{ name="Outrage";          desc="A rampage that confuses the user afterward.";                                  cat="Physical" }
+    @{ name="Roar of Time";     desc="A temporal roar that leaves the user unable to move next turn.";               cat="Special" }
+    @{ name="Scale Shot";       desc="A scale shot that hits 2-5 times and raises Speed.";                          cat="Physical" }
+    @{ name="Spacial Rend";     desc="A spatial rend that has a high critical hit rate.";                            cat="Special" }
+    @{ name="Twister";          desc="A twisting wind that may flinch Flying types.";                                cat="Special" }
+)
+
+$BUG_MOVES = @(
+    @{ name="Attack Order";     desc="An order to attack with a high critical hit rate.";                            cat="Physical" }
+    @{ name="Bug Bite";         desc="A biting attack that also eats the target's held berry.";                      cat="Physical" }
+    @{ name="Bug Buzz";         desc="A buzzing sound that may lower the target's Sp.Def.";                          cat="Special" }
+    @{ name="Defend Order";     desc="An order to defend that raises the user's Defense and Sp.Def.";               cat="Status" }
+    @{ name="Fell Stinger";     desc="A stinger that sharply raises the user's Attack if it KOs.";                   cat="Physical" }
+    @{ name="First Impression"; desc="A first-strike attack that only works on the first turn.";                     cat="Physical" }
+    @{ name="Fury Cutter";      desc="A cutter that grows stronger with each consecutive hit.";                      cat="Physical" }
+    @{ name="Heal Order";       desc="An order to heal that restores half of the user's max HP.";                    cat="Status" }
+    @{ name="Infestation";      desc="An infestation that traps and damages the target.";                            cat="Special" }
+    @{ name="Leech Life";       desc="A leeching bite that restores HP from damage dealt.";                          cat="Physical" }
+    @{ name="Lunge";            desc="A lunging strike that lowers the target's Attack.";                             cat="Physical" }
+    @{ name="Megahorn";         desc="A powerful horn strike with immense force.";                                    cat="Physical" }
+    @{ name="Pin Missile";      desc="A missile pin attack that hits 2-5 times.";                                   cat="Physical" }
+    @{ name="Pollen Puff";      desc="A pollen puff that damages foes but heals allies.";                            cat="Special" }
+    @{ name="Pounce";           desc="A pouncing attack that lowers the target's Speed.";                             cat="Physical" }
+    @{ name="Powder";           desc="A powder that causes the target to explode if using a Fire move.";             cat="Status" }
+    @{ name="Quiver Dance";     desc="A dance that raises Sp.Atk, Sp.Def, and Speed.";                               cat="Status" }
+    @{ name="Rage Powder";      desc="A powder that draws attacks to the user in double battles.";                   cat="Status" }
+    @{ name="Signal Beam";      desc="A signal beam that may confuse the target.";                                   cat="Special" }
+    @{ name="Silk Trap";        desc="A silk trap that protects the user and lowers the attacker's Speed.";          cat="Status" }
+    @{ name="Silver Wind";      desc="A silver wind that may raise the user's stats.";                               cat="Special" }
+    @{ name="Skitter Smack";    desc="A skittering smack that lowers the target's Sp.Atk.";                          cat="Physical" }
+    @{ name="Spider Web";       desc="A spider web that prevents the target from fleeing.";                          cat="Status" }
+    @{ name="Steamroller";      desc="A rolling steamroller that may flinch the target.";                             cat="Physical" }
+    @{ name="Sticky Web";       desc="A sticky web that lowers the Speed of incoming foes.";                         cat="Status" }
+    @{ name="String Shot";      desc="A string shot that lowers the target's Speed.";                                cat="Status" }
+    @{ name="Struggle Bug";     desc="A struggle bug that lowers the target's Sp.Atk.";                              cat="Special" }
+    @{ name="Tail Glow";        desc="A tail glow that sharply raises the user's Sp.Atk.";                           cat="Status" }
+    @{ name="Twineedle";        desc="A twin needle attack that hits twice and may poison.";                         cat="Physical" }
+    @{ name="U-turn";           desc="An attack that switches the user out after striking.";                          cat="Physical" }
+    @{ name="X-Scissor";        desc="A cross-shaped slashing attack with sharp scythes.";                           cat="Physical" }
+)
+
 $jsonFiles = @()
 if ($Type -eq "all" -or $Type -eq "normal") {
     foreach ($item in $NORMAL_MOVES) {
@@ -474,6 +590,21 @@ if ($Type -eq "all" -or $Type -eq "electric") {
 if ($Type -eq "all" -or $Type -eq "fairy") {
     foreach ($item in $FAIRY_MOVES) {
         $jsonFiles += New-MoveJson -Move $item -MoveType "Fairy"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "dark") {
+    foreach ($item in $DARK_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Dark"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "dragon") {
+    foreach ($item in $DRAGON_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Dragon"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "bug") {
+    foreach ($item in $BUG_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Bug"
     }
 }
 
