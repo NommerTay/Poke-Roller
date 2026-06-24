@@ -1911,10 +1911,12 @@ local POKEMON_STATS = {
 
 local pokeview_open = {}
 
+local SNAPSHOT_VER = 2
+
 function showPokemonView(color, poke_id, poke_name)
     local snapshot_url = string.format(
-        "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Snapshots/%03d_%s.png",
-        poke_id, poke_name:lower()
+        "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Snapshots/%03d_%s.png?v=%d",
+        poke_id, poke_name:lower(), SNAPSHOT_VER
     )
 
     UI.setAttribute("pokeview_panel_" .. color, "image", snapshot_url)

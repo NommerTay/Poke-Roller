@@ -85,6 +85,13 @@ foreach ($el in $sorted) {
 }
 
 $g.Dispose()
-$bmp.Save($OutputFile, [System.Drawing.Imaging.ImageFormat]::Png)
+
+$finalBmp = New-Object System.Drawing.Bitmap(2000, 1300)
+$finalG = [System.Drawing.Graphics]::FromImage($finalBmp)
+$finalG.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
+$finalG.DrawImage($bmp, 0, 0, 2000, 1300)
+$finalG.Dispose()
 $bmp.Dispose()
-Write-Host "Snapshot saved to $OutputFile ($cropW x $cropH)"
+$finalBmp.Save($OutputFile, [System.Drawing.Imaging.ImageFormat]::Png)
+$finalBmp.Dispose()
+Write-Host "Snapshot saved to $OutputFile (2000 x 1300)"
