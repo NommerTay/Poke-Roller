@@ -23,14 +23,14 @@
       "text": "Attacks the target with a burst of flame.",
       "font": "Georgia", "size": 8, "bold": false, "italic": true,
       "color": "#ffffff", "align": "left",
-      "x": 44, "y": 59, "w": 180, "h": 38, "zIndex": 3
+      "x": 44, "y": 69, "w": 180, "h": 38, "zIndex": 3
     },
     {
       "id": "cost",
       "type": "image",
       "name": "SP.ATK (Dice)",
       "src": "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Stats/SP.ATK.png",
-      "x": 154, "y": 38, "w": 83, "h": 50, "zIndex": 4
+      "x": 174, "y": 38, "w": 83, "h": 50, "zIndex": 4
     }
   ]
 }
