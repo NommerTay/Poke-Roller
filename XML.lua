@@ -787,21 +787,21 @@
 <!-- WHITE -->
 <Panel id="pokeview_panel_White" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="White" />
 <Button id="pokeview_close_White" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="White">✕</Button>
-<Button id="pokeview_grassdie_White" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 -143" width="220" height="205" image="diceType_grass" color="#FFFFFF" highlightedColor="#80FFD700" visibility="White" />
+<Button id="pokeview_grassdie_White" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 121" width="217" height="202" highlightedColor="#80FFD700" visibility="White" />
 
 <!-- RED -->
 <Panel id="pokeview_panel_Red" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="Red" />
 <Button id="pokeview_close_Red" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Red">✕</Button>
-<Button id="pokeview_grassdie_Red" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 -143" width="220" height="205" image="diceType_grass" color="#FFFFFF" highlightedColor="#80FFD700" visibility="Red" />
+<Button id="pokeview_grassdie_Red" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 121" width="217" height="202" highlightedColor="#80FFD700" visibility="Red" />
 
 <!-- BLUE -->
 <Panel id="pokeview_panel_Blue" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="Blue" />
 <Button id="pokeview_close_Blue" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Blue">✕</Button>
-<Button id="pokeview_grassdie_Blue" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 -143" width="220" height="205" image="diceType_grass" color="#FFFFFF" highlightedColor="#80FFD700" visibility="Blue" />
+<Button id="pokeview_grassdie_Blue" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 121" width="217" height="202" highlightedColor="#80FFD700" visibility="Blue" />
 
 <!-- GREEN -->
 <Panel id="pokeview_panel_Green" active="false" rectAlignment="MiddleCenter" offsetXY="0 0" width="2000" height="1300" color="#FFFFFF" padding="0" interactable="false" visibility="Green" />
 <Button id="pokeview_close_Green" onClick="closePokemonView" active="false" rectAlignment="MiddleCenter" offsetXY="930 -600" width="40" height="40" fontSize="20" fontStyle="Bold" color="#1a0000" textColor="#ff6666" highlightedColor="#330000" visibility="Green">✕</Button>
-<Button id="pokeview_grassdie_Green" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 -143" width="220" height="205" image="diceType_grass" color="#FFFFFF" highlightedColor="#80FFD700" visibility="Green" />
+<Button id="pokeview_grassdie_Green" onClick="dieTypeClick" active="false" rectAlignment="MiddleCenter" offsetXY="102 121" width="217" height="202" highlightedColor="#80FFD700" visibility="Green" />
 
 
