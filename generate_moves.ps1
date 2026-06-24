@@ -795,6 +795,143 @@ $STEEL_MOVES = @(
     @{ name="Tachyon Cutter";   desc="A tachyon cutter that always strikes twice.";                        cat="Special" }
 )
 
+$GRASS_MOVES = @(
+    @{ name="Absorb";           desc="An absorb that restores HP from damage dealt.";                       cat="Special" }
+    @{ name="Apple Acid";       desc="An apple acid that lowers the target's Sp.Def.";                     cat="Special" }
+    @{ name="Aromatherapy";     desc="An aromatherapy that heals the party's status conditions.";           cat="Status" }
+    @{ name="Branch Poke";      desc="A branch poke that strikes the target.";                              cat="Physical" }
+    @{ name="Bullet Seed";      desc="A bullet seed that hits the target 2-5 times.";                      cat="Physical" }
+    @{ name="Cotton Guard";     desc="A cotton guard that sharply raises the user's Defense.";             cat="Status" }
+    @{ name="Cotton Spore";     desc="A cotton spore that sharply lowers the target's Speed.";             cat="Status" }
+    @{ name="Drum Beating";     desc="A drum beating that lowers the target's Speed.";                     cat="Physical" }
+    @{ name="Energy Ball";      desc="An energy ball that may lower the target's Sp.Def.";                 cat="Special" }
+    @{ name="Forest's Curse";   desc="A forest's curse that adds Grass type to the target.";               cat="Status" }
+    @{ name="Frenzy Plant";     desc="A frenzy plant that leaves the user unable to move next turn.";      cat="Special" }
+    @{ name="Giga Drain";       desc="A giga drain that restores HP from damage dealt.";                   cat="Special" }
+    @{ name="Grass Knot";       desc="A grass knot that is stronger on heavier targets.";                  cat="Special" }
+    @{ name="Grass Pledge";     desc="A grass pledge that combos with other pledges.";                      cat="Special" }
+    @{ name="Grass Whistle";    desc="A grass whistle that puts the target to sleep.";                     cat="Status" }
+    @{ name="Grassy Glide";     desc="A grassy glide that always strikes first on Grassy Terrain.";        cat="Physical" }
+    @{ name="Grassy Terrain";   desc="A grassy terrain that boosts Grass moves and heals grounded Pokemon."; cat="Status" }
+    @{ name="Grav Apple";       desc="A grav apple that lowers the target's Defense.";                     cat="Physical" }
+    @{ name="Growth";           desc="A growth that raises the user's Attack and Sp.Atk.";                 cat="Status" }
+    @{ name="Horn Leech";       desc="A horn leech that restores HP from damage dealt.";                   cat="Physical" }
+    @{ name="Ingrain";          desc="An ingrain that restores HP each turn but traps the user.";           cat="Status" }
+    @{ name="Ivy Cudgel";       desc="An ivy cudgel that has a high critical hit rate.";                   cat="Physical" }
+    @{ name="Jungle Healing";   desc="A jungle healing that heals status and restores HP.";                 cat="Status" }
+    @{ name="Leaf Blade";       desc="A leaf blade with a high critical hit rate.";                        cat="Physical" }
+    @{ name="Leaf Storm";       desc="A leaf storm that sharply lowers the user's Sp.Atk.";                cat="Special" }
+    @{ name="Leaf Tornado";     desc="A leaf tornado that may lower the target's accuracy.";               cat="Special" }
+    @{ name="Leafage";          desc="A leafage that strikes the target with leaves.";                      cat="Physical" }
+    @{ name="Leech Seed";       desc="A leech seed that drains HP from the target each turn.";             cat="Status" }
+    @{ name="Magical Leaf";     desc="A magical leaf that never misses the target.";                       cat="Special" }
+    @{ name="Mega Drain";       desc="A mega drain that restores HP from damage dealt.";                   cat="Special" }
+    @{ name="Needle Arm";       desc="A needle arm that may flinch the target.";                           cat="Physical" }
+    @{ name="Petal Blizzard";   desc="A petal blizzard that damages all nearby Pokemon.";                  cat="Physical" }
+    @{ name="Petal Dance";      desc="A petal dance that confuses the user after 2-3 turns.";              cat="Special" }
+    @{ name="Power Whip";       desc="A power whip that strikes the target with a sharp vine.";            cat="Physical" }
+    @{ name="Razor Leaf";       desc="A razor leaf with a high critical hit rate.";                        cat="Physical" }
+    @{ name="Seed Bomb";        desc="A seed bomb that strikes the target with seeds.";                    cat="Physical" }
+    @{ name="Seed Flare";       desc="A seed flare that may sharply lower the target's Sp.Def.";           cat="Special" }
+    @{ name="Sleep Powder";     desc="A sleep powder that puts the target to sleep.";                      cat="Status" }
+    @{ name="Solar Beam";       desc="A solar beam that charges on the first turn.";                       cat="Special" }
+    @{ name="Solar Blade";      desc="A solar blade that charges on the first turn.";                      cat="Physical" }
+    @{ name="Spiky Shield";     desc="A spiky shield that protects and damages attackers.";                cat="Status" }
+    @{ name="Spore";            desc="A spore that puts the target to sleep.";                              cat="Status" }
+    @{ name="Strength Sap";     desc="A strength sap that heals and lowers the target's Attack.";          cat="Status" }
+    @{ name="Stun Spore";       desc="A stun spore that paralyzes the target.";                            cat="Status" }
+    @{ name="Synthesis";        desc="A synthesis that restores HP based on the weather.";                  cat="Status" }
+    @{ name="Trailblaze";       desc="A trailblaze that raises the user's Speed.";                         cat="Physical" }
+    @{ name="Trop Kick";        desc="A trop kick that lowers the target's Attack.";                       cat="Physical" }
+    @{ name="Vine Whip";        desc="A vine whip that lashes the target with vines.";                     cat="Physical" }
+    @{ name="Wood Hammer";      desc="A wood hammer that deals heavy recoil damage.";                      cat="Physical" }
+    @{ name="Worry Seed";       desc="A worry seed that changes the target's Ability to Insomnia.";        cat="Status" }
+)
+
+$POISON_MOVES = @(
+    @{ name="Acid";             desc="An acid that may lower the target's Sp.Def.";                        cat="Special" }
+    @{ name="Acid Armor";       desc="An acid armor that sharply raises the user's Defense.";             cat="Status" }
+    @{ name="Acid Spray";       desc="An acid spray that sharply lowers the target's Sp.Def.";            cat="Special" }
+    @{ name="Baneful Bunker";   desc="A baneful bunker that protects and poisons attackers.";              cat="Status" }
+    @{ name="Barb Barrage";     desc="A barb barrage that may poison the target.";                         cat="Physical" }
+    @{ name="Belch";            desc="A belch that can only be used after eating a berry.";                 cat="Special" }
+    @{ name="Clear Smog";       desc="A clear smog that resets the target's stat changes.";                cat="Special" }
+    @{ name="Coil";             desc="A coil that raises Attack, Defense, and accuracy.";                  cat="Status" }
+    @{ name="Corrosive Gas";    desc="A corrosive gas that melts the target's held item.";                 cat="Status" }
+    @{ name="Cross Poison";     desc="A cross poison with a high critical hit rate that may poison.";      cat="Physical" }
+    @{ name="Dire Claw";        desc="A dire claw that may poison, paralyze, or put to sleep.";            cat="Physical" }
+    @{ name="Gastro Acid";      desc="A gastro acid that suppresses the target's Ability.";                cat="Status" }
+    @{ name="Gunk Shot";        desc="A gunk shot that may poison the target.";                            cat="Physical" }
+    @{ name="Malignant Chain";  desc="A malignant chain that may badly poison the target.";                cat="Special" }
+    @{ name="Mortal Spin";      desc="A mortal spin that poisons the target and removes hazards.";         cat="Physical" }
+    @{ name="Noxious Torque";   desc="A noxious torque that may poison the target.";                       cat="Physical" }
+    @{ name="Poison Fang";      desc="A poison fang that may badly poison the target.";                    cat="Physical" }
+    @{ name="Poison Gas";       desc="A poison gas that poisons the target.";                              cat="Status" }
+    @{ name="Poison Jab";       desc="A poison jab that may poison the target.";                           cat="Physical" }
+    @{ name="Poison Powder";    desc="A poison powder that poisons the target.";                           cat="Status" }
+    @{ name="Poison Sting";     desc="A poison sting that may poison the target.";                         cat="Physical" }
+    @{ name="Poison Tail";      desc="A poison tail with a high critical hit rate that may poison.";       cat="Physical" }
+    @{ name="Purify";           desc="A purify that heals the target's status and restores HP.";            cat="Status" }
+    @{ name="Shell Side Arm";   desc="A shell side arm that may poison the target.";                       cat="Special" }
+    @{ name="Sludge";           desc="A sludge that may poison the target.";                                cat="Special" }
+    @{ name="Sludge Bomb";      desc="A sludge bomb that may poison the target.";                           cat="Special" }
+    @{ name="Sludge Wave";      desc="A sludge wave that may poison the target.";                           cat="Special" }
+    @{ name="Smog";             desc="A smog that may poison the target.";                                  cat="Special" }
+    @{ name="Toxic";            desc="A toxic that badly poisons the target.";                              cat="Status" }
+    @{ name="Toxic Spikes";     desc="A toxic spike trap that poisons incoming foes.";                      cat="Status" }
+    @{ name="Toxic Thread";     desc="A toxic thread that poisons the target and lowers Speed.";            cat="Status" }
+    @{ name="Venom Drench";     desc="A venom drench that lowers offenses of poisoned targets.";            cat="Status" }
+    @{ name="Venoshock";        desc="A venoshock that doubles power on poisoned targets.";                cat="Special" }
+)
+
+$WATER_MOVES = @(
+    @{ name="Aqua Cutter";      desc="An aqua cutter with a high critical hit rate.";                      cat="Physical" }
+    @{ name="Aqua Jet";         desc="An aqua jet that always strikes first.";                              cat="Physical" }
+    @{ name="Aqua Ring";        desc="An aqua ring that restores a little HP each turn.";                  cat="Status" }
+    @{ name="Aqua Step";        desc="An aqua step that raises the user's Speed.";                         cat="Physical" }
+    @{ name="Aqua Tail";        desc="An aqua tail that strikes the target with a tail.";                  cat="Physical" }
+    @{ name="Bouncy Bubble";    desc="A bouncy bubble that restores HP from damage dealt.";                cat="Special" }
+    @{ name="Brine";            desc="A brine that doubles power on targets with less than half HP.";       cat="Special" }
+    @{ name="Bubble";           desc="A bubble that may lower the target's Speed.";                        cat="Special" }
+    @{ name="Bubble Beam";      desc="A bubble beam that may lower the target's Speed.";                   cat="Special" }
+    @{ name="Chilling Water";   desc="A chilling water that lowers the target's Attack.";                 cat="Special" }
+    @{ name="Clamp";            desc="A clamp that traps the target for 4-5 turns.";                       cat="Physical" }
+    @{ name="Crabhammer";       desc="A crabhammer with a high critical hit rate.";                        cat="Physical" }
+    @{ name="Fishious Rend";    desc="A fishious rend that doubles power if the user moves first.";        cat="Physical" }
+    @{ name="Flip Turn";        desc="A flip turn that switches the user out after striking.";             cat="Physical" }
+    @{ name="Hydro Cannon";     desc="A hydro cannon that leaves the user unable to move next turn.";      cat="Special" }
+    @{ name="Hydro Pump";       desc="A hydro pump that blasts the target with high-pressure water.";       cat="Special" }
+    @{ name="Hydro Steam";      desc="A hydro steam that is boosted in harsh sunlight.";                   cat="Special" }
+    @{ name="Life Dew";         desc="A life dew that restores HP for the user and its allies.";            cat="Status" }
+    @{ name="Liquidation";      desc="A liquidation that may lower the target's Defense.";                cat="Physical" }
+    @{ name="Muddy Water";      desc="A muddy water that may lower the target's accuracy.";                cat="Special" }
+    @{ name="Octazooka";        desc="An octazooka that may lower the target's accuracy.";                 cat="Special" }
+    @{ name="Origin Pulse";     desc="An origin pulse that strikes all foes with a pulse of water.";       cat="Special" }
+    @{ name="Rain Dance";       desc="A rain dance that powers up Water moves for 5 turns.";               cat="Status" }
+    @{ name="Razor Shell";      desc="A razor shell that may lower the target's Defense.";                cat="Physical" }
+    @{ name="Scald";            desc="A scald that may burn the target.";                                  cat="Special" }
+    @{ name="Shell Smash";      desc="A shell smash that sharply raises offenses and lowers defenses.";     cat="Status" }
+    @{ name="Shell Trap";       desc="A shell trap that explodes if the target uses a physical move.";     cat="Special" }
+    @{ name="Snipe Shot";       desc="A snipe shot that ignores redirecting effects.";                     cat="Special" }
+    @{ name="Soak";             desc="A soak that changes the target's type to Water.";                    cat="Status" }
+    @{ name="Splishy Splash";   desc="A splishy splash that may paralyze the target.";                    cat="Special" }
+    @{ name="Steam Eruption";   desc="A steam eruption that may burn the target.";                         cat="Special" }
+    @{ name="Surging Strikes";  desc="A surging strike that hits 3 times and always crits.";               cat="Physical" }
+    @{ name="Surf";             desc="A surf that damages all nearby Pokemon.";                            cat="Special" }
+    @{ name="Tearful Look";     desc="A tearful look that lowers the target's Attack and Sp.Atk.";         cat="Status" }
+    @{ name="Triple Dive";      desc="A triple dive that strikes the target 3 times.";                    cat="Physical" }
+    @{ name="Water Gun";        desc="A water gun that shoots water at the target.";                       cat="Special" }
+    @{ name="Water Pledge";     desc="A water pledge that combos with other pledges.";                     cat="Special" }
+    @{ name="Water Pulse";      desc="A water pulse that may confuse the target.";                         cat="Special" }
+    @{ name="Water Shuriken";   desc="A water shuriken that hits 2-5 times and always strikes first.";    cat="Special" }
+    @{ name="Water Sport";      desc="A water sport that weakens Fire moves.";                             cat="Status" }
+    @{ name="Water Spout";      desc="A water spout that is stronger with more HP.";                       cat="Special" }
+    @{ name="Waterfall";        desc="A waterfall that may flinch the target.";                            cat="Physical" }
+    @{ name="Wave Crash";       desc="A wave crash that deals heavy recoil damage.";                       cat="Physical" }
+    @{ name="Whirlpool";        desc="A whirlpool that traps the target for 4-5 turns.";                  cat="Special" }
+    @{ name="Withdraw";         desc="A withdraw that raises the user's Defense.";                         cat="Status" }
+)
+
 $jsonFiles = @()
 if ($Type -eq "all" -or $Type -eq "normal") {
     foreach ($item in $NORMAL_MOVES) {
@@ -869,6 +1006,21 @@ if ($Type -eq "all" -or $Type -eq "rock") {
 if ($Type -eq "all" -or $Type -eq "steel") {
     foreach ($item in $STEEL_MOVES) {
         $jsonFiles += New-MoveJson -Move $item -MoveType "Steel"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "grass") {
+    foreach ($item in $GRASS_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Grass"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "poison") {
+    foreach ($item in $POISON_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Poison"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "water") {
+    foreach ($item in $WATER_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Water"
     }
 }
 
