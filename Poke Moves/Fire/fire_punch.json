@@ -1,0 +1,36 @@
+{
+  "canvasW": 265,
+  "canvasH": 165,
+  "elements": [
+    {
+      "id": "bg",
+      "type": "image",
+      "name": "Fire Moves",
+      "src": "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Fire%20Moves.png",
+      "x": 0, "y": 0, "w": 265, "h": 165, "zIndex": 1
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "text": "Fire Punch",
+      "font": "Georgia", "size": 12, "bold": true, "italic": false,
+      "color": "#ffffff", "align": "left",
+      "x": 44, "y": 50, "w": 165, "h": 43, "zIndex": 2
+    },
+    {
+      "id": "desc",
+      "type": "text",
+      "text": "A fiery fist punch that may burn the target.",
+      "font": "Georgia", "size": 8, "bold": false, "italic": true,
+      "color": "#ffffff", "align": "left",
+      "x": 44, "y": 69, "w": 180, "h": 38, "zIndex": 3
+    },
+    {
+      "id": "cost",
+      "type": "image",
+      "name": "ATK (Dice)",
+      "src": "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Stats/ATK.png",
+      "x": 140, "y": 48, "w": 83, "h": 50, "zIndex": 4
+    }
+  ]
+}
