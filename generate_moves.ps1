@@ -373,6 +373,83 @@ $PSYCHIC_MOVES = @(
     @{ name="Zen Headbutt";     desc="A psychic headbutt that may flinch the target.";                      cat="Physical" }
 )
 
+$ELECTRIC_MOVES = @(
+    @{ name="Aura Wheel";       desc="An energy wheel attack that changes type with the user's form.";             cat="Physical" }
+    @{ name="Bolt Beak";        desc="A powerful beak strike that goes first when the user is faster.";            cat="Physical" }
+    @{ name="Bolt Strike";      desc="A powerful lightning strike that may paralyze.";                              cat="Physical" }
+    @{ name="Buzzy Buzz";       desc="A buzzing shock that always paralyzes the target.";                           cat="Special" }
+    @{ name="Charge";           desc="Raises Sp.Def and powers up the next Electric move.";                         cat="Status" }
+    @{ name="Charge Beam";      desc="A beam that may raise the user's Sp.Atk.";                                   cat="Special" }
+    @{ name="Discharge";        desc="A burst of electricity that may paralyze.";                                  cat="Special" }
+    @{ name="Double Shock";     desc="A double shock that removes the user's Electric type.";                      cat="Physical" }
+    @{ name="Eerie Impulse";    desc="Sharply lowers the target's Sp.Atk.";                                        cat="Status" }
+    @{ name="Electric Terrain"; desc="A terrain that boosts Electric moves and prevents sleep.";                   cat="Status" }
+    @{ name="Electrify";        desc="Changes the target's move to Electric type.";                                 cat="Status" }
+    @{ name="Electro Ball";     desc="A ball of electricity stronger when the user is faster.";                    cat="Special" }
+    @{ name="Electro Drift";    desc="A electric charge that is boosted even more if super-effective.";             cat="Special" }
+    @{ name="Electro Shot";     desc="Charges on first turn and attacks on the second.";                           cat="Special" }
+    @{ name="Electroweb";       desc="An electric net that traps and lowers Speed.";                               cat="Special" }
+    @{ name="Fusion Bolt";      desc="A fusion bolt that doubles power after Fusion Flare.";                       cat="Physical" }
+    @{ name="Ion Deluge";       desc="Changes Normal-type moves to Electric type.";                                cat="Status" }
+    @{ name="Magnet Rise";      desc="The user levitates to avoid Ground moves for 5 turns.";                      cat="Status" }
+    @{ name="Magnetic Flux";    desc="Raises Defense and Sp.Def of allies with Plus or Minus.";                    cat="Status" }
+    @{ name="Nuzzle";           desc="A cute nuzzle that always paralyzes the target.";                             cat="Physical" }
+    @{ name="Overdrive";        desc="A loud guitar riff that damages all nearby foes.";                            cat="Special" }
+    @{ name="Parabolic Charge"; desc="An electric charge that restores HP from damage dealt.";                     cat="Special" }
+    @{ name="Pika Papow";       desc="A Pikachu-exclusive move that powers up with friendship.";                   cat="Special" }
+    @{ name="Plasma Fists";     desc="A plasma punch that changes Normal moves to Electric type.";                 cat="Physical" }
+    @{ name="Rising Voltage";   desc="An electric rise that doubles power on Electric Terrain.";                   cat="Special" }
+    @{ name="Shock Wave";       desc="A shock wave that never misses the target.";                                 cat="Special" }
+    @{ name="Spark";            desc="A sparking attack that may paralyze the target.";                             cat="Physical" }
+    @{ name="Supercell Slam";   desc="A powerful slam that damages the user if it misses.";                        cat="Physical" }
+    @{ name="Thunder";          desc="A massive lightning bolt that may paralyze.";                                cat="Special" }
+    @{ name="Thunder Cage";     desc="An electric cage that traps the target for 4-5 turns.";                      cat="Special" }
+    @{ name="Thunder Fang";     desc="An electrified fang that may paralyze or flinch.";                           cat="Physical" }
+    @{ name="Thunder Punch";    desc="An electrified punch that may paralyze the target.";                          cat="Physical" }
+    @{ name="Thunder Shock";    desc="A jolt of electricity that may paralyze the target.";                        cat="Special" }
+    @{ name="Thunder Wave";     desc="A gentle wave that paralyzes the target.";                                   cat="Status" }
+    @{ name="Thunderbolt";      desc="A strong electric blast that may paralyze the target.";                      cat="Special" }
+    @{ name="Thunderclap";      desc="A thunderclap that strikes before the target's move.";                       cat="Special" }
+    @{ name="Volt Switch";      desc="An electric attack that switches the user out.";                              cat="Special" }
+    @{ name="Volt Tackle";      desc="A reckless tackle that deals heavy recoil damage.";                           cat="Physical" }
+    @{ name="Wild Charge";      desc="A reckless charge that deals recoil damage.";                                cat="Physical" }
+    @{ name="Wildbolt Storm";   desc="A wild storm that may paralyze the target.";                                 cat="Special" }
+    @{ name="Zap Cannon";       desc="A powerful cannon that always paralyzes but may miss.";                      cat="Special" }
+    @{ name="Zing Zap";         desc="A sparking zap that may flinch the target.";                                  cat="Physical" }
+    @{ name="Zippy Zap";        desc="A zippy zap that always goes first and raises evasiveness.";                 cat="Physical" }
+)
+
+$FAIRY_MOVES = @(
+    @{ name="Alluring Voice";   desc="A voice that confuses the target if its stats were raised.";                cat="Special" }
+    @{ name="Aromatic Mist";    desc="Raises the Sp.Def of an ally.";                                              cat="Status" }
+    @{ name="Baby-Doll Eyes";   desc="Lowers the target's Attack and always goes first.";                          cat="Status" }
+    @{ name="Charm";            desc="Sharply lowers the target's Attack.";                                        cat="Status" }
+    @{ name="Crafty Shield";    desc="Protects allies from status moves in double battles.";                       cat="Status" }
+    @{ name="Dazzling Gleam";   desc="A dazzling flash of light that damages all foes.";                            cat="Special" }
+    @{ name="Decorate";         desc="Sharply raises the target's Attack and Sp.Atk.";                              cat="Status" }
+    @{ name="Disarming Voice";  desc="A sweet voice that never misses the target.";                                cat="Special" }
+    @{ name="Draining Kiss";    desc="A kiss that restores HP from damage dealt.";                                 cat="Special" }
+    @{ name="Fairy Lock";       desc="Prevents all Pokemon from fleeing for the next turn.";                       cat="Status" }
+    @{ name="Fairy Wind";       desc="A gentle fairy wind that strikes the target.";                               cat="Special" }
+    @{ name="Fleur Cannon";     desc="A powerful beam that sharply lowers the user's Sp.Atk.";                     cat="Special" }
+    @{ name="Floral Healing";   desc="Heals the target based on the terrain.";                                     cat="Status" }
+    @{ name="Flower Shield";    desc="Raises the Defense of all Grass-type Pokemon.";                              cat="Status" }
+    @{ name="Geomancy";         desc="Charges then sharply raises Sp.Atk, Sp.Def, and Speed.";                    cat="Status" }
+    @{ name="Light of Ruin";    desc="A devastating light attack that deals heavy recoil.";                        cat="Special" }
+    @{ name="Magical Torque";   desc="A magical attack that may confuse the target.";                              cat="Physical" }
+    @{ name="Misty Explosion";  desc="An explosion that faints the user, boosted by Misty Terrain.";               cat="Special" }
+    @{ name="Misty Terrain";    desc="A terrain that weakens Dragon moves and prevents status.";                   cat="Status" }
+    @{ name="Moonblast";        desc="A lunar blast that may lower the target's Sp.Atk.";                          cat="Special" }
+    @{ name="Moonlight";        desc="Heals the user based on the weather.";                                       cat="Status" }
+    @{ name="Nature's Madness"; desc="A nature strike that always cuts HP in half.";                               cat="Special" }
+    @{ name="Play Rough";       desc="A rough play attack that may lower the target's Attack.";                    cat="Physical" }
+    @{ name="Sparkly Swirl";    desc="A sparkly swirl that heals the user's status conditions.";                   cat="Special" }
+    @{ name="Spirit Break";     desc="A spirit-breaking strike that lowers the target's Sp.Atk.";                  cat="Physical" }
+    @{ name="Springtide Storm"; desc="A spring storm that may lower the target's Attack.";                         cat="Special" }
+    @{ name="Strange Steam";    desc="A strange steam that may confuse the target.";                               cat="Special" }
+    @{ name="Sweet Kiss";       desc="A sweet kiss that confuses the target.";                                     cat="Status" }
+)
+
 $jsonFiles = @()
 if ($Type -eq "all" -or $Type -eq "normal") {
     foreach ($item in $NORMAL_MOVES) {
@@ -387,6 +464,16 @@ if ($Type -eq "all" -or $Type -eq "fire") {
 if ($Type -eq "all" -or $Type -eq "psychic") {
     foreach ($item in $PSYCHIC_MOVES) {
         $jsonFiles += New-MoveJson -Move $item -MoveType "Psychic"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "electric") {
+    foreach ($item in $ELECTRIC_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Electric"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "fairy") {
+    foreach ($item in $FAIRY_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Fairy"
     }
 }
 
