@@ -1939,6 +1939,8 @@ function showPokemonView(color, poke_id, poke_name)
     UI.setAttribute("pokeview_panel_" .. color, "image", snapshot_url)
     UI.setAttribute("pokeview_panel_" .. color, "active", "true")
     UI.setAttribute("pokeview_close_" .. color, "active", "true")
+    UI.setAttribute("pokeview_grassdie_" .. color, "active", "true")
+    UI.setAttribute("pokeview_grassdie_" .. color, "tooltip", "Grass Type Die")
 
     pokeview_open[color] = true
 
@@ -1953,11 +1955,16 @@ function closePokemonView(player, value, id)
 
     UI.setAttribute("pokeview_panel_" .. color, "active", "false")
     UI.setAttribute("pokeview_close_" .. color, "active", "false")
+    UI.setAttribute("pokeview_grassdie_" .. color, "active", "false")
     pokeview_open[color] = false
 
     if not pokedex_open[color] then
         togglePokedex(color)
     end
+end
+
+function dieTypeClick(player, value, id)
+    broadcastToColor("hello", player, {1, 1, 1})
 end
 
 -- ── POKEDEX ─────────────────────────────────────────────────
