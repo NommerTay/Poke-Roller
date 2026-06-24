@@ -566,6 +566,148 @@ $BUG_MOVES = @(
     @{ name="X-Scissor";        desc="A cross-shaped slashing attack with sharp scythes.";                           cat="Physical" }
 )
 
+$GROUND_MOVES = @(
+    @{ name="Bone Club";        desc="A bone club that may make the target flinch.";                     cat="Physical" }
+    @{ name="Bone Rush";        desc="A bone rush that hits the target 2-5 times.";                     cat="Physical" }
+    @{ name="Bonemerang";       desc="A bonemerang that hits the target twice.";                        cat="Physical" }
+    @{ name="Bulldoze";         desc="A bulldoze that lowers the target's Speed.";                       cat="Physical" }
+    @{ name="Dig";              desc="A dig that strikes on the second turn.";                           cat="Physical" }
+    @{ name="Drill Run";        desc="A drill run with a high critical hit rate.";                       cat="Physical" }
+    @{ name="Earth Power";      desc="An earth power that may lower Sp.Def.";                           cat="Special" }
+    @{ name="Earthquake";       desc="An earthquake that damages all nearby Pokemon.";                   cat="Physical" }
+    @{ name="Fissure";          desc="A fissure that causes a one-hit KO.";                              cat="Physical" }
+    @{ name="Headlong Rush";    desc="A headlong rush that lowers the user's defenses.";                cat="Physical" }
+    @{ name="High Horsepower";  desc="A high horsepower strike at the target.";                         cat="Physical" }
+    @{ name="Land's Wrath";     desc="A wrath of the land that strikes the target.";                     cat="Physical" }
+    @{ name="Magnitude";        desc="A magnitude quake of varying strength.";                           cat="Physical" }
+    @{ name="Mighty Cleave";    desc="A mighty cleave that never misses.";                               cat="Physical" }
+    @{ name="Mud Bomb";         desc="A mud bomb that may lower the target's accuracy.";                 cat="Special" }
+    @{ name="Mud Shot";         desc="A mud shot that lowers the target's Speed.";                      cat="Special" }
+    @{ name="Mud Sport";        desc="A mud sport that weakens Electric moves.";                         cat="Status" }
+    @{ name="Mud-Slap";         desc="A mud slap that lowers the target's accuracy.";                    cat="Special" }
+    @{ name="Precipice Blades"; desc="A precipice blade that strikes the target with great force.";      cat="Physical" }
+    @{ name="Rototiller";       desc="A rototiller that raises the Attack and Sp.Atk of Grass types.";   cat="Status" }
+    @{ name="Sand Attack";      desc="A sand attack that lowers the target's accuracy.";                 cat="Status" }
+    @{ name="Sand Tomb";        desc="A sand tomb that traps the target for 4-5 turns.";                cat="Physical" }
+    @{ name="Scorching Sands";  desc="A scorching sand that may burn the target.";                       cat="Special" }
+    @{ name="Shore Up";         desc="A shore up that heals the user based on the weather.";             cat="Status" }
+    @{ name="Spikes";           desc="A spike trap that damages incoming foes.";                          cat="Status" }
+    @{ name="Stomping Tantrum"; desc="A stomping tantrum that doubles power after a miss.";              cat="Physical" }
+    @{ name="Thousand Arrows";  desc="A thousand arrows that can hit Flying types.";                     cat="Physical" }
+    @{ name="Thousand Waves";   desc="A thousand waves that trap the target.";                           cat="Physical" }
+)
+
+$FIGHTING_MOVES = @(
+    @{ name="Arm Thrust";       desc="An arm thrust that hits the target 2-5 times.";                   cat="Physical" }
+    @{ name="Aura Sphere";      desc="An aura sphere that never misses the target.";                     cat="Special" }
+    @{ name="Body Press";       desc="A body press that uses the user's Defense stat.";                  cat="Physical" }
+    @{ name="Brick Break";      desc="A brick break that shatters barriers.";                            cat="Physical" }
+    @{ name="Circle Throw";     desc="A circle throw that forces the target to switch.";                 cat="Physical" }
+    @{ name="Close Combat";     desc="A close combat that lowers the user's defenses.";                  cat="Physical" }
+    @{ name="Coaching";         desc="A coaching call that raises the ally's Attack and Defense.";       cat="Status" }
+    @{ name="Collision Course"; desc="A collision course that is boosted when super-effective.";         cat="Physical" }
+    @{ name="Counter";          desc="A counter that returns physical damage in kind.";                  cat="Physical" }
+    @{ name="Cross Chop";       desc="A cross chop with a high critical hit rate.";                      cat="Physical" }
+    @{ name="Detect";           desc="A detect that protects the user from attacks.";                    cat="Status" }
+    @{ name="Double Iron Bash"; desc="A double iron bash that hits twice and may flinch.";               cat="Physical" }
+    @{ name="Double Kick";      desc="A double kick that strikes the target twice.";                     cat="Physical" }
+    @{ name="Drain Punch";      desc="A drain punch that restores HP from damage dealt.";                cat="Physical" }
+    @{ name="Dynamic Punch";    desc="A dynamic punch that always confuses the target.";                 cat="Physical" }
+    @{ name="Final Gambit";     desc="A final gambit that deals damage equal to the user's HP.";         cat="Special" }
+    @{ name="Flying Press";     desc="A flying press that is part Fighting and part Flying.";            cat="Physical" }
+    @{ name="Focus Blast";      desc="A focus blast that may lower the target's Sp.Def.";               cat="Special" }
+    @{ name="Focus Punch";      desc="A focus punch that fails if the user is hit first.";               cat="Physical" }
+    @{ name="Force Palm";       desc="A force palm that may paralyze the target.";                       cat="Physical" }
+    @{ name="High Jump Kick";   desc="A high jump kick that hurts the user if it misses.";               cat="Physical" }
+    @{ name="Jump Kick";        desc="A jump kick that hurts the user if it misses.";                    cat="Physical" }
+    @{ name="Karate Chop";      desc="A karate chop with a high critical hit rate.";                     cat="Physical" }
+    @{ name="Low Kick";         desc="A low kick that is stronger on heavier targets.";                  cat="Physical" }
+    @{ name="Low Sweep";        desc="A low sweep that lowers the target's Speed.";                      cat="Physical" }
+    @{ name="Mach Punch";       desc="A mach punch that always strikes first.";                          cat="Physical" }
+    @{ name="Mat Block";        desc="A mat block that protects the user from attacks.";                cat="Status" }
+    @{ name="Meteor Mash";      desc="A meteor mash that may raise the user's Attack.";                  cat="Physical" }
+    @{ name="No Retreat";       desc="A no-retreat stance that raises all stats but traps the user.";    cat="Status" }
+    @{ name="Octolock";         desc="An octolock that lowers the target's defenses each turn.";          cat="Status" }
+    @{ name="Power-Up Punch";   desc="A power-up punch that raises the user's Attack.";                  cat="Physical" }
+    @{ name="Quick Guard";      desc="A quick guard that protects from priority moves.";                 cat="Status" }
+    @{ name="Revenge";          desc="A revenge strike that doubles power if the user was hit.";         cat="Physical" }
+    @{ name="Reversal";         desc="A reversal that is stronger with less HP.";                        cat="Physical" }
+    @{ name="Rock Smash";       desc="A rock smash that may lower the target's Defense.";               cat="Physical" }
+    @{ name="Rolling Kick";     desc="A rolling kick that may flinch the target.";                       cat="Physical" }
+    @{ name="Sacred Sword";     desc="A sacred sword that ignores the target's stat changes.";           cat="Physical" }
+    @{ name="Secret Sword";     desc="A secret sword that damages using the target's Defense.";          cat="Special" }
+    @{ name="Seismic Toss";     desc="A seismic toss that deals damage equal to the user's level.";      cat="Physical" }
+    @{ name="Sky Uppercut";     desc="A sky uppercut that can hit Flying targets.";                      cat="Physical" }
+    @{ name="Storm Throw";      desc="A storm throw that always lands a critical hit.";                  cat="Physical" }
+    @{ name="Submission";       desc="A submission that deals recoil damage to the user.";               cat="Physical" }
+    @{ name="Superpower";       desc="A superpower that lowers the user's Attack and Defense.";          cat="Physical" }
+    @{ name="Triple Arrows";    desc="A triple arrow that may lower Defense or flinch.";                 cat="Physical" }
+    @{ name="Triple Kick";      desc="A triple kick that grows stronger with each hit.";                 cat="Physical" }
+    @{ name="Upper Hand";       desc="An upper hand that strikes before the target's priority move.";    cat="Physical" }
+    @{ name="Vacuum Wave";      desc="A vacuum wave that always strikes first.";                         cat="Special" }
+    @{ name="Vital Throw";      desc="A vital throw that always moves last but never misses.";           cat="Physical" }
+    @{ name="Wake-Up Slap";     desc="A wake-up slap that deals double damage to sleeping targets.";     cat="Physical" }
+)
+
+$GHOST_MOVES = @(
+    @{ name="Astonish";         desc="An astonishing attack that may flinch the target.";                cat="Physical" }
+    @{ name="Astral Barrage";   desc="An astral barrage that strikes multiple targets.";                 cat="Special" }
+    @{ name="Confuse Ray";      desc="A confuse ray that confuses the target.";                          cat="Status" }
+    @{ name="Curse";            desc="A curse that slowly drains the target's HP.";                      cat="Status" }
+    @{ name="Destiny Bond";     desc="A destiny bond that faints the user if it faints.";                cat="Status" }
+    @{ name="Grudge";           desc="A grudge that depletes the move that faints the user.";            cat="Status" }
+    @{ name="Hex";              desc="A hex that doubles power on targets with status.";                 cat="Special" }
+    @{ name="Infernal Parade";  desc="An infernal parade that may burn the target.";                     cat="Special" }
+    @{ name="Last Respects";    desc="A last respects strike that grows with each fallen ally.";         cat="Physical" }
+    @{ name="Lick";             desc="A lick that may paralyze the target.";                              cat="Physical" }
+    @{ name="Moongeist Beam";   desc="A moongeist beam that ignores the target's Ability.";              cat="Special" }
+    @{ name="Night Shade";      desc="A night shade that deals damage equal to the user's level.";       cat="Special" }
+    @{ name="Nightmare";        desc="A nightmare that damages sleeping targets each turn.";             cat="Status" }
+    @{ name="Ominous Wind";     desc="An ominous wind that may raise all of the user's stats.";          cat="Special" }
+    @{ name="Phantom Force";    desc="A phantom force that strikes on the second turn.";                 cat="Physical" }
+    @{ name="Poltergeist";      desc="A poltergeist that hurls the target's held item.";                 cat="Physical" }
+    @{ name="Rage Fist";        desc="A rage fist that grows stronger with each hit taken.";             cat="Physical" }
+    @{ name="Shadow Ball";      desc="A shadow ball that may lower the target's Sp.Def.";               cat="Special" }
+    @{ name="Shadow Bone";      desc="A shadow bone that may lower the target's Defense.";              cat="Physical" }
+    @{ name="Shadow Claw";      desc="A shadow claw with a high critical hit rate.";                     cat="Physical" }
+    @{ name="Shadow Force";     desc="A shadow force that strikes on the second turn.";                  cat="Physical" }
+    @{ name="Shadow Punch";     desc="A shadow punch that never misses the target.";                     cat="Physical" }
+    @{ name="Shadow Sneak";     desc="A shadow sneak that always strikes first.";                        cat="Physical" }
+    @{ name="Spectral Thief";   desc="A spectral thief that steals the target's stat boosts.";           cat="Physical" }
+    @{ name="Spirit Shackle";   desc="A spirit shackle that traps the target.";                          cat="Physical" }
+    @{ name="Spite";            desc="A spite that reduces the PP of the target's last move.";           cat="Status" }
+    @{ name="Trick-or-Treat";   desc="A trick-or-treat that adds Ghost type to the target.";             cat="Status" }
+)
+
+$FLYING_MOVES = @(
+    @{ name="Acrobatics";       desc="An acrobatic strike that is stronger without a held item.";        cat="Physical" }
+    @{ name="Aerial Ace";       desc="An aerial ace that never misses the target.";                      cat="Physical" }
+    @{ name="Aeroblast";        desc="An aeroblast with a high critical hit rate.";                      cat="Special" }
+    @{ name="Air Cutter";       desc="An air cutter with a high critical hit rate.";                     cat="Special" }
+    @{ name="Air Slash";        desc="An air slash that may flinch the target.";                         cat="Special" }
+    @{ name="Beak Blast";       desc="A beak blast that may burn the target on contact.";                cat="Physical" }
+    @{ name="Brave Bird";       desc="A brave bird that deals heavy recoil damage.";                     cat="Physical" }
+    @{ name="Chatter";          desc="A chatter that always confuses the target.";                       cat="Special" }
+    @{ name="Defog";            desc="A defog that clears the field and lowers evasiveness.";            cat="Status" }
+    @{ name="Dive";             desc="A dive that strikes on the second turn.";                          cat="Physical" }
+    @{ name="Dragon Ascent";    desc="A dragon ascent that lowers the user's defenses.";                 cat="Physical" }
+    @{ name="Drill Peck";       desc="A drill peck that pierces the target.";                            cat="Physical" }
+    @{ name="Dual Wingbeat";    desc="A dual wingbeat that strikes the target twice.";                   cat="Physical" }
+    @{ name="Feather Dance";    desc="A feather dance that sharply lowers the target's Attack.";         cat="Status" }
+    @{ name="Floaty Fall";      desc="A floaty fall that may flinch the target.";                        cat="Physical" }
+    @{ name="Fly";              desc="A fly that strikes on the second turn.";                           cat="Physical" }
+    @{ name="Gust";             desc="A gust that can hit Flying targets.";                              cat="Special" }
+    @{ name="Hurricane";        desc="A hurricane that may confuse the target.";                         cat="Special" }
+    @{ name="Oblivion Wing";    desc="An oblivion wing that restores HP from damage dealt.";             cat="Special" }
+    @{ name="Peck";             desc="A peck that strikes the target.";                                  cat="Physical" }
+    @{ name="Pluck";            desc="A pluck that eats the target's held berry.";                       cat="Physical" }
+    @{ name="Roost";            desc="A roost that restores half of the user's max HP.";                 cat="Status" }
+    @{ name="Sky Attack";       desc="A sky attack with a high critical hit rate that may flinch.";      cat="Physical" }
+    @{ name="Sky Drop";         desc="A sky drop that lifts and drops the target on the second turn.";   cat="Physical" }
+    @{ name="Tailwind";         desc="A tailwind that doubles the party's Speed.";                       cat="Status" }
+    @{ name="Wing Attack";      desc="A wing attack that strikes the target with wings.";                cat="Physical" }
+)
+
 $jsonFiles = @()
 if ($Type -eq "all" -or $Type -eq "normal") {
     foreach ($item in $NORMAL_MOVES) {
@@ -605,6 +747,26 @@ if ($Type -eq "all" -or $Type -eq "dragon") {
 if ($Type -eq "all" -or $Type -eq "bug") {
     foreach ($item in $BUG_MOVES) {
         $jsonFiles += New-MoveJson -Move $item -MoveType "Bug"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "ground") {
+    foreach ($item in $GROUND_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Ground"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "fighting") {
+    foreach ($item in $FIGHTING_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Fighting"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "ghost") {
+    foreach ($item in $GHOST_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Ghost"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "flying") {
+    foreach ($item in $FLYING_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Flying"
     }
 }
 

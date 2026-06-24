@@ -1,0 +1,60 @@
+﻿{
+    "canvasW":  265,
+    "elements":  [
+                     {
+                         "x":  0,
+                         "id":  "bg",
+                         "type":  "image",
+                         "src":  "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Flying%20Moves.png",
+                         "y":  0,
+                         "w":  265,
+                         "name":  "Flying Moves",
+                         "h":  165,
+                         "zIndex":  1
+                     },
+                     {
+                         "size":  12,
+                         "id":  "name",
+                         "color":  "#ffffff",
+                         "zIndex":  2,
+                         "italic":  false,
+                         "align":  "left",
+                         "bold":  true,
+                         "y":  40,
+                         "type":  "text",
+                         "font":  "Georgia",
+                         "x":  44,
+                         "w":  165,
+                         "text":  "Hurricane",
+                         "h":  43
+                     },
+                     {
+                         "size":  11,
+                         "id":  "desc",
+                         "color":  "#5C3A1E",
+                         "zIndex":  3,
+                         "italic":  false,
+                         "align":  "left",
+                         "bold":  false,
+                         "y":  69,
+                         "type":  "text",
+                         "font":  "Georgia",
+                         "x":  44,
+                         "w":  180,
+                         "text":  "A hurricane that may confuse the target.",
+                         "h":  38
+                     },
+                     {
+                         "x":  172,
+                         "id":  "cost",
+                         "type":  "image",
+                         "src":  "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Stats/SP.ATK.png",
+                         "y":  38,
+                         "w":  83,
+                         "name":  "SP.ATK (Dice)",
+                         "h":  50,
+                         "zIndex":  4
+                     }
+                 ],
+    "canvasH":  165
+}
