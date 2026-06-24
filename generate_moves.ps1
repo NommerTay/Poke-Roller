@@ -201,17 +201,20 @@ $NORMAL_MOVES = @(
 function New-MoveJson {
     param($Move, $MoveType)
     $safeName = $Move.name -replace "[^\w\- ]", ""
-    $folder = "Normal"
+    $folder = $MoveType
     $jsonFile = "Poke Moves/$folder/$safeName.json"
     $cost = $null
     if ($Move.cat -eq "Physical") { $cost = "ATK" }
     elseif ($Move.cat -eq "Special") { $cost = "SP.ATK" }
 
+    $bgFile = if ($MoveType -eq "Normal") { "Nomal%20Moves.png" } else { "$([uri]::EscapeDataString("$MoveType Moves.png"))" }
+    $bgSrc = "$GIT_BASE/Poke%20Dice/$bgFile"
+
     $elements = @(
         @{
             id = "bg"; type = "image"
-            name = "Normal Moves"
-            src = "$GIT_BASE/Poke%20Dice/Nomal%20Moves.png"
+            name = "$MoveType Moves"
+            src = $bgSrc
             x = 0; y = 0; w = 265; h = 165; zIndex = 1
         }
         @{
@@ -246,9 +249,63 @@ function New-MoveJson {
     return $jsonFile
 }
 
+$FIRE_MOVES = @(
+    @{ name="Armor Cannon";     desc="Fires armor as blazing projectiles, lowering Defense and Sp.Def.";         cat="Special" }
+    @{ name="Bitter Blade";     desc="A bitter slash that restores HP from damage dealt.";                       cat="Physical" }
+    @{ name="Blast Burn";       desc="A massive fiery explosion that leaves the user immobile.";                  cat="Special" }
+    @{ name="Blaze Kick";       desc="A fiery kick with a high crit rate that may burn.";                         cat="Physical" }
+    @{ name="Blazing Torque";   desc="A blazing attack that may burn the target.";                                cat="Physical" }
+    @{ name="Blue Flare";       desc="A powerful blue flame attack that may burn.";                               cat="Special" }
+    @{ name="Burn Up";          desc="A massive fire attack that removes the user's Fire type.";                  cat="Special" }
+    @{ name="Burning Bulwark";  desc="Protects the user and burns attackers on contact.";                         cat="Status" }
+    @{ name="Burning Jealousy"; desc="Burns opponents who had a stat raised that turn.";                          cat="Special" }
+    @{ name="Ember";            desc="A small flame that may burn the target.";                                   cat="Special" }
+    @{ name="Eruption";         desc="A massive eruption stronger when the user has more HP.";                    cat="Special" }
+    @{ name="Fiery Dance";      desc="A fiery dance that may raise the user's Sp.Atk.";                           cat="Special" }
+    @{ name="Fire Blast";       desc="An intense blast of fire that may burn.";                                   cat="Special" }
+    @{ name="Fire Fang";        desc="A fiery fang that may burn or flinch.";                                     cat="Physical" }
+    @{ name="Fire Lash";        desc="A fiery lash that lowers the target's Defense.";                            cat="Physical" }
+    @{ name="Fire Pledge";      desc="A fire pledge that combines with other pledges.";                           cat="Special" }
+    @{ name="Fire Punch";       desc="A fiery punch that may burn the target.";                                   cat="Physical" }
+    @{ name="Fire Spin";        desc="A vortex of fire that traps the target for 4-5 turns.";                     cat="Special" }
+    @{ name="Flame Burst";      desc="A bursting flame that damages nearby Pokemon.";                             cat="Special" }
+    @{ name="Flame Charge";     desc="A flaming charge that raises the user's Speed.";                            cat="Physical" }
+    @{ name="Flame Wheel";      desc="A wheel of fire that may burn and thaws the user.";                         cat="Physical" }
+    @{ name="Flamethrower";     desc="A steady stream of fire that may burn the target.";                          cat="Special" }
+    @{ name="Flare Blitz";      desc="A reckless charge that deals heavy recoil damage.";                          cat="Physical" }
+    @{ name="Fusion Flare";     desc="A fusion flame that doubles power after Fusion Bolt.";                      cat="Special" }
+    @{ name="Heat Crash";       desc="A heavy body slam stronger when the user is heavier.";                      cat="Physical" }
+    @{ name="Heat Wave";        desc="A wave of heat that may burn the target.";                                  cat="Special" }
+    @{ name="Incinerate";       desc="A fire attack that destroys the target's held berry.";                      cat="Special" }
+    @{ name="Inferno";          desc="An intense flame that always burns the target.";                             cat="Special" }
+    @{ name="Lava Plume";       desc="A plume of lava that may burn the target.";                                 cat="Special" }
+    @{ name="Magma Storm";      desc="A vortex of magma that traps the target for 4-5 turns.";                    cat="Special" }
+    @{ name="Mind Blown";       desc="A head explosion that deals heavy recoil damage.";                           cat="Special" }
+    @{ name="Mystical Fire";    desc="A mystical flame that lowers the target's Sp.Atk.";                         cat="Special" }
+    @{ name="Overheat";         desc="A powerful blast that sharply lowers the user's Sp.Atk.";                    cat="Special" }
+    @{ name="Pyro Ball";        desc="A fireball that may burn and thaws the user.";                              cat="Physical" }
+    @{ name="Raging Fury";      desc="A rampage that confuses the user afterward.";                                cat="Physical" }
+    @{ name="Sacred Fire";      desc="A sacred flame that may burn the target.";                                  cat="Special" }
+    @{ name="Searing Shot";     desc="A searing shot that may burn multiple targets.";                             cat="Special" }
+    @{ name="Shell Trap";       desc="A trap that explodes when the user is hit physically.";                      cat="Special" }
+    @{ name="Sizzly Slide";     desc="A sliding attack that always burns the target.";                             cat="Physical" }
+    @{ name="Sunny Day";        desc="Intensifies sunlight for 5 turns.";                                          cat="Status" }
+    @{ name="Temper Flare";     desc="A rising fury that powers up after a previous failure.";                     cat="Physical" }
+    @{ name="Torch Song";       desc="A fiery tune that raises the user's Sp.Atk.";                               cat="Special" }
+    @{ name="V-create";         desc="A devastating charge that lowers the user's stats.";                         cat="Physical" }
+    @{ name="Will-O-Wisp";      desc="A sinister flame that burns the target.";                                   cat="Status" }
+)
+
 $jsonFiles = @()
-foreach ($item in $NORMAL_MOVES) {
-    $jsonFiles += New-MoveJson -Move $item -MoveType "Normal"
+if ($Type -eq "all" -or $Type -eq "normal") {
+    foreach ($item in $NORMAL_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Normal"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "fire") {
+    foreach ($item in $FIRE_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Fire"
+    }
 }
 
 Write-Host "`nGenerated $($jsonFiles.Count) JSON files. Run render_move_template.ps1 for each to produce PNGs."
