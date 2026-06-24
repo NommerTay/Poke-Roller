@@ -708,6 +708,93 @@ $FLYING_MOVES = @(
     @{ name="Wing Attack";      desc="A wing attack that strikes the target with wings.";                cat="Physical" }
 )
 
+$ICE_MOVES = @(
+    @{ name="Aurora Beam";      desc="A rainbow-colored beam that may lower the target's Attack.";         cat="Special" }
+    @{ name="Aurora Veil";      desc="A veil that reduces damage for 5 turns in hail.";                   cat="Status" }
+    @{ name="Avalanche";        desc="An avalanche that doubles power if the user was hit.";               cat="Physical" }
+    @{ name="Blizzard";         desc="A blizzard that may freeze the target.";                             cat="Special" }
+    @{ name="Chilly Reception"; desc="A chilly reception that switches the user out and sets hail.";      cat="Status" }
+    @{ name="Freeze Shock";     desc="A freeze shock that strikes on the second turn.";                   cat="Physical" }
+    @{ name="Freeze-Dry";       desc="A freeze-dry that may freeze and is super-effective on Water.";      cat="Special" }
+    @{ name="Freezing Glare";   desc="A freezing glare that may freeze the target.";                       cat="Special" }
+    @{ name="Glaciate";         desc="A glaciate that lowers the target's Speed.";                         cat="Special" }
+    @{ name="Glacier Lance";    desc="A glacier lance that strikes the target with icy spears.";           cat="Physical" }
+    @{ name="Hail";             desc="A hail that damages all non-Ice types for 5 turns.";                 cat="Status" }
+    @{ name="Haze";             desc="A haze that resets all stat changes.";                                cat="Status" }
+    @{ name="Ice Ball";         desc="An ice ball that grows stronger each turn.";                         cat="Physical" }
+    @{ name="Ice Beam";         desc="An ice beam that may freeze the target.";                            cat="Special" }
+    @{ name="Ice Burn";         desc="An ice burn that may burn the target and strikes on the second turn."; cat="Special" }
+    @{ name="Ice Fang";         desc="An ice fang that may freeze or flinch the target.";                  cat="Physical" }
+    @{ name="Ice Hammer";       desc="An ice hammer that lowers the user's Speed.";                        cat="Physical" }
+    @{ name="Ice Punch";        desc="An ice punch that may freeze the target.";                           cat="Physical" }
+    @{ name="Ice Shard";        desc="An ice shard that always strikes first.";                            cat="Physical" }
+    @{ name="Ice Spinner";      desc="An ice spinner that removes terrain effects.";                       cat="Physical" }
+    @{ name="Icicle Crash";     desc="An icicle crash that may flinch the target.";                        cat="Physical" }
+    @{ name="Icicle Spear";     desc="An icicle spear that hits the target 2-5 times.";                   cat="Physical" }
+    @{ name="Icy Wind";         desc="An icy wind that lowers the target's Speed.";                        cat="Special" }
+    @{ name="Mist";             desc="A mist that prevents stat reductions for 5 turns.";                  cat="Status" }
+    @{ name="Mountain Gale";    desc="A mountain gale that may flinch the target.";                        cat="Physical" }
+    @{ name="Powder Snow";      desc="A powder snow that may freeze the target.";                          cat="Special" }
+    @{ name="Sheer Cold";       desc="A sheer cold that causes a one-hit KO.";                             cat="Special" }
+    @{ name="Snowscape";        desc="A snowscape that heals and sets snowy weather.";                     cat="Status" }
+    @{ name="Triple Axel";      desc="A triple axel that grows stronger with each hit.";                   cat="Physical" }
+)
+
+$ROCK_MOVES = @(
+    @{ name="Accelerock";       desc="An accelerock that always strikes first.";                           cat="Physical" }
+    @{ name="Ancient Power";    desc="An ancient power that may raise all of the user's stats.";           cat="Special" }
+    @{ name="Diamond Storm";    desc="A diamond storm that may raise the user's Defense.";                 cat="Physical" }
+    @{ name="Head Smash";       desc="A head smash that deals heavy recoil damage.";                       cat="Physical" }
+    @{ name="Meteor Beam";      desc="A meteor beam that raises Sp.Atk on the first turn.";                cat="Special" }
+    @{ name="Power Gem";        desc="A power gem that strikes the target with a gem.";                    cat="Special" }
+    @{ name="Rock Blast";       desc="A rock blast that hits the target 2-5 times.";                      cat="Physical" }
+    @{ name="Rock Polish";      desc="A rock polish that sharply raises the user's Speed.";               cat="Status" }
+    @{ name="Rock Slide";       desc="A rock slide that may flinch the target.";                           cat="Physical" }
+    @{ name="Rock Throw";       desc="A rock throw that strikes the target with a rock.";                  cat="Physical" }
+    @{ name="Rock Tomb";        desc="A rock tomb that lowers the target's Speed.";                        cat="Physical" }
+    @{ name="Rock Wrecker";     desc="A rock wrecker that leaves the user unable to move next turn.";      cat="Physical" }
+    @{ name="Rollout";          desc="A rollout that grows stronger with each consecutive hit.";            cat="Physical" }
+    @{ name="Salt Cure";        desc="A salt cure that slowly drains the target's HP each turn.";          cat="Physical" }
+    @{ name="Sandstorm";        desc="A sandstorm that damages non-Rock types for 5 turns.";               cat="Status" }
+    @{ name="Smack Down";       desc="A smack down that grounds Flying targets.";                          cat="Physical" }
+    @{ name="Stealth Rock";     desc="A stealth rock trap that damages incoming foes.";                    cat="Status" }
+    @{ name="Stone Axe";        desc="A stone axe that scatters shards to inflict residual damage.";       cat="Physical" }
+    @{ name="Stone Edge";       desc="A stone edge with a high critical hit rate.";                        cat="Physical" }
+    @{ name="Tar Shot";         desc="A tar shot that weakens the target to Fire moves.";                  cat="Status" }
+    @{ name="Wide Guard";       desc="A wide guard that protects the party from wide-range moves.";        cat="Status" }
+)
+
+$STEEL_MOVES = @(
+    @{ name="Anchor Shot";      desc="An anchor shot that traps the target.";                              cat="Physical" }
+    @{ name="Autotomize";       desc="An autotomize that sharply raises the user's Speed.";                cat="Status" }
+    @{ name="Behemoth Bash";    desc="A behemoth bash that deals double damage to Dynamax targets.";       cat="Physical" }
+    @{ name="Behemoth Blade";   desc="A behemoth blade that deals double damage to Dynamax targets.";      cat="Physical" }
+    @{ name="Bullet Punch";     desc="A bullet punch that always strikes first.";                          cat="Physical" }
+    @{ name="Doom Desire";      desc="A doom desire that strikes the target after two turns.";             cat="Special" }
+    @{ name="Flash Cannon";     desc="A flash cannon that may lower the target's Sp.Def.";                cat="Special" }
+    @{ name="Gear Grind";       desc="A gear grind that strikes the target twice.";                        cat="Physical" }
+    @{ name="Gyro Ball";        desc="A gyro ball that is stronger on slower targets.";                    cat="Physical" }
+    @{ name="Heavy Slam";       desc="A heavy slam that is stronger on heavier targets.";                  cat="Physical" }
+    @{ name="Iron Defense";     desc="An iron defense that sharply raises the user's Defense.";            cat="Status" }
+    @{ name="Iron Head";        desc="An iron head that may flinch the target.";                           cat="Physical" }
+    @{ name="Iron Tail";        desc="An iron tail that may lower the target's Defense.";                 cat="Physical" }
+    @{ name="King's Shield";    desc="A king's shield that protects and lowers the attacker's Attack.";    cat="Status" }
+    @{ name="Make It Rain";     desc="A make it rain that sharply lowers the user's Sp.Atk.";             cat="Special" }
+    @{ name="Magnet Bomb";      desc="A magnet bomb that never misses the target.";                        cat="Physical" }
+    @{ name="Metal Burst";      desc="A metal burst that returns damage at 1.5x.";                        cat="Physical" }
+    @{ name="Metal Claw";       desc="A metal claw that may raise the user's Attack.";                     cat="Physical" }
+    @{ name="Metal Sound";      desc="A metal sound that sharply lowers the target's Sp.Def.";            cat="Status" }
+    @{ name="Mirror Shot";      desc="A mirror shot that may lower the target's accuracy.";               cat="Special" }
+    @{ name="Shift Gear";       desc="A shift gear that raises Speed and sharply raises Attack.";          cat="Status" }
+    @{ name="Smart Strike";     desc="A smart strike that never misses the target.";                       cat="Physical" }
+    @{ name="Spin Out";         desc="A spin out that sharply lowers the user's Speed.";                  cat="Physical" }
+    @{ name="Steel Beam";       desc="A steel beam that deals heavy recoil damage.";                       cat="Special" }
+    @{ name="Steel Roller";     desc="A steel roller that destroys terrain and deals damage.";             cat="Physical" }
+    @{ name="Steel Wing";       desc="A steel wing that may raise the user's Defense.";                   cat="Physical" }
+    @{ name="Sunsteel Strike";  desc="A sunsteel strike that ignores the target's Ability.";              cat="Physical" }
+    @{ name="Tachyon Cutter";   desc="A tachyon cutter that always strikes twice.";                        cat="Special" }
+)
+
 $jsonFiles = @()
 if ($Type -eq "all" -or $Type -eq "normal") {
     foreach ($item in $NORMAL_MOVES) {
@@ -767,6 +854,21 @@ if ($Type -eq "all" -or $Type -eq "ghost") {
 if ($Type -eq "all" -or $Type -eq "flying") {
     foreach ($item in $FLYING_MOVES) {
         $jsonFiles += New-MoveJson -Move $item -MoveType "Flying"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "ice") {
+    foreach ($item in $ICE_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Ice"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "rock") {
+    foreach ($item in $ROCK_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Rock"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "steel") {
+    foreach ($item in $STEEL_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Steel"
     }
 }
 
