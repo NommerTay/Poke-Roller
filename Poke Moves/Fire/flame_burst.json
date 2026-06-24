@@ -21,7 +21,7 @@
       "id": "desc",
       "type": "text",
       "text": "Attacks the target with a burst of flame.",
-      "font": "Georgia", "size": 8, "bold": false, "italic": true,
+      "font": "Georgia", "size": 11, "bold": false, "italic": false,
       "color": "#ffffff", "align": "left",
       "x": 44, "y": 69, "w": 180, "h": 38, "zIndex": 3
     },
