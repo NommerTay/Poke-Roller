@@ -1910,6 +1910,7 @@ local POKEMON_STATS = {
 -- ── POKEMON VIEW PANEL ──────────────────────────────────────
 
 local pokeview_open = {}
+local pokedex_open = {}
 
 local SNAPSHOT_VER = 4
 
@@ -1944,7 +1945,6 @@ function closePokemonView(player, value, id)
 end
 
 -- ── POKEDEX ─────────────────────────────────────────────────
-local pokedex_open = {}
 local pokedex_page_offset = 0
 local POKEDEX_COLORS = {"White", "Red", "Blue", "Green"}
 
