@@ -30,7 +30,7 @@
       "type": "image",
       "name": "SP.ATK (Dice)",
       "src": "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master/Poke%20Dice/Stats/SP.ATK.png",
-      "x": 174, "y": 38, "w": 83, "h": 50, "zIndex": 4
+      "x": 172, "y": 38, "w": 83, "h": 50, "zIndex": 4
     }
   ]
 }
