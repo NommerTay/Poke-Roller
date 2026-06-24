@@ -126,6 +126,10 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
                 <div class="asset-cat-title" onclick="toggleCat('catPokeDice')">&#x25BC; Poke Dice</div>
                 <div id="catPokeDice" class="asset-grid"></div>
             </div>
+            <div class="asset-cat">
+                <div class="asset-cat-title" onclick="toggleCat('catPokeUI')">&#x25BC; Panel UI</div>
+                <div id="catPokeUI" class="asset-grid"></div>
+            </div>
         </div>
     </div>
 
@@ -154,12 +158,42 @@ const PANELS = [
     { name: 'BENCY', file: 'BENCY.png' },
 ];
 const POKE_DICE_TYPES = [
+    { name: 'Bug (Dice)', file: 'Poke%20Dice/Types/Bug.png' },
+    { name: 'Dark (Dice)', file: 'Poke%20Dice/Types/Dark.png' },
+    { name: 'Dragon (Dice)', file: 'Poke%20Dice/Types/Dragon.png' },
+    { name: 'Electric (Dice)', file: 'Poke%20Dice/Types/Electric.png' },
+    { name: 'Fairy (Dice)', file: 'Poke%20Dice/Types/Fairy.png' },
+    { name: 'Fighting (Dice)', file: 'Poke%20Dice/Types/Fighting.png' },
+    { name: 'Fire (Dice)', file: 'Poke%20Dice/Types/Fire.png' },
+    { name: 'Flying (Dice)', file: 'Poke%20Dice/Types/Flying.png' },
+    { name: 'Ghost (Dice)', file: 'Poke%20Dice/Types/Ghost.png' },
     { name: 'Grass (Dice)', file: 'Poke%20Dice/Types/Grass.png' },
+    { name: 'Ground (Dice)', file: 'Poke%20Dice/Types/Ground.png' },
+    { name: 'Ice (Dice)', file: 'Poke%20Dice/Types/Ice.png' },
+    { name: 'Normal (Dice)', file: 'Poke%20Dice/Types/Normal.png' },
     { name: 'Poison (Dice)', file: 'Poke%20Dice/Types/Poison.png' },
+    { name: 'Psychic (Dice)', file: 'Poke%20Dice/Types/Psychic.png' },
+    { name: 'Rock (Dice)', file: 'Poke%20Dice/Types/Rock.png' },
+    { name: 'Steel (Dice)', file: 'Poke%20Dice/Types/Steel.png' },
+    { name: 'Water (Dice)', file: 'Poke%20Dice/Types/Water.png' },
 ];
 const POKE_DICE_STATS = [
     { name: 'HP (Dice)', file: 'Poke%20Dice/Stats/HP.png' },
+    { name: 'ATK (Dice)', file: 'Poke%20Dice/Stats/ATK.png' },
+    { name: 'DEF (Dice)', file: 'Poke%20Dice/Stats/DEF.png' },
     { name: 'SP.ATK (Dice)', file: 'Poke%20Dice/Stats/SP.ATK.png' },
+    { name: 'SP.DEF (Dice)', file: 'Poke%20Dice/Stats/SP.DEF.png' },
+    { name: 'SPD (Dice)', file: 'Poke%20Dice/Stats/SPD.png' },
+];
+const POKE_DICE_UI = [
+    { name: "Char'efic", file: "Poke%20Dice/Char%27efic.png" },
+    { name: 'Data', file: 'Poke%20Dice/Data.png' },
+    { name: 'Hover', file: 'Poke%20Dice/Hover.png' },
+    { name: 'Pokemon Stat Bar', file: 'Poke%20Dice/Pokemon%20Stat%20Bar.png' },
+    { name: 'Specialty', file: 'Poke%20Dice/Specialty.png' },
+    { name: 'Starting Dice', file: 'Poke%20Dice/Starting%20Dice.png' },
+    { name: 'Normal Moves', file: 'Poke%20Dice/Nomal%20Moves.png' },
+    { name: 'Fire Moves', file: 'Poke%20Dice/Fire%20Moves.png' },
 ];
 const POKEMON_LIST_URL = GIT_BASE + '/Pokemon%20Assets/Slot%20Images/';
 
@@ -480,6 +514,19 @@ function initAssets() {
         pd.appendChild(img);
     });
 
+    const pu = document.getElementById('catPokeUI');
+    POKE_DICE_UI.forEach(item => {
+        const img = document.createElement('img');
+        img.src = GIT_BASE + '/' + item.file;
+        img.title = item.name;
+        img.style.width = '50px';
+        img.style.height = 'auto';
+        img.draggable = true;
+        img.ondragstart = e => e.dataTransfer.setData('text/plain', 'uiele_' + item.name);
+        img.onclick = () => placeImage(item.name, GIT_BASE + '/' + item.file);
+        pu.appendChild(img);
+    });
+
     showPokemonResults();
 }
 
@@ -573,6 +620,10 @@ function onDrop(e) {
         const statItem = POKE_DICE_STATS.find(s => s.name === name);
         const item = typeItem || statItem;
         if (item) placeImage(name, GIT_BASE + '/' + item.file, x-85, y-75, 170, 150);
+    } else if (data.startsWith('uiele_')) {
+        const name = data.replace('uiele_','');
+        const item = POKE_DICE_UI.find(u => u.name === name);
+        if (item) placeImage(name, GIT_BASE + '/' + item.file, x-50, y-50, 100, 100);
     } else if (data.startsWith('poke_')) {
         const name = data.replace('poke_','');
         const item = pokemonCache.find(p => p.name === name);
