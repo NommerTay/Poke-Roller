@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pokemon Sprite Exporter</title>
+<title>Pokemon Sprite &amp; Slot Exporter</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <style>
@@ -19,6 +19,8 @@ h1 { text-align: center; margin-bottom: 10px; color: #ffcb05; text-shadow: 2px 2
 .btn-zip-normal { background: #2a75bb; color: #fff; }
 .btn-zip-shiny { background: #c8a020; color: #fff; }
 .btn-zip-both { background: #6c5ce7; color: #fff; }
+.btn-brown { background: #5C3A1E; color: #fff; }
+.btn-load { background: #27ae60; color: #fff; }
 .btn-stop { background: #e74c3c; color: #fff; display: none; }
 .btn-stop.active { display: inline-block; }
 .progress-wrap { height: 4px; background: #333; border-radius: 2px; margin-bottom: 16px; overflow: hidden; }
@@ -35,6 +37,7 @@ h1 { text-align: center; margin-bottom: 10px; color: #ffcb05; text-shadow: 2px 2
 .category-header .count { font-size: 12px; color: #999; font-weight: normal; margin-left: auto; }
 .category-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; padding: 8px; background: #16213e; border-radius: 0 0 8px 8px; }
 .category-body.collapsed { display: none; }
+.slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; padding: 8px; background: #16213e; border-radius: 0 0 8px 8px; }
 .type-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
 .card { background: #1a2744; border-radius: 6px; padding: 8px; text-align: center; cursor: pointer; transition: 0.2s; border: 2px solid transparent; }
 .card:hover { border-color: #2a75bb; transform: translateY(-2px); }
@@ -42,51 +45,78 @@ h1 { text-align: center; margin-bottom: 10px; color: #ffcb05; text-shadow: 2px 2
 .card .name { font-size: 11px; margin-top: 4px; text-transform: capitalize; color: #ccc; }
 .card .id { font-size: 10px; color: #666; }
 .card.shiny { border-color: #c8a020; }
+.slot-card { background: #1a2744; border-radius: 6px; padding: 6px; text-align: center; border: 2px solid transparent; }
+.slot-card canvas { width: 100%; max-width: 150px; image-rendering: auto; display: block; margin: 0 auto; }
+.slot-card .name { font-size: 11px; margin-top: 4px; text-transform: capitalize; color: #ccc; }
+.slot-card .id { font-size: 10px; color: #666; }
+.slot-card.errored { border-color: #e74c3c; }
 .type-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; padding: 16px; background: #16213e; border-radius: 8px; margin-bottom: 20px; }
 .type-card { text-align: center; padding: 12px; background: #1a2744; border-radius: 8px; }
 .type-card img { width: 64px; height: 64px; display: block; margin: 0 auto 6px; }
 .type-card .name { font-size: 11px; text-transform: capitalize; color: #ccc; }
+.slot-toggle-bar { display: flex; gap: 16px; align-items: center; justify-content: center; padding: 12px; background: #16213e; border-radius: 8px; margin-bottom: 16px; }
+.slot-toggle-bar label { display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; color: #ccc; }
+.slot-toggle-bar input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+.slot-toggle-bar .count { color: #999; font-size: 13px; }
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #2ecc71; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: bold; z-index: 100; opacity: 0; transition: 0.3s; pointer-events: none; }
 .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
 
-<h1>Pokemon Sprite Exporter</h1>
+<h1>Pokemon Sprite &amp; Slot Exporter</h1>
 <div id="status">Loading Pokemon data...</div>
 <div class="phase-label" id="phaseLabel"></div>
 <div class="progress-wrap" id="progressWrap">
   <div class="progress-bar" id="progressBar"></div>
 </div>
-
 <div class="counts" id="counts"></div>
-<div class="search-wrap">
-  <input type="text" id="search" placeholder="Search Pokemon..." oninput="filterPokemon()">
-</div>
 
 <div class="toolbar">
-  <button class="btn-zip" onclick="exportZip('normal')">Download ALL as ZIP (Normal)</button>
-  <button class="btn-zip-shiny" onclick="exportZip('shiny')">Download ALL as ZIP (Shiny)</button>
-  <button class="btn-zip-both" onclick="exportZip('both')">Download ALL as ZIP (Both)</button>
-  <button class="btn-all" onclick="downloadTypeIcons()">Download Type Icons</button>
-  <button class="btn-stop" id="stopBtn" onclick="stopDownload()">Stop</button>
+  <button class="btn-load" onclick="showTab('sprites')">Sprite Exporter</button>
+  <button class="btn-brown" onclick="showTab('slots')">Slot Image Editor</button>
 </div>
 
-<div id="grid"></div>
-<div id="typeSection" style="display:none">
-  <div class="category-header" style="margin-top:20px;border-radius:8px 8px 0 0">
-    <span class="arrow">&#9660;</span>
-    <span>Type Icons</span>
-    <span class="count">18</span>
+<div id="tab-sprites">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search Pokemon..." oninput="filterPokemon()">
   </div>
-  <div class="type-grid" id="typeGrid"></div>
+  <div class="toolbar">
+    <button class="btn-zip" onclick="exportZip('normal')">Download ALL as ZIP (Normal)</button>
+    <button class="btn-zip-shiny" onclick="exportZip('shiny')">Download ALL as ZIP (Shiny)</button>
+    <button class="btn-zip-both" onclick="exportZip('both')">Download ALL as ZIP (Both)</button>
+    <button class="btn-all" onclick="downloadTypeIcons()">Download Type Icons</button>
+    <button class="btn-stop" id="stopBtn" onclick="stopDownload()">Stop</button>
+  </div>
+  <div id="grid"></div>
+  <div id="typeSection" style="display:none">
+    <div class="category-header" style="margin-top:20px;border-radius:8px 8px 0 0">
+      <span class="arrow">&#9660;</span>
+      <span>Type Icons</span>
+      <span class="count">18</span>
+    </div>
+    <div class="type-grid" id="typeGrid"></div>
+  </div>
 </div>
+
+<div id="tab-slots" style="display:none">
+  <div class="toolbar">
+    <button class="btn-load" onclick="loadSlotImages()">Load Slot Images</button>
+    <button class="btn-brown" onclick="exportBrownSlots()">Export Brown Slots (ZIP)</button>
+  </div>
+  <div class="slot-toggle-bar" id="slotToggleBar" style="display:none">
+    <label>
+      <input type="checkbox" id="brownToggle" onchange="toggleBrownPreview()" checked>
+      Show Styled (Brown + Type Gradient + STG)
+    </label>
+    <span class="count" id="slotCount"></span>
+  </div>
+  <div id="slotGrid" class="slot-grid"></div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-// ----------------------------------------------------------------
-// Constants
-// ----------------------------------------------------------------
 const HOME = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home';
 const GAME = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
 const ARTWORK = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork';
@@ -95,7 +125,7 @@ const POKE_API = 'https://pokeapi.co/api/v2/pokemon?limit=1350';
 const EVO_API = 'https://pokeapi.co/api/v2/evolution-chain?limit=600';
 const TYPE_SVG = 'https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons';
 const TYPE_ICONS = ['bug','dark','dragon','electric','fairy','fighting','fire','flying','ghost','grass','ground','ice','normal','poison','psychic','rock','steel','water'];
-
+const GIT_BASE = 'https://raw.githubusercontent.com/NommerTay/Poke-Roller/master';
 const TYPE_COLORS = {
   normal: '#A8A77A', fire: '#EE8130', water: '#6390F0', electric: '#F7D02C',
   grass: '#7AC74C', ice: '#96D9D6', fighting: '#C22E28', poison: '#A33EA1',
@@ -103,22 +133,17 @@ const TYPE_COLORS = {
   rock: '#B6A136', ghost: '#735797', dragon: '#6F35FC', dark: '#705746',
   steel: '#B7B7CE', fairy: '#D685AD',
 };
-
 const FALLBACKS = [
   (id, shiny) => `${HOME}${shiny ? '/shiny' : ''}/${id}.png`,
   (id, shiny) => `${GAME}${shiny ? '/shiny' : ''}/${id}.png`,
   (id, shiny) => `${ARTWORK}${shiny ? '/shiny' : ''}/${id}.png`,
   (id, shiny) => `${ICON}/${id}.png`,
 ];
-
 const EXCLUDE = new Set([
   ...Array.from({length: 2}, (_, i) => 10158 + i),
   ...Array.from({length: 8}, (_, i) => 10264 + i),
 ]);
 
-// ----------------------------------------------------------------
-// State
-// ----------------------------------------------------------------
 let allPokemon = [];
 let filtered = [];
 let categorized = {};
@@ -127,345 +152,190 @@ let pokemonDetailMap = {};
 let loading = false;
 let downloadActive = false;
 let downloadCancelled = false;
+let slotPokemon = [];
+let slotImages = [];
 
-// ----------------------------------------------------------------
-// Concurrency-limited parallel fetch
-// ----------------------------------------------------------------
+function showTab(name) {
+  document.getElementById('tab-sprites').style.display = name === 'sprites' ? 'block' : 'none';
+  document.getElementById('tab-slots').style.display = name === 'slots' ? 'block' : 'none';
+  if (name === 'sprites') updateCounts();
+}
+
 async function fetchAll(urls, onProgress) {
   const results = [];
   const queue = [...urls];
-  let idx = 0;
-  let done = 0;
-
+  let idx = 0, done = 0;
   async function worker() {
     while (idx < queue.length) {
       const i = idx++;
-      const url = queue[i];
       try {
-        const res = await fetch(url);
+        const res = await fetch(queue[i]);
         results[i] = { ok: true, data: await res.json() };
-      } catch (e) {
-        results[i] = { ok: false };
-      }
+      } catch { results[i] = { ok: false }; }
       done++;
       if (onProgress) onProgress(done, queue.length);
     }
   }
-
-  const workers = Array.from({ length: 20 }, () => worker());
-  await Promise.all(workers);
+  await Promise.all(Array.from({ length: 20 }, () => worker()));
   return results;
 }
 
-// ----------------------------------------------------------------
-// Phase 1: Load evolution chains → speciesStageMap
-// ----------------------------------------------------------------
 async function loadEvolutionChains() {
   const res = await fetch(EVO_API);
   const list = await res.json();
   const urls = list.results.map(r => r.url);
-
-  setPhase(`Loading evolution data... 0/${urls.length}`);
-  const chains = await fetchAll(urls, (done, total) => {
-    setPhase(`Loading evolution data... ${done}/${total}`);
-    setProgress(done / total);
-  });
-
+  setPhase('Loading evolution data...');
+  const chains = await fetchAll(urls, (d, t) => { setPhase(`Evolution chains... ${d}/${t}`); setProgress(d/t); });
   const map = {};
   for (const chain of chains) {
     if (!chain.ok) continue;
     traverseChain(chain.data.chain, 1, map);
   }
-
-  // For solo species (chain length 1), mark as stage 3 (no evolution)
-  // We need to detect these. A solo chain has the species as the only member.
-  // Our traverseChain already marks solo species as stage 1.
-  // Fix: if a species appears in a chain of length 1, it should be stage 3.
   for (const chain of chains) {
     if (!chain.ok) continue;
-    const species = chain.data.chain.species;
-    if (!chain.data.chain.evolves_to || chain.data.chain.evolves_to.length === 0) {
-      map[species.name] = 3;
-    }
+    if (!chain.data.chain.evolves_to || chain.data.chain.evolves_to.length === 0) map[chain.data.chain.species.name] = 3;
   }
-
   speciesStageMap = map;
 }
 
 function traverseChain(node, stage, map) {
   map[node.species.name] = stage;
-  for (const next of node.evolves_to) {
-    traverseChain(next, stage + 1, map);
-  }
+  for (const next of node.evolves_to) traverseChain(next, stage + 1, map);
 }
 
-// ----------------------------------------------------------------
-// Phase 2: Load pokemon details → types, species name
-// ----------------------------------------------------------------
 async function loadPokemonDetails() {
   const urls = allPokemon.map(p => p.url);
-  setPhase(`Loading Pokemon details... 0/${urls.length}`);
-  const results = await fetchAll(urls, (done, total) => {
-    setPhase(`Loading Pokemon details... ${done}/${total}`);
-    setProgress(done / total);
-  });
-
+  const results = await fetchAll(urls, (d, t) => { setPhase(`Details... ${d}/${t}`); setProgress(d/t); });
   const map = {};
-  for (let i = 0; i < results.length; i++) {
-    const r = results[i];
+  for (const r of results) {
     if (!r.ok) continue;
     const d = r.data;
-    map[d.id] = {
-      speciesName: d.species.name,
-      primaryType: d.types[0]?.type?.name || 'unknown',
-      allTypes: d.types.map(t => t.type.name),
-    };
+    map[d.id] = { speciesName: d.species.name, primaryType: d.types[d.types.length - 1]?.type?.name || 'unknown', allTypes: d.types.map(t => t.type.name) };
   }
   pokemonDetailMap = map;
 }
 
-// ----------------------------------------------------------------
-// Categorize
-// ----------------------------------------------------------------
 function categorize() {
   const groups = {};
-
   for (const p of allPokemon) {
     const detail = pokemonDetailMap[p.id];
     if (!detail) continue;
-
     const speciesName = detail.speciesName;
     const type = detail.primaryType;
     const stage = speciesStageMap[speciesName] || 3;
-
     const isAlt = p.name !== speciesName;
     const suffix = isAlt ? extractFormSuffix(p.name, speciesName) : null;
-
-    let prefix;
-    if (isAlt && suffix) {
-      prefix = capitalize(suffix);
-    } else if (isAlt) {
-      prefix = 'Other';
-    } else {
-      prefix = null;
-    }
-
-    const subcategory = prefix
-      ? `${prefix}/Stage${stage}/${type}`
-      : `Stage${stage}/${type}`;
-
-    if (!groups[subcategory]) {
-      groups[subcategory] = { display: subcategory, entries: [] };
-    }
+    let prefix = isAlt && suffix ? capitalize(suffix) : isAlt ? 'Other' : null;
+    const subcategory = prefix ? `${prefix}/Stage${stage}/${type}` : `Stage${stage}/${type}`;
+    if (!groups[subcategory]) groups[subcategory] = { display: subcategory, entries: [] };
     groups[subcategory].entries.push(p);
   }
-
-  for (const key of Object.keys(groups)) {
-    groups[key].entries.sort((a, b) => a.id - b.id);
-  }
-
-  // Sort: Stage1 < Stage2 < Stage3, then form names alphabetically
+  for (const key of Object.keys(groups)) groups[key].entries.sort((a, b) => a.id - b.id);
   const sorted = {};
   for (const key of Object.keys(groups).sort((a, b) => {
-    const aPrefix = a.split('/')[0];
-    const bPrefix = b.split('/')[0];
-    const aStage = aPrefix.startsWith('Stage') ? parseInt(aPrefix.replace('Stage', '')) : 99;
-    const bStage = bPrefix.startsWith('Stage') ? parseInt(bPrefix.replace('Stage', '')) : 99;
-    if (aStage !== bStage) return aStage - bStage;
-    if (aPrefix.startsWith('Stage') && bPrefix.startsWith('Stage')) return a.localeCompare(b);
-    if (aPrefix.startsWith('Stage')) return -1;
-    if (bPrefix.startsWith('Stage')) return 1;
+    const aP = a.split('/')[0], bP = b.split('/')[0];
+    const aS = aP.startsWith('Stage') ? parseInt(aP.replace('Stage','')) : 99;
+    const bS = bP.startsWith('Stage') ? parseInt(bP.replace('Stage','')) : 99;
+    if (aS !== bS) return aS - bS;
+    if (aP.startsWith('Stage') && bP.startsWith('Stage')) return a.localeCompare(b);
+    if (aP.startsWith('Stage')) return -1;
+    if (bP.startsWith('Stage')) return 1;
     return a.localeCompare(b);
-  })) {
-    sorted[key] = groups[key];
-  }
-
+  })) sorted[key] = groups[key];
   categorized = sorted;
 }
 
 function extractFormSuffix(pokemonName, speciesName) {
-  if (!pokemonName.startsWith(speciesName)) {
-    return pokemonName;
-  }
-  const remainder = pokemonName.slice(speciesName.length);
-  if (remainder.startsWith('-')) {
-    return remainder.slice(1).replace(/-/g, ' ');
-  }
-  return remainder || null;
+  if (!pokemonName.startsWith(speciesName)) return pokemonName;
+  const rem = pokemonName.slice(speciesName.length);
+  return rem.startsWith('-') ? rem.slice(1).replace(/-/g, ' ') : rem || null;
 }
+function capitalize(s) { return s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '); }
 
-function capitalize(s) {
-  return s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-}
-
-// ----------------------------------------------------------------
-// Rendering
-// ----------------------------------------------------------------
 function renderGrid() {
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
-
   const search = document.getElementById('search').value.toLowerCase();
-
   for (const [catKey, cat] of Object.entries(categorized)) {
-    // Filter by search
-    const entries = search
-      ? cat.entries.filter(p => p.name.includes(search) || `#${p.id}`.includes(search))
-      : cat.entries;
+    const entries = search ? cat.entries.filter(p => p.name.includes(search) || `#${p.id}`.includes(search)) : cat.entries;
     if (entries.length === 0) continue;
-
     const section = document.createElement('div');
     section.className = 'category';
-
     const parts = catKey.split('/');
-    const typeLabel = parts.pop();
-    const stageLabel = parts.pop();
-    const formLabel = parts.pop();
-
-    let headerLabel;
-    if (formLabel) {
-      headerLabel = `${formLabel} / ${stageLabel}`;
-    } else {
-      headerLabel = stageLabel;
-    }
+    const typeLabel = parts.pop(), stageLabel = parts.pop(), formLabel = parts.pop();
+    const headerLabel = formLabel ? `${formLabel} / ${stageLabel}` : stageLabel;
     const typeColor = TYPE_COLORS[typeLabel] || '#999';
-
     const header = document.createElement('div');
     header.className = 'category-header';
-    header.innerHTML = `
-      <span class="arrow">&#9660;</span>
-      <span>${headerLabel}</span>
-      <span class="type-badge" style="background:${typeColor};color:#fff">${typeLabel}</span>
-      <span class="count">${entries.length}</span>
-    `;
+    header.innerHTML = `<span class="arrow">&#9660;</span><span>${headerLabel}</span><span class="type-badge" style="background:${typeColor};color:#fff">${typeLabel}</span><span class="count">${entries.length}</span>`;
     let collapsed = false;
-    header.addEventListener('click', () => {
-      collapsed = !collapsed;
-      header.classList.toggle('collapsed', collapsed);
-      body.classList.toggle('collapsed', collapsed);
-    });
-
+    header.addEventListener('click', () => { collapsed = !collapsed; header.classList.toggle('collapsed',collapsed); body.classList.toggle('collapsed',collapsed); });
     const body = document.createElement('div');
     body.className = 'category-body';
-
     for (const p of entries) {
       const card = document.createElement('div');
       card.className = 'card';
-      card.innerHTML = `
-        <img src="${HOME}/${p.id}.png" alt="${p.name}" loading="lazy">
-        <div class="name">${p.name}</div>
-        <div class="id">#${p.id}</div>
-      `;
+      card.innerHTML = `<img src="${HOME}/${p.id}.png" alt="${p.name}" loading="lazy"><div class="name">${p.name}</div><div class="id">#${p.id}</div>`;
       card.addEventListener('click', () => downloadOne(p.name, p.id, 'normal'));
       body.appendChild(card);
     }
-
-    // Fallback chain for images
     body.querySelectorAll('img').forEach(img => {
       let tries = 0;
-      img.addEventListener('error', function handleErr() {
+      img.addEventListener('error', function h() {
         tries++;
-        const card = this.closest('.card');
-        const idText = card.querySelector('.id').textContent;
-        const id = parseInt(idText.replace('#', ''));
-        if (tries <= FALLBACKS.length) {
-          this.src = FALLBACKS[tries - 1](id, false);
-        } else {
-          this.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
-          this.removeEventListener('error', handleErr);
-        }
+        const id = parseInt(this.closest('.card').querySelector('.id').textContent.replace('#',''));
+        if (tries <= FALLBACKS.length) this.src = FALLBACKS[tries-1](id, false);
+        else { this.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='; this.removeEventListener('error',h); }
       });
     });
-
-    section.appendChild(header);
-    section.appendChild(body);
-    grid.appendChild(section);
+    section.appendChild(header); section.appendChild(body); grid.appendChild(section);
   }
 }
 
-function filterPokemon() {
-  renderGrid();
-  updateCounts();
-}
+function filterPokemon() { renderGrid(); updateCounts(); }
 
 function renderTypeIcons() {
   const grid = document.getElementById('typeGrid');
-  grid.innerHTML = TYPE_ICONS.map(type => `
-    <div class="type-card">
-      <img src="${TYPE_SVG}/${type}.svg" alt="${type}">
-      <div class="name">${type}</div>
-    </div>
-  `).join('');
+  grid.innerHTML = TYPE_ICONS.map(t => `<div class="type-card"><img src="${TYPE_SVG}/${t}.svg" alt="${t}"><div class="name">${t}</div></div>`).join('');
   document.getElementById('typeSection').style.display = 'block';
 }
 
 function updateCounts() {
   let total = 0;
-  for (const cat of Object.values(categorized)) {
-    total += cat.entries.length;
-  }
+  for (const cat of Object.values(categorized)) total += cat.entries.length;
   const search = document.getElementById('search').value;
-  if (search) {
-    let shown = 0;
-    for (const cat of Object.values(categorized)) {
-      shown += cat.entries.filter(p => p.name.includes(search) || `#${p.id}`.includes(search)).length;
-    }
-    document.getElementById('counts').textContent = `Showing ${shown} of ${total} sprites in ${Object.keys(categorized).length} categories`;
-  } else {
-    document.getElementById('counts').textContent = `${total} sprites in ${Object.keys(categorized).length} categories`;
-  }
+  document.getElementById('counts').textContent = search
+    ? `Showing ${Object.values(categorized).reduce((s,cat) => s + cat.entries.filter(p => p.name.includes(search)||`#${p.id}`.includes(search)).length, 0)} of ${total} sprites`
+    : `${total} sprites in ${Object.keys(categorized).length} categories`;
 }
 
-// ----------------------------------------------------------------
-// Progress / status updates
-// ----------------------------------------------------------------
-function setPhase(msg) {
-  document.getElementById('phaseLabel').textContent = msg;
-}
-
-function setProgress(pct) {
-  document.getElementById('progressBar').style.width = `${pct * 100}%`;
-}
-
-function setStatus(msg) {
-  document.getElementById('status').textContent = msg;
-}
-
+function setPhase(msg) { document.getElementById('phaseLabel').textContent = msg; }
+function setProgress(pct) { document.getElementById('progressBar').style.width = `${pct*100}%`; }
+function setStatus(msg) { document.getElementById('status').textContent = msg; }
 function showToast(msg, isError) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.background = isError ? '#e74c3c' : '#2ecc71';
+  t.textContent = msg; t.style.background = isError ? '#e74c3c' : '#2ecc71';
   t.className = 'toast show';
   setTimeout(() => t.className = 'toast', 2000);
 }
 
-// ----------------------------------------------------------------
-// Download single sprite
-// ----------------------------------------------------------------
 async function fetchSpriteBlob(id, shiny) {
   for (const fn of FALLBACKS) {
-    const url = fn(id, shiny);
-    const res = await fetch(url);
+    const res = await fetch(fn(id, shiny));
     if (res.ok) return res.blob();
   }
   throw new Error('Not found');
 }
 
 async function svgToPngBlob(type, size) {
-  const url = `${TYPE_SVG}/${type}.svg`;
-  const res = await fetch(url);
+  const res = await fetch(`${TYPE_SVG}/${type}.svg`);
   const svg = await res.text();
   const img = new Image();
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
   const objUrl = URL.createObjectURL(blob);
-  await new Promise((resolve, reject) => {
-    img.onload = resolve;
-    img.onerror = reject;
-    img.src = objUrl;
-  });
+  await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; img.src = objUrl; });
   const c = document.createElement('canvas');
-  c.width = size;
-  c.height = size;
+  c.width = size; c.height = size;
   c.getContext('2d').drawImage(img, 0, 0, size, size);
   URL.revokeObjectURL(objUrl);
   return new Promise(r => c.toBlob(r, 'image/png'));
@@ -474,192 +344,267 @@ async function svgToPngBlob(type, size) {
 async function downloadTypeIcons() {
   const zip = new JSZip();
   for (let i = 0; i < TYPE_ICONS.length; i++) {
-    const type = TYPE_ICONS[i];
-    setStatus(`Converting type icons... ${i + 1}/${TYPE_ICONS.length}`);
-    setProgress((i + 1) / TYPE_ICONS.length);
-    try {
-      const blob = await svgToPngBlob(type, 128);
-      zip.file(`Types/${type}.png`, blob);
-    } catch (e) {
-      console.error(`Failed to convert ${type}`, e);
-    }
+    setStatus(`Converting type icons... ${i+1}/${TYPE_ICONS.length}`);
+    setProgress((i+1)/TYPE_ICONS.length);
+    try { zip.file(`Types/${TYPE_ICONS[i]}.png`, await svgToPngBlob(TYPE_ICONS[i], 128)); } catch {}
   }
-  setStatus('Saving type icons ZIP...');
-  const blob = await zip.generateAsync({ type: 'blob' });
-  saveAs(blob, 'pokemon_type_icons.zip');
-  setProgress(0);
-  setStatus('Done!');
-  showToast('Type icons downloaded!');
+  setStatus('Saving ZIP...');
+  saveAs(await zip.generateAsync({ type: 'blob' }), 'pokemon_type_icons.zip');
+  setProgress(0); setStatus('Done!'); showToast('Type icons downloaded!');
 }
 
 async function downloadOne(name, id, type) {
-  const types = type === 'both' ? ['normal', 'shiny'] : [type];
-  for (const t of types) {
-    const shiny = t === 'shiny';
-    const fname = shiny ? `${name}_shiny.png` : `${name}.png`;
-    try {
-      const blob = await fetchSpriteBlob(id, shiny);
-      triggerDownload(blob, fname);
-      await sleep(100);
-    } catch (e) {
-      showToast(`Failed: ${fname}`, true);
-    }
+  for (const t of (type === 'both' ? ['normal', 'shiny'] : [type])) {
+    try { triggerDownload(await fetchSpriteBlob(id, t === 'shiny'), t === 'shiny' ? `${name}_shiny.png` : `${name}.png`); await sleep(100); }
+    catch { showToast(`Failed: ${name}`, true); }
   }
 }
 
 function triggerDownload(blob, filename) {
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  const a = document.createElement('a'); a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function stopDownload() { downloadCancelled = true; downloadActive = false; document.getElementById('stopBtn').classList.remove('active'); }
 
-function stopDownload() {
-  downloadCancelled = true;
-  downloadActive = false;
-  document.getElementById('stopBtn').classList.remove('active');
-}
-
-// ----------------------------------------------------------------
-// ZIP Export
-// ----------------------------------------------------------------
 async function exportZip(type) {
   if (downloadActive) return;
-  downloadActive = true;
-  downloadCancelled = false;
+  downloadActive = true; downloadCancelled = false;
   document.getElementById('stopBtn').classList.add('active');
-  setStatus('Building ZIP archive...');
-
+  setStatus('Building ZIP...');
   const zip = new JSZip();
   const shinyTypes = type === 'both' ? [false, true] : [type === 'shiny'];
   const entries = [];
-
-  for (const [catKey, cat] of Object.entries(categorized)) {
-    for (const p of cat.entries) {
-      for (const shiny of shinyTypes) {
-        const suffix = shiny ? '_shiny' : '';
-        const folderPath = catKey + '/';
-        entries.push({ p, shiny, folderPath, suffix });
-      }
-    }
-  }
-
-  const total = entries.length;
-  let completed = 0;
-  let failed = 0;
-
-  // Fetch all sprites with concurrency
-  const queue = entries.map((e, i) => ({ ...e, idx: i }));
-  let idx = 0;
-  let results = [];
-
+  for (const [,cat] of Object.entries(categorized)) for (const p of cat.entries) for (const s of shinyTypes) entries.push({ p, shiny: s, folderPath: `${cat.display}/`, suffix: s ? '_shiny' : '' });
+  const total = entries.length; let completed = 0, failed = 0;
+  const queue = entries.map((e,i) => ({...e, idx: i}));
+  let idx = 0; const results = [];
   async function zipWorker() {
     while (idx < queue.length) {
-      const i = idx++;
-      const e = queue[i];
-      try {
-        const blob = await fetchSpriteBlob(e.p.id, e.shiny);
-        results[i] = { ok: true, blob };
-      } catch {
-        results[i] = { ok: false };
-        failed++;
-      }
-      completed++;
-      setProgress(completed / total);
-      setStatus(`Downloading sprites... ${completed}/${total}${failed ? ` (${failed} failed)` : ''}`);
+      const i = idx++; const e = queue[i];
+      try { results[i] = { ok: true, blob: await fetchSpriteBlob(e.p.id, e.shiny) }; }
+      catch { results[i] = { ok: false }; failed++; }
+      completed++; setProgress(completed/total);
+      setStatus(`Downloading... ${completed}/${total}${failed ? ` (${failed} failed)` : ''}`);
       if (downloadCancelled) break;
     }
   }
-
-  const workers = Array.from({ length: 10 }, () => zipWorker());
-  await Promise.all(workers);
-
-  if (downloadCancelled) {
-    downloadActive = false;
-    document.getElementById('stopBtn').classList.remove('active');
-    setStatus('Download cancelled.');
-    showToast('Download cancelled', true);
-    return;
-  }
-
-  // Add blobs to ZIP
-  setStatus('Compressing ZIP...');
-  for (let i = 0; i < results.length; i++) {
-    const r = results[i];
-    if (!r || !r.ok) continue;
-    const e = queue[i];
-    const filename = `${e.p.name}${e.suffix}.png`;
-    zip.file(e.folderPath + filename, r.blob);
-  }
-
-  // Add type icons
-  try {
-    setStatus('Adding type icons...');
-    for (const type of TYPE_ICONS) {
-      const blob = await svgToPngBlob(type, 128);
-      zip.file(`Types/${type}.png`, blob);
-    }
-  } catch (e) {
-    console.error('Failed to add type icons', e);
-  }
-
-  setStatus('Saving ZIP file...');
-  const blob = await zip.generateAsync({ type: 'blob' });
-  saveAs(blob, 'pokemon_sprites.zip');
-
-  downloadActive = false;
-  document.getElementById('stopBtn').classList.remove('active');
-  setProgress(0);
-  setStatus('Done!');
-  const msg = failed > 0 ? `ZIP saved with ${completed - failed} sprites (${failed} failed)` : `ZIP saved with ${completed} organized sprites!`;
-  showToast(msg, failed > 0);
+  await Promise.all(Array.from({ length: 10 }, () => zipWorker()));
+  if (downloadCancelled) { downloadActive = false; document.getElementById('stopBtn').classList.remove('active'); setStatus('Cancelled.'); showToast('Cancelled',true); return; }
+  setStatus('Compressing...');
+  for (let i = 0; i < results.length; i++) { if (results[i]?.ok) zip.file(queue[i].folderPath + `${queue[i].p.name}${queue[i].suffix}.png`, results[i].blob); }
+  try { setStatus('Adding type icons...'); for (const t of TYPE_ICONS) zip.file(`Types/${t}.png`, await svgToPngBlob(t, 128)); } catch {}
+  setStatus('Saving ZIP...');
+  saveAs(await zip.generateAsync({ type: 'blob' }), 'pokemon_sprites.zip');
+  downloadActive = false; document.getElementById('stopBtn').classList.remove('active');
+  setProgress(0); setStatus('Done!'); showToast(`Saved ${completed-failed} sprites`);
 }
 
-// ----------------------------------------------------------------
-// Init
-// ----------------------------------------------------------------
+// Slot Image Functions
+function isPurplePixel(r, g, b) {
+  if (r < 8 && g < 8 && b < 8) return false;
+  if (r + g + b > 200) return false;
+  if (r > 150 && g < 60 && b < 60) return false;
+  if ((b - g) > 5 && r > g) return true;
+  if (b > g && r > g && r + g + b < 100) return true;
+  return false;
+}
+
+function mapPurpleToBrown(r, g, b) {
+  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+  const max = Math.max(r, g, b);
+  let nr, ng, nb;
+  if (max <= 50) { const f = lum / 50; nr = 20 + f*50; ng = 8 + f*30; nb = 3 + f*15; }
+  else if (max <= 100) { const f = (lum - 30) / 70; nr = 45 + f*60; ng = 25 + f*35; nb = 10 + f*18; }
+  else if (max <= 150) { const f = (lum - 60) / 90; nr = 70 + f*70; ng = 40 + f*40; nb = 18 + f*20; }
+  else { const f = (lum - 100) / 155; nr = 110 + f*80; ng = 65 + f*50; nb = 30 + f*25; }
+  return [Math.min(255,Math.max(0,Math.round(nr))), Math.min(255,Math.max(0,Math.round(ng))), Math.min(255,Math.max(0,Math.round(nb)))];
+}
+
+function recolorImageData(data) {
+  for (let i = 0; i < data.length; i += 4) {
+    if (isPurplePixel(data[i], data[i+1], data[i+2])) {
+      const [nr, ng, nb] = mapPurpleToBrown(data[i], data[i+1], data[i+2]);
+      data[i] = nr; data[i+1] = ng; data[i+2] = nb;
+    }
+  }
+}
+
+function getEvolutionStage(pokemonId, pokemonName) {
+  const detail = pokemonDetailMap[pokemonId];
+  const speciesName = detail ? detail.speciesName : pokemonName;
+  return speciesStageMap[speciesName] || 3;
+}
+
+function padId(id) {
+  return String(id).padStart(3, '0');
+}
+
+function applyTypeGradient(data, w, h, typeColor, stage) {
+  const cvs = document.createElement('canvas');
+  cvs.width = w; cvs.height = h;
+  const ctx = cvs.getContext('2d');
+  ctx.putImageData(new ImageData(data, w, h), 0, 0);
+
+  const tr = parseInt(typeColor.slice(1,3), 16);
+  const tg = parseInt(typeColor.slice(3,5), 16);
+  const tb = parseInt(typeColor.slice(5,7), 16);
+
+  const gradientHeight = 35;
+  const gradientStart = h - gradientHeight;
+
+  for (let y = gradientStart; y < h; y++) {
+    const progress = (y - gradientStart) / gradientHeight;
+    const alpha = Math.round((1 - progress) * 180);
+    for (let x = 0; x < w; x++) {
+      const idx = (y * w + x) * 4;
+      const fa = alpha / 255;
+      data[idx] = Math.round(data[idx] * (1 - fa) + tr * fa);
+      data[idx+1] = Math.round(data[idx+1] * (1 - fa) + tg * fa);
+      data[idx+2] = Math.round(data[idx+2] * (1 - fa) + tb * fa);
+    }
+  }
+
+  ctx.putImageData(new ImageData(data, w, h), 0, 0);
+  ctx.font = 'bold 18px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.shadowColor = 'rgba(0,0,0,0.7)';
+  ctx.shadowBlur = 3;
+  ctx.fillStyle = '#fff';
+  ctx.fillText(stage, w / 2, h - 6);
+  ctx.shadowBlur = 0;
+
+  const result = ctx.getImageData(0, 0, w, h);
+  for (let i = 0; i < data.length; i++) data[i] = result.data[i];
+}
+
+async function loadSlotImages() {
+  setStatus('Loading pokedex_data.lua...');
+  document.getElementById('slotGrid').innerHTML = '<div style="text-align:center;padding:40px;color:#888">Loading...</div>';
+  document.getElementById('slotToggleBar').style.display = 'none';
+
+  const res = await fetch(GIT_BASE + '/pokedex_data.lua');
+  const text = await res.text();
+  slotPokemon = [];
+  for (const line of text.split('\n')) {
+    const m = line.match(/^\s*\{(\d+),"([^"]+)"(?:,"([^"]+)")?(?:,"([^"]+)")?\s*\},?\s*$/);
+    if (m) slotPokemon.push({ id: parseInt(m[1]), name: m[2], types: [m[3], m[4]].filter(Boolean) });
+  }
+  setStatus(`Loading ${slotPokemon.length} slot images...`);
+
+  const grid = document.getElementById('slotGrid');
+  grid.innerHTML = '';
+  const items = [];
+  for (const p of slotPokemon) {
+    const wrap = document.createElement('div');
+    wrap.className = 'slot-card';
+    const can = document.createElement('canvas'); can.width = 200; can.height = 320;
+    wrap.appendChild(can);
+    const nm = document.createElement('div'); nm.className = 'name'; nm.textContent = p.name; wrap.appendChild(nm);
+    const idv = document.createElement('div'); idv.className = 'id'; idv.textContent = `#${p.id}`; wrap.appendChild(idv);
+    const prog = document.createElement('div'); prog.style.cssText = 'font-size:10px;color:#666'; prog.textContent = '...'; wrap.appendChild(prog);
+    grid.appendChild(wrap);
+    items.push({ p, wrap, can, prog, loaded: false });
+  }
+
+  const indices = items.map((_, i) => i);
+  let qidx = 0, completed = 0;
+  slotImages = items;
+
+  async function slotWorker() {
+    while (qidx < indices.length) {
+      const i = qidx++, e = items[i];
+      const paddedId = padId(e.p.id);
+      const sn = `${paddedId}_${e.p.name}`;
+      try {
+        const r = await fetch(`${GIT_BASE}/Pokemon%20Assets/Slot%20Images/${sn}.png`);
+        if (!r.ok) throw new Error('NF');
+        const img = await createImageBitmap(await r.blob());
+        const ctx = e.can.getContext('2d');
+        ctx.drawImage(img, 0, 0, 200, 320);
+        img.close();
+        e.origData = ctx.getImageData(0, 0, 200, 320);
+
+        // Brown recolor
+        const bd = new ImageData(new Uint8ClampedArray(e.origData.data), 200, 320);
+        recolorImageData(bd.data);
+        e.brownData = bd;
+
+        // Styled: brown + type gradient + STG text
+        const sd = new ImageData(new Uint8ClampedArray(e.origData.data), 200, 320);
+        recolorImageData(sd.data);
+        const primaryType = e.p.types[0] || 'normal';
+        const typeColor = TYPE_COLORS[primaryType] || '#888';
+        const stage = getEvolutionStage(e.p.id, e.p.name);
+        applyTypeGradient(sd.data, 200, 320, typeColor, `STG${stage}`);
+        e.styledData = sd;
+
+        e.loaded = true;
+        e.prog.textContent = 'OK'; e.prog.style.color = '#2ecc71';
+        ctx.putImageData(e.styledData, 0, 0);
+      } catch { e.prog.textContent = 'FAIL'; e.prog.style.color = '#e74c3c'; e.wrap.classList.add('errored'); }
+      completed++; setProgress(completed / items.length);
+      setStatus(`Loading slot images... ${completed}/${items.length}`);
+    }
+  }
+  await Promise.all(Array.from({ length: 8 }, () => slotWorker()));
+
+  document.getElementById('slotToggleBar').style.display = 'flex';
+  document.getElementById('brownToggle').checked = true;
+  document.getElementById('slotCount').textContent = `${completed} loaded`;
+  setProgress(0);
+  setStatus(`Loaded ${completed} slot images (brown + type gradient + STG)`);
+  showToast(`${completed} slot images loaded`);
+}
+
+function toggleBrownPreview() {
+  const showStyled = document.getElementById('brownToggle').checked;
+  for (const e of slotImages) {
+    if (!e.loaded) continue;
+    const ctx = e.can.getContext('2d');
+    if (showStyled) {
+      ctx.putImageData(e.styledData, 0, 0);
+    } else {
+      ctx.putImageData(e.origData, 0, 0);
+    }
+  }
+}
+
+async function exportBrownSlots() {
+  const total = slotImages.filter(e => e.loaded).length;
+  if (total === 0) { showToast('Load slot images first', true); return; }
+  setStatus(`Exporting ${total} styled slot images...`);
+  const zip = new JSZip();
+  let c = 0;
+  for (const e of slotImages) {
+    if (!e.loaded) continue;
+    const ctx = e.can.getContext('2d');
+    ctx.putImageData(e.styledData, 0, 0);
+    const blob = await new Promise(r => e.can.toBlob(r, 'image/png'));
+    zip.file(`${padId(e.p.id)}_${e.p.name}.png`, blob);
+    c++; setProgress(c/total); setStatus(`Compressing... ${c}/${total}`);
+  }
+  setStatus('Saving ZIP...');
+  saveAs(await zip.generateAsync({ type: 'blob' }), 'pokemon_slots_brown.zip');
+  setProgress(0); setStatus('Done!'); showToast(`Exported ${total} styled slot images`);
+}
+
 async function init() {
   try {
-    // Load pokemon list
     setStatus('Loading Pokemon list...');
     const res = await fetch(POKE_API);
     const data = await res.json();
-    allPokemon = data.results
-      .map(p => {
-        const segments = p.url.replace(/\/$/, '').split('/');
-        const id = parseInt(segments[segments.length - 1]);
-        return { name: p.name, id, url: p.url };
-      })
-      .filter(p => !EXCLUDE.has(p.id));
-
-    // Phase 1: Evolution chains
+    allPokemon = data.results.map(p => { const s = p.url.replace(/\/$/,'').split('/'); return { name: p.name, id: parseInt(s[s.length-1]), url: p.url }; }).filter(p => !EXCLUDE.has(p.id));
     await loadEvolutionChains();
-
-    // Phase 2: Pokemon details
     await loadPokemonDetails();
-
-    // Categorize
-    setPhase('Categorizing...');
-    categorize();
-    setPhase('');
-    setProgress(0);
-
-    // Render
-    filtered = [...allPokemon];
-    renderGrid();
-    renderTypeIcons();
-    updateCounts();
-    setStatus(`Loaded ${allPokemon.length} Pokemon into ${Object.keys(categorized).length} categories. Type icons ready.`);
-  } catch (e) {
-    setStatus('Error loading data. Check console.');
-    console.error(e);
-  }
+    setPhase('Categorizing...'); categorize(); setPhase(''); setProgress(0);
+    filtered = [...allPokemon]; renderGrid(); renderTypeIcons(); updateCounts();
+    setStatus(`Loaded ${allPokemon.length} Pokemon into ${Object.keys(categorized).length} categories.`);
+  } catch (e) { setStatus('Error: ' + e.message); console.error(e); }
 }
 
 init();

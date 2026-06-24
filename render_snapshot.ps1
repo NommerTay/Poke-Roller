@@ -33,7 +33,7 @@ foreach ($el in $sorted) {
         $name = $el.name
         $resolved = $null
         if ($name -match "^\d{3}_") {
-            $resolved = "$GIT_BASE/Pokemon%20Assets/Slot%20Images/$name.png"
+            $resolved = "$GIT_BASE/Pokemon%20Assets/Brown%20Slot%20Images/$name.png"
         } elseif ($name -match "^type_") {
             $typeName = $name -replace "^type_", ""
             $resolved = "$GIT_BASE/Pokemon%20Assets/Types/$typeName.png"

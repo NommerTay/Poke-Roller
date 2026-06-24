@@ -1905,6 +1905,22 @@ local POKEMON_STATS = {
         stat1_key="spatk", stat1_val=5,
         stat2_key="spd", stat2_val=3,
     },
+    -- Dragonite (#149): 3-stage 3rd evo, dual Dragon/Flying, pseudo-legendary
+    -- Template: type=7x/4x, stat=SP.ATK 5x / SPD 4x
+    [149] = {
+        hp=91, atk=134, def=95, spatk=100, spdef=100, spd=80,
+        type1_val=7, type2_val=4,
+        stat1_key="spatk", stat1_val=5,
+        stat2_key="spd", stat2_val=4,
+    },
+    -- Gengar (#94): 3-stage 3rd evo, dual Ghost/Poison, special sweeper
+    -- Template: type=6x/3x, stat=SP.ATK 6x / SPD 5x
+    [94] = {
+        hp=60, atk=65, def=60, spatk=130, spdef=75, spd=110,
+        type1_val=6, type2_val=3,
+        stat1_key="spatk", stat1_val=6,
+        stat2_key="spd", stat2_val=5,
+    },
 }
 
 -- ── POKEMON VIEW PANEL ──────────────────────────────────────
@@ -1912,7 +1928,7 @@ local POKEMON_STATS = {
 local pokeview_open = {}
 local pokedex_open = {}
 
-local SNAPSHOT_VER = 25
+local SNAPSHOT_VER = 27
 
 function showPokemonView(color, poke_id, poke_name)
     local snapshot_url = string.format(
