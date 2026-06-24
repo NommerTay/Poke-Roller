@@ -296,6 +296,83 @@ $FIRE_MOVES = @(
     @{ name="Will-O-Wisp";      desc="A sinister flame that burns the target.";                                   cat="Status" }
 )
 
+$PSYCHIC_MOVES = @(
+    @{ name="Agility";          desc="Sharply raises the user's Speed stat.";                              cat="Status" }
+    @{ name="Ally Switch";      desc="Switches positions with an ally in battle.";                          cat="Status" }
+    @{ name="Amnesia";          desc="Sharply raises the user's Sp.Def stat.";                              cat="Status" }
+    @{ name="Barrier";          desc="Sharply raises the user's Defense stat.";                             cat="Status" }
+    @{ name="Calm Mind";        desc="Raises the user's Sp.Atk and Sp.Def.";                                cat="Status" }
+    @{ name="Confusion";        desc="A weak psychic attack that may confuse.";                             cat="Special" }
+    @{ name="Cosmic Power";     desc="Raises the user's Defense and Sp.Def.";                               cat="Status" }
+    @{ name="Dream Eater";      desc="Eats the target's dream to restore HP.";                              cat="Special" }
+    @{ name="Eerie Spell";      desc="A powerful sound that drains PP from the target.";                    cat="Special" }
+    @{ name="Esper Wing";       desc="A psychic wing that raises the user's Speed.";                        cat="Special" }
+    @{ name="Expanding Force";  desc="A psychic wave boosted by Psychic Terrain.";                          cat="Special" }
+    @{ name="Extrasensory";     desc="A psychic attack that may flinch the target.";                        cat="Special" }
+    @{ name="Freezing Glare";   desc="A psychic glare that may freeze the target.";                         cat="Special" }
+    @{ name="Future Sight";     desc="A future attack that strikes the target in 2 turns.";                cat="Special" }
+    @{ name="Glitzy Glow";      desc="A psychic glow that raises Sp.Def after attacking.";                  cat="Special" }
+    @{ name="Gravity";          desc="Grounds all Pokemon and boosts move accuracy.";                       cat="Status" }
+    @{ name="Guard Split";      desc="Averages the Defense and Sp.Def with the target.";                    cat="Status" }
+    @{ name="Guard Swap";       desc="Swaps Defense and Sp.Def changes with the target.";                   cat="Status" }
+    @{ name="Heal Block";       desc="Prevents the target from using healing moves.";                       cat="Status" }
+    @{ name="Heal Pulse";       desc="Restores half of the target's max HP.";                               cat="Status" }
+    @{ name="Healing Wish";     desc="The user faints but fully heals the replacement.";                    cat="Status" }
+    @{ name="Heart Stamp";      desc="A heart-shaped stamp that may flinch.";                               cat="Physical" }
+    @{ name="Heart Swap";       desc="Swaps all stat changes with the target.";                             cat="Status" }
+    @{ name="Hyperspace Hole";  desc="A wormhole attack that bypasses protection.";                         cat="Special" }
+    @{ name="Hypnosis";         desc="A hypnotic suggestion that puts the target to sleep.";                cat="Status" }
+    @{ name="Imprison";         desc="Prevents the target from using moves the user knows.";                cat="Status" }
+    @{ name="Instruct";         desc="Makes the target repeat its last move immediately.";                  cat="Status" }
+    @{ name="Kinesis";          desc="A psychic distraction that lowers accuracy.";                         cat="Status" }
+    @{ name="Light Screen";     desc="Halves special damage taken by the user's party.";                    cat="Status" }
+    @{ name="Lumina Crash";     desc="A psychic crash that sharply lowers Sp.Def.";                         cat="Special" }
+    @{ name="Lunar Blessing";   desc="Heals status and raises Defense and Sp.Def.";                         cat="Status" }
+    @{ name="Lunar Dance";      desc="The user faints but fully restores the replacement.";                 cat="Status" }
+    @{ name="Luster Purge";     desc="A psychic burst that may lower Sp.Def.";                              cat="Special" }
+    @{ name="Magic Coat";       desc="Reflects status moves back to the user.";                             cat="Status" }
+    @{ name="Magic Powder";     desc="Changes the target's type to Psychic.";                               cat="Status" }
+    @{ name="Magic Room";       desc="Suppresses the effects of held items for 5 turns.";                   cat="Status" }
+    @{ name="Meditate";         desc="Raises the user's Attack stat.";                                      cat="Status" }
+    @{ name="Miracle Eye";      desc="Allows Psychic moves to hit Dark types.";                              cat="Status" }
+    @{ name="Mirror Coat";      desc="Reflects a special attack back with double power.";                   cat="Special" }
+    @{ name="Mist Ball";        desc="A mist ball that may lower Sp.Atk.";                                  cat="Special" }
+    @{ name="Mystical Power";   desc="A mystical attack that raises the user's Sp.Atk.";                    cat="Special" }
+    @{ name="Photon Geyser";    desc="A photon blast that uses the higher Attack stat.";                    cat="Special" }
+    @{ name="Power Split";      desc="Averages the Attack and Sp.Atk with the target.";                     cat="Status" }
+    @{ name="Power Swap";       desc="Swaps Attack and Sp.Atk changes with the target.";                    cat="Status" }
+    @{ name="Power Trick";      desc="Swaps the user's Attack and Defense stats.";                          cat="Status" }
+    @{ name="Prismatic Laser";  desc="A powerful prismatic beam that leaves the user immobile.";             cat="Special" }
+    @{ name="Psybeam";          desc="A psychic beam that may confuse the target.";                          cat="Special" }
+    @{ name="Psyblade";         desc="A psychic blade that powers up on Psychic Terrain.";                  cat="Physical" }
+    @{ name="Psychic";          desc="A strong psychic attack that may lower Sp.Def.";                      cat="Special" }
+    @{ name="Psychic Fangs";    desc="A psychic fang that breaks Light Screen and Reflect.";                cat="Physical" }
+    @{ name="Psychic Noise";    desc="A psychic blast that prevents the target from healing.";               cat="Special" }
+    @{ name="Psychic Terrain";  desc="A terrain that boosts Psychic moves and blocks priority.";            cat="Status" }
+    @{ name="Psycho Boost";     desc="A powerful psychic blast that sharply lowers Sp.Atk.";                cat="Special" }
+    @{ name="Psycho Cut";       desc="A psychic blade with a high critical hit rate.";                      cat="Physical" }
+    @{ name="Psycho Shift";     desc="Shifts the user's status condition to the target.";                   cat="Status" }
+    @{ name="Psyshield Bash";   desc="A shield bash that raises the user's Defense.";                       cat="Physical" }
+    @{ name="Psyshock";         desc="A psychic shock that damages based on the target's Defense.";         cat="Special" }
+    @{ name="Psystrike";        desc="A psychic strike that damages based on the target's Defense.";        cat="Special" }
+    @{ name="Psywave";          desc="A psychic wave that deals variable damage.";                          cat="Special" }
+    @{ name="Reflect";          desc="Halves physical damage taken by the user's party.";                    cat="Status" }
+    @{ name="Rest";             desc="The user sleeps for 2 turns to fully heal.";                          cat="Status" }
+    @{ name="Role Play";        desc="Copies the target's Ability.";                                        cat="Status" }
+    @{ name="Skill Swap";       desc="Swaps Abilities with the target.";                                    cat="Status" }
+    @{ name="Speed Swap";       desc="Swaps Speed stat changes with the target.";                           cat="Status" }
+    @{ name="Stored Power";     desc="A psychic attack stronger with more raised stats.";                   cat="Special" }
+    @{ name="Synchronoise";     desc="A psychic wave that hits targets sharing the user's type.";           cat="Special" }
+    @{ name="Take Heart";       desc="Raises Sp.Atk and Sp.Def and heals status.";                          cat="Status" }
+    @{ name="Telekinesis";      desc="Levitates the target for 3 turns.";                                   cat="Status" }
+    @{ name="Teleport";         desc="Lets the user flee from battle.";                                     cat="Status" }
+    @{ name="Trick";            desc="Swaps held items with the target.";                                   cat="Status" }
+    @{ name="Trick Room";       desc="Slower Pokemon move first for 5 turns.";                              cat="Status" }
+    @{ name="Twin Beam";        desc="Fires two psychic beams at the target.";                              cat="Special" }
+    @{ name="Wonder Room";      desc="Swaps the Defense and Sp.Def of all Pokemon.";                        cat="Status" }
+    @{ name="Zen Headbutt";     desc="A psychic headbutt that may flinch the target.";                      cat="Physical" }
+)
+
 $jsonFiles = @()
 if ($Type -eq "all" -or $Type -eq "normal") {
     foreach ($item in $NORMAL_MOVES) {
@@ -305,6 +382,11 @@ if ($Type -eq "all" -or $Type -eq "normal") {
 if ($Type -eq "all" -or $Type -eq "fire") {
     foreach ($item in $FIRE_MOVES) {
         $jsonFiles += New-MoveJson -Move $item -MoveType "Fire"
+    }
+}
+if ($Type -eq "all" -or $Type -eq "psychic") {
+    foreach ($item in $PSYCHIC_MOVES) {
+        $jsonFiles += New-MoveJson -Move $item -MoveType "Psychic"
     }
 }
 
