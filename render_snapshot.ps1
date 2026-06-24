@@ -24,9 +24,36 @@ $bmp = New-Object System.Drawing.Bitmap($cropW, $cropH)
 $g = [System.Drawing.Graphics]::FromImage($bmp)
 $g.Clear([System.Drawing.Color]::FromArgb(0, 0, 0, 0))
 
+$GIT_BASE = "https://raw.githubusercontent.com/NommerTay/Poke-Roller/master"
+
 $sorted = $json.elements | Sort-Object zIndex
 
 foreach ($el in $sorted) {
+    if ($el.type -eq "image" -and ([string]::IsNullOrEmpty($el.src) -or $el.src -eq "")) {
+        $name = $el.name
+        $resolved = $null
+        if ($name -match "^\d{3}_") {
+            $resolved = "$GIT_BASE/Pokemon%20Assets/Slot%20Images/$name.png"
+        } elseif ($name -match "^type_") {
+            $typeName = $name -replace "^type_", ""
+            $resolved = "$GIT_BASE/Pokemon%20Assets/Types/$typeName.png"
+        } elseif ($name -eq "DEX PANEL") {
+            $resolved = "$GIT_BASE/Pokemon%20Assets/DEX%20PANEL.png"
+        } elseif ($name -eq "DEX NEXT") {
+            $resolved = "$GIT_BASE/Pokemon%20Assets/DEX%20NEXT.png"
+        } elseif ($name -eq "BENCY") {
+            $resolved = "$GIT_BASE/BENCY.png"
+        } elseif ($name -eq "Pokemon View Panel") {
+            $resolved = "$GIT_BASE/Pokemon%20View%20Panel.png"
+        } elseif ($name -in @("Grass","Fire","Water","Electric","Psychic","Fighting","Dark","Dragon","Fairy","Flying","Ghost","Ground","Ice","Normal","Poison","Rock","Steel","Bug")) {
+            $resolved = "$GIT_BASE/Poke%20Dice/Types/$name.png"
+        } elseif ($name -in @("HP","ATK","DEF","SP.ATK","SP.DEF","SPD")) {
+            $resolved = "$GIT_BASE/Poke%20Dice/Stats/$name.png"
+        }
+        if ($resolved) {
+            $el | Add-Member -NotePropertyName "src" -NotePropertyValue $resolved -Force
+        }
+    }
     $ex = [int][double]::Parse($el.x)
     $ey = [int][double]::Parse($el.y)
     $ew = [int][double]::Parse($el.w)
