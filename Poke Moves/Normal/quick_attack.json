@@ -22,7 +22,7 @@
       "type": "text",
       "text": "A fast attack that always strikes first.",
       "font": "Georgia", "size": 11, "bold": false, "italic": false,
-      "color": "#ffffff", "align": "left",
+      "color": "#5C3A1E", "align": "left",
       "x": 44, "y": 69, "w": 180, "h": 38, "zIndex": 3
     },
     {
