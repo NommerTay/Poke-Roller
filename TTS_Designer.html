@@ -126,10 +126,14 @@ body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0;
                 <div class="asset-cat-title" onclick="toggleCat('catPokeDice')">&#x25BC; Poke Dice</div>
                 <div id="catPokeDice" class="asset-grid"></div>
             </div>
-            <div class="asset-cat">
-                <div class="asset-cat-title" onclick="toggleCat('catPokeUI')">&#x25BC; Panel UI</div>
-                <div id="catPokeUI" class="asset-grid"></div>
-            </div>
+    <div class="asset-cat">
+        <div class="asset-cat-title" onclick="toggleCat('catPokeUI')">&#x25BC; Panel UI</div>
+        <div id="catPokeUI" class="asset-grid"></div>
+    </div>
+    <div class="asset-cat">
+        <div class="asset-cat-title" onclick="toggleCat('catMoveTemplates')">&#x25BC; Move Templates</div>
+        <div id="catMoveTemplates" class="asset-grid"></div>
+    </div>
         </div>
     </div>
 
@@ -199,6 +203,14 @@ const POKE_DICE_UI = [
     { name: 'Slot 3', file: 'Poke%20Dice/3.png' },
     { name: 'Slot 4', file: 'Poke%20Dice/4.png' },
     { name: 'Slot 5', file: 'Poke%20Dice/5.png' },
+];
+const POKE_MOVE_TEMPLATES = [
+    { name: 'Fire Punch', type: 'Fire', file: 'Poke%20Moves/Fire/fire_punch.png' },
+    { name: 'Flame Wheel', type: 'Fire', file: 'Poke%20Moves/Fire/flame_wheel.png' },
+    { name: 'Flame Burst', type: 'Fire', file: 'Poke%20Moves/Fire/flame_burst.png' },
+    { name: 'Rage', type: 'Normal', file: 'Poke%20Moves/Normal/rage.png' },
+    { name: 'Scratch', type: 'Normal', file: 'Poke%20Moves/Normal/scratch.png' },
+    { name: 'Quick Attack', type: 'Normal', file: 'Poke%20Moves/Normal/quick_attack.png' },
 ];
 const POKEMON_LIST_URL = GIT_BASE + '/Pokemon%20Assets/Slot%20Images/';
 
@@ -532,6 +544,19 @@ function initAssets() {
         pu.appendChild(img);
     });
 
+    const pm = document.getElementById('catMoveTemplates');
+    POKE_MOVE_TEMPLATES.forEach(item => {
+        const img = document.createElement('img');
+        img.src = GIT_BASE + '/' + item.file;
+        img.title = item.name + ' (' + item.type + ')';
+        img.style.width = '60px';
+        img.style.height = 'auto';
+        img.draggable = true;
+        img.ondragstart = e => e.dataTransfer.setData('text/plain', 'movetemplate_' + item.name);
+        img.onclick = () => placeImage(item.name, GIT_BASE + '/' + item.file, undefined, undefined, 265, 165);
+        pm.appendChild(img);
+    });
+
     showPokemonResults();
 }
 
@@ -629,6 +654,10 @@ function onDrop(e) {
         const name = data.replace('uiele_','');
         const item = POKE_DICE_UI.find(u => u.name === name);
         if (item) placeImage(name, GIT_BASE + '/' + item.file, x-50, y-50, 100, 100);
+    } else if (data.startsWith('movetemplate_')) {
+        const name = data.replace('movetemplate_','');
+        const item = POKE_MOVE_TEMPLATES.find(m => m.name === name);
+        if (item) placeImage(item.name, GIT_BASE + '/' + item.file, x-132, y-82, 265, 165);
     } else if (data.startsWith('poke_')) {
         const name = data.replace('poke_','');
         const item = pokemonCache.find(p => p.name === name);
