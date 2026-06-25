@@ -1,6 +1,8 @@
 param(
     [string]$TemplateDir = "$PSScriptRoot\templates",
-    [string]$SnapshotDir = "$PSScriptRoot\Snapshots"
+    [string]$SnapshotDir = "$PSScriptRoot\Snapshots",
+    [int]$StartId = 1,
+    [int]$EndId = 9999
 )
 
 $CacheDir = "$env:TEMP\pokeroller_cache"
@@ -53,6 +55,8 @@ $total = $templates.Count
 $i = 0
 
 foreach ($tpl in $templates) {
+    $tplId = [int]($tpl.BaseName -replace '^(\d+)_.*','$1')
+    if ($tplId -lt $StartId -or $tplId -gt $EndId) { continue }
     $i++
     $base = [System.IO.Path]::GetFileNameWithoutExtension($tpl.Name)
     $outFile = "$SnapshotDir\$base.png"
