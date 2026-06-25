@@ -1,0 +1,4952 @@
+[
+    {
+        "name":  "Attack Order",
+        "type":  "Bug",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bug Bite",
+        "type":  "Bug",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bug Buzz",
+        "type":  "Bug",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Defend Order",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Fell Stinger",
+        "type":  "Bug",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "First Impression",
+        "type":  "Bug",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fury Cutter",
+        "type":  "Bug",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Heal Order",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Infestation",
+        "type":  "Bug",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Leech Life",
+        "type":  "Bug",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Lunge",
+        "type":  "Bug",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Megahorn",
+        "type":  "Bug",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pin Missile",
+        "type":  "Bug",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pollen Puff",
+        "type":  "Bug",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pounce",
+        "type":  "Bug",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Powder",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Quiver Dance",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Rage Powder",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Signal Beam",
+        "type":  "Bug",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Silk Trap",
+        "type":  "Bug",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Silver Wind",
+        "type":  "Bug",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Skitter Smack",
+        "type":  "Bug",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spider Web",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Steamroller",
+        "type":  "Bug",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sticky Web",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "String Shot",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Struggle Bug",
+        "type":  "Bug",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tail Glow",
+        "type":  "Bug",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Twineedle",
+        "type":  "Bug",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "U-turn",
+        "type":  "Bug",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "X-Scissor",
+        "type":  "Bug",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Assurance",
+        "type":  "Dark",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Baddy Bad",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Beat Up",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bite",
+        "type":  "Dark",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Brutal Swing",
+        "type":  "Dark",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ceaseless Edge",
+        "type":  "Dark",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Comeuppance",
+        "type":  "Dark",
+        "power":  1,
+        "hasCost":  true
+    },
+    {
+        "name":  "Crunch",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dark Pulse",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dark Void",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Darkest Lariat",
+        "type":  "Dark",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Embargo",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Fake Tears",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "False Surrender",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Feint Attack",
+        "type":  "Dark",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fiery Wrath",
+        "type":  "Dark",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flatter",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Fling",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Foul Play",
+        "type":  "Dark",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hone Claws",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Hyperspace Fury",
+        "type":  "Dark",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Jaw Lock",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Knock Off",
+        "type":  "Dark",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Kowtow Cleave",
+        "type":  "Dark",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Lash Out",
+        "type":  "Dark",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Memento",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Nasty Plot",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Night Daze",
+        "type":  "Dark",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Night Slash",
+        "type":  "Dark",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Obstruct",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Parting Shot",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Payback",
+        "type":  "Dark",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Power Trip",
+        "type":  "Dark",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Punishment",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pursuit",
+        "type":  "Dark",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Quash",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Ruination",
+        "type":  "Dark",
+        "power":  1,
+        "hasCost":  true
+    },
+    {
+        "name":  "Snarl",
+        "type":  "Dark",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Snatch",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sucker Punch",
+        "type":  "Dark",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Switcheroo",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Taunt",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Thief",
+        "type":  "Dark",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Throat Chop",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Topsy-Turvy",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Torment",
+        "type":  "Dark",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Wicked Blow",
+        "type":  "Dark",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wicked Torque",
+        "type":  "Dark",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Breaking Swipe",
+        "type":  "Dragon",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Clanging Scales",
+        "type":  "Dragon",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Clangorous Soul",
+        "type":  "Dragon",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Core Enforcer",
+        "type":  "Dragon",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Draco Meteor",
+        "type":  "Dragon",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Breath",
+        "type":  "Dragon",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Cheer",
+        "type":  "Dragon",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Dragon Claw",
+        "type":  "Dragon",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Dance",
+        "type":  "Dragon",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Dragon Darts",
+        "type":  "Dragon",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Energy",
+        "type":  "Dragon",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Hammer",
+        "type":  "Dragon",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Pulse",
+        "type":  "Dragon",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Rage",
+        "type":  "Dragon",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Rush",
+        "type":  "Dragon",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Tail",
+        "type":  "Dragon",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dual Chop",
+        "type":  "Dragon",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dynamax Cannon",
+        "type":  "Dragon",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Eternabeam",
+        "type":  "Dragon",
+        "power":  160,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fickle Beam",
+        "type":  "Dragon",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Glaive Rush",
+        "type":  "Dragon",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Nihil Light",
+        "type":  "Dragon",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Order Up",
+        "type":  "Dragon",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Outrage",
+        "type":  "Dragon",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Roar of Time",
+        "type":  "Dragon",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Scale Shot",
+        "type":  "Dragon",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spacial Rend",
+        "type":  "Dragon",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Twister",
+        "type":  "Dragon",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aura Wheel",
+        "type":  "Electric",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bolt Beak",
+        "type":  "Electric",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bolt Strike",
+        "type":  "Electric",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Buzzy Buzz",
+        "type":  "Electric",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Charge Beam",
+        "type":  "Electric",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Charge",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Discharge",
+        "type":  "Electric",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Double Shock",
+        "type":  "Electric",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Eerie Impulse",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Electric Terrain",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Electrify",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Electro Ball",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Electro Drift",
+        "type":  "Electric",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Electro Shot",
+        "type":  "Electric",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Electroweb",
+        "type":  "Electric",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fusion Bolt",
+        "type":  "Electric",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ion Deluge",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Magnet Rise",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Magnetic Flux",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Nuzzle",
+        "type":  "Electric",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Overdrive",
+        "type":  "Electric",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Parabolic Charge",
+        "type":  "Electric",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pika Papow",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Plasma Fists",
+        "type":  "Electric",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rising Voltage",
+        "type":  "Electric",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shock Wave",
+        "type":  "Electric",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spark",
+        "type":  "Electric",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Supercell Slam",
+        "type":  "Electric",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunder Cage",
+        "type":  "Electric",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunder Fang",
+        "type":  "Electric",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunder Punch",
+        "type":  "Electric",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunder Shock",
+        "type":  "Electric",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunder Wave",
+        "type":  "Electric",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Thunder",
+        "type":  "Electric",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunderbolt",
+        "type":  "Electric",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thunderclap",
+        "type":  "Electric",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Volt Switch",
+        "type":  "Electric",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Volt Tackle",
+        "type":  "Electric",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wild Charge",
+        "type":  "Electric",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wildbolt Storm",
+        "type":  "Electric",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Zap Cannon",
+        "type":  "Electric",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Zing Zap",
+        "type":  "Electric",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Zippy Zap",
+        "type":  "Electric",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Alluring Voice",
+        "type":  "Fairy",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aromatic Mist",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Baby-Doll Eyes",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Charm",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Crafty Shield",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Dazzling Gleam",
+        "type":  "Fairy",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Decorate",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Disarming Voice",
+        "type":  "Fairy",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Draining Kiss",
+        "type":  "Fairy",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fairy Lock",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Fairy Wind",
+        "type":  "Fairy",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fleur Cannon",
+        "type":  "Fairy",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Floral Healing",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Flower Shield",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Geomancy",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Light of Ruin",
+        "type":  "Fairy",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Magical Torque",
+        "type":  "Fairy",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Misty Explosion",
+        "type":  "Fairy",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Misty Terrain",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Moonblast",
+        "type":  "Fairy",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Moonlight",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Natures Madness",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Play Rough",
+        "type":  "Fairy",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sparkly Swirl",
+        "type":  "Fairy",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spirit Break",
+        "type":  "Fairy",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Springtide Storm",
+        "type":  "Fairy",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Strange Steam",
+        "type":  "Fairy",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sweet Kiss",
+        "type":  "Fairy",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Arm Thrust",
+        "type":  "Fighting",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aura Sphere",
+        "type":  "Fighting",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Body Press",
+        "type":  "Fighting",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Brick Break",
+        "type":  "Fighting",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Circle Throw",
+        "type":  "Fighting",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Close Combat",
+        "type":  "Fighting",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Coaching",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Collision Course",
+        "type":  "Fighting",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Counter",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Cross Chop",
+        "type":  "Fighting",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Detect",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Double Iron Bash",
+        "type":  "Fighting",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Double Kick",
+        "type":  "Fighting",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Drain Punch",
+        "type":  "Fighting",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dynamic Punch",
+        "type":  "Fighting",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Final Gambit",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flying Press",
+        "type":  "Fighting",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Focus Blast",
+        "type":  "Fighting",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Focus Punch",
+        "type":  "Fighting",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Force Palm",
+        "type":  "Fighting",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "High Jump Kick",
+        "type":  "Fighting",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Jump Kick",
+        "type":  "Fighting",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Karate Chop",
+        "type":  "Fighting",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Low Kick",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Low Sweep",
+        "type":  "Fighting",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mach Punch",
+        "type":  "Fighting",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mat Block",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Meteor Mash",
+        "type":  "Fighting",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "No Retreat",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Octolock",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Power-Up Punch",
+        "type":  "Fighting",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Quick Guard",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Revenge",
+        "type":  "Fighting",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Reversal",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rock Smash",
+        "type":  "Fighting",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rolling Kick",
+        "type":  "Fighting",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sacred Sword",
+        "type":  "Fighting",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Secret Sword",
+        "type":  "Fighting",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Seismic Toss",
+        "type":  "Fighting",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sky Uppercut",
+        "type":  "Fighting",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Storm Throw",
+        "type":  "Fighting",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Submission",
+        "type":  "Fighting",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Superpower",
+        "type":  "Fighting",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Triple Arrows",
+        "type":  "Fighting",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Triple Kick",
+        "type":  "Fighting",
+        "power":  10,
+        "hasCost":  true
+    },
+    {
+        "name":  "Upper Hand",
+        "type":  "Fighting",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Vacuum Wave",
+        "type":  "Fighting",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Vital Throw",
+        "type":  "Fighting",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wake-Up Slap",
+        "type":  "Fighting",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Armor Cannon",
+        "type":  "Fire",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bitter Blade",
+        "type":  "Fire",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Blast Burn",
+        "type":  "Fire",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Blaze Kick",
+        "type":  "Fire",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Blazing Torque",
+        "type":  "Fire",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Blue Flare",
+        "type":  "Fire",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Burn Up",
+        "type":  "Fire",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Burning Bulwark",
+        "type":  "Fire",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Burning Jealousy",
+        "type":  "Fire",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ember",
+        "type":  "Fire",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Eruption",
+        "type":  "Fire",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fiery Dance",
+        "type":  "Fire",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fire Blast",
+        "type":  "Fire",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fire Fang",
+        "type":  "Fire",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fire Lash",
+        "type":  "Fire",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fire Pledge",
+        "type":  "Fire",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fire Punch",
+        "type":  "Fire",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fire Spin",
+        "type":  "Fire",
+        "power":  35,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flame Burst",
+        "type":  "Fire",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flame Charge",
+        "type":  "Fire",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flame Wheel",
+        "type":  "Fire",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flamethrower",
+        "type":  "Fire",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flare Blitz",
+        "type":  "Fire",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fusion Flare",
+        "type":  "Fire",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Heat Crash",
+        "type":  "Fire",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Heat Wave",
+        "type":  "Fire",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Incinerate",
+        "type":  "Fire",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Inferno",
+        "type":  "Fire",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Lava Plume",
+        "type":  "Fire",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Magma Storm",
+        "type":  "Fire",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mind Blown",
+        "type":  "Fire",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mystical Fire",
+        "type":  "Fire",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Overheat",
+        "type":  "Fire",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pyro Ball",
+        "type":  "Fire",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Raging Fury",
+        "type":  "Fire",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sacred Fire",
+        "type":  "Fire",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Searing Shot",
+        "type":  "Fire",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shell Trap",
+        "type":  "Fire",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sizzly Slide",
+        "type":  "Fire",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sunny Day",
+        "type":  "Fire",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Temper Flare",
+        "type":  "Fire",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Torch Song",
+        "type":  "Fire",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "V-create",
+        "type":  "Fire",
+        "power":  180,
+        "hasCost":  true
+    },
+    {
+        "name":  "Will-O-Wisp",
+        "type":  "Fire",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Acrobatics",
+        "type":  "Flying",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aerial Ace",
+        "type":  "Flying",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aeroblast",
+        "type":  "Flying",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Air Cutter",
+        "type":  "Flying",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Air Slash",
+        "type":  "Flying",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Beak Blast",
+        "type":  "Flying",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Brave Bird",
+        "type":  "Flying",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Chatter",
+        "type":  "Flying",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Defog",
+        "type":  "Flying",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Dive",
+        "type":  "Flying",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dragon Ascent",
+        "type":  "Flying",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Drill Peck",
+        "type":  "Flying",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dual Wingbeat",
+        "type":  "Flying",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Feather Dance",
+        "type":  "Flying",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Floaty Fall",
+        "type":  "Flying",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fly",
+        "type":  "Flying",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Gust",
+        "type":  "Flying",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hurricane",
+        "type":  "Flying",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Oblivion Wing",
+        "type":  "Flying",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Peck",
+        "type":  "Flying",
+        "power":  35,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pluck",
+        "type":  "Flying",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Roost",
+        "type":  "Flying",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sky Attack",
+        "type":  "Flying",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sky Drop",
+        "type":  "Flying",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tailwind",
+        "type":  "Flying",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Wing Attack",
+        "type":  "Flying",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Astonish",
+        "type":  "Ghost",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Astral Barrage",
+        "type":  "Ghost",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Confuse Ray",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Curse",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Destiny Bond",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Grudge",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Hex",
+        "type":  "Ghost",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Infernal Parade",
+        "type":  "Ghost",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Last Respects",
+        "type":  "Ghost",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Lick",
+        "type":  "Ghost",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Moongeist Beam",
+        "type":  "Ghost",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Night Shade",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Nightmare",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Ominous Wind",
+        "type":  "Ghost",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Phantom Force",
+        "type":  "Ghost",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Poltergeist",
+        "type":  "Ghost",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rage Fist",
+        "type":  "Ghost",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shadow Ball",
+        "type":  "Ghost",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shadow Bone",
+        "type":  "Ghost",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shadow Claw",
+        "type":  "Ghost",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shadow Force",
+        "type":  "Ghost",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shadow Punch",
+        "type":  "Ghost",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shadow Sneak",
+        "type":  "Ghost",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spectral Thief",
+        "type":  "Ghost",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spirit Shackle",
+        "type":  "Ghost",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spite",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Trick-or-Treat",
+        "type":  "Ghost",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Absorb",
+        "type":  "Grass",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Apple Acid",
+        "type":  "Grass",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aromatherapy",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Branch Poke",
+        "type":  "Grass",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bullet Seed",
+        "type":  "Grass",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Cotton Guard",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Cotton Spore",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Drum Beating",
+        "type":  "Grass",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Energy Ball",
+        "type":  "Grass",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Forests Curse",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Frenzy Plant",
+        "type":  "Grass",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Giga Drain",
+        "type":  "Grass",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Grass Knot",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Grass Pledge",
+        "type":  "Grass",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Grass Whistle",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Grassy Glide",
+        "type":  "Grass",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Grassy Terrain",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Grav Apple",
+        "type":  "Grass",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Growth",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Horn Leech",
+        "type":  "Grass",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ingrain",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Ivy Cudgel",
+        "type":  "Grass",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Jungle Healing",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Leaf Blade",
+        "type":  "Grass",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Leaf Storm",
+        "type":  "Grass",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Leaf Tornado",
+        "type":  "Grass",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Leafage",
+        "type":  "Grass",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Leech Seed",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Magical Leaf",
+        "type":  "Grass",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mega Drain",
+        "type":  "Grass",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Needle Arm",
+        "type":  "Grass",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Petal Blizzard",
+        "type":  "Grass",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Petal Dance",
+        "type":  "Grass",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Power Whip",
+        "type":  "Grass",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Razor Leaf",
+        "type":  "Grass",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Seed Bomb",
+        "type":  "Grass",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Seed Flare",
+        "type":  "Grass",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sleep Powder",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Solar Beam",
+        "type":  "Grass",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Solar Blade",
+        "type":  "Grass",
+        "power":  125,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spiky Shield",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Spore",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Strength Sap",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Stun Spore",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Synthesis",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Trailblaze",
+        "type":  "Grass",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Trop Kick",
+        "type":  "Grass",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Vine Whip",
+        "type":  "Grass",
+        "power":  45,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wood Hammer",
+        "type":  "Grass",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Worry Seed",
+        "type":  "Grass",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Bone Club",
+        "type":  "Ground",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bone Rush",
+        "type":  "Ground",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bonemerang",
+        "type":  "Ground",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bulldoze",
+        "type":  "Ground",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dig",
+        "type":  "Ground",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Drill Run",
+        "type":  "Ground",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Earth Power",
+        "type":  "Ground",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Earthquake",
+        "type":  "Ground",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fissure",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Headlong Rush",
+        "type":  "Ground",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "High Horsepower",
+        "type":  "Ground",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Lands Wrath",
+        "type":  "Ground",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Magnitude",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mighty Cleave",
+        "type":  "Ground",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mud Bomb",
+        "type":  "Ground",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mud Shot",
+        "type":  "Ground",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mud Sport",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mud-Slap",
+        "type":  "Ground",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Precipice Blades",
+        "type":  "Ground",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rototiller",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sand Attack",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sand Tomb",
+        "type":  "Ground",
+        "power":  35,
+        "hasCost":  true
+    },
+    {
+        "name":  "Scorching Sands",
+        "type":  "Ground",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shore Up",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Spikes",
+        "type":  "Ground",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Stomping Tantrum",
+        "type":  "Ground",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thousand Arrows",
+        "type":  "Ground",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thousand Waves",
+        "type":  "Ground",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aurora Beam",
+        "type":  "Ice",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aurora Veil",
+        "type":  "Ice",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Avalanche",
+        "type":  "Ice",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Blizzard",
+        "type":  "Ice",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Chilly Reception",
+        "type":  "Ice",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Freeze Shock",
+        "type":  "Ice",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Freeze-Dry",
+        "type":  "Ice",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Freezing Glare",
+        "type":  "Ice",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Glaciate",
+        "type":  "Ice",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Glacier Lance",
+        "type":  "Ice",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hail",
+        "type":  "Ice",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Haze",
+        "type":  "Ice",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Ice Ball",
+        "type":  "Ice",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Beam",
+        "type":  "Ice",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Burn",
+        "type":  "Ice",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Fang",
+        "type":  "Ice",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Hammer",
+        "type":  "Ice",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Punch",
+        "type":  "Ice",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Shard",
+        "type":  "Ice",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ice Spinner",
+        "type":  "Ice",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Icicle Crash",
+        "type":  "Ice",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Icicle Spear",
+        "type":  "Ice",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Icy Wind",
+        "type":  "Ice",
+        "power":  55,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mist",
+        "type":  "Ice",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mountain Gale",
+        "type":  "Ice",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Powder Snow",
+        "type":  "Ice",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sheer Cold",
+        "type":  "Ice",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Snowscape",
+        "type":  "Ice",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Triple Axel",
+        "type":  "Ice",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Acupressure",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "After You",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Assist",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Attract",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Barrage",
+        "type":  "Normal",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Baton Pass",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Belly Drum",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Bestow",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Bide",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bind",
+        "type":  "Normal",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Block",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Blood Moon",
+        "type":  "Normal",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Body Slam",
+        "type":  "Normal",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Boomburst",
+        "type":  "Normal",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Camouflage",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Captivate",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Celebrate",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Chip Away",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Comet Punch",
+        "type":  "Normal",
+        "power":  18,
+        "hasCost":  true
+    },
+    {
+        "name":  "Confide",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Constrict",
+        "type":  "Normal",
+        "power":  10,
+        "hasCost":  true
+    },
+    {
+        "name":  "Conversion 2",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Conversion",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Copycat",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Court Change",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Covet",
+        "type":  "Normal",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Crush Claw",
+        "type":  "Normal",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Crush Grip",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Cut",
+        "type":  "Normal",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Defense Curl",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Disable",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Dizzy Punch",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Doodle",
+        "type":  "Normal",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Double Hit",
+        "type":  "Normal",
+        "power":  35,
+        "hasCost":  true
+    },
+    {
+        "name":  "Double Slap",
+        "type":  "Normal",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Double Team",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Double-Edge",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Echoed Voice",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Egg Bomb",
+        "type":  "Normal",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Encore",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Endeavor",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Endure",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Entrainment",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Explosion",
+        "type":  "Normal",
+        "power":  250,
+        "hasCost":  true
+    },
+    {
+        "name":  "Extreme Speed",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Facade",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fake Out",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "False Swipe",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Feint",
+        "type":  "Normal",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fillet Away",
+        "type":  "Normal",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Flail",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flash",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Focus Energy",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Follow Me",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Foresight",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Frustration",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fury Attack",
+        "type":  "Normal",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fury Swipes",
+        "type":  "Normal",
+        "power":  18,
+        "hasCost":  true
+    },
+    {
+        "name":  "Giga Impact",
+        "type":  "Normal",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Glare",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Growl",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Growth",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Guillotine",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Happy Hour",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Harden",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Head Charge",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Headbutt",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Heal Bell",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Helping Hand",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Hidden Power",
+        "type":  "Normal",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hold Back",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hold Hands",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Horn Attack",
+        "type":  "Normal",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Horn Drill",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Howl",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Hyper Beam",
+        "type":  "Normal",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hyper Drill",
+        "type":  "Normal",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hyper Fang",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hyper Voice",
+        "type":  "Normal",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Judgment",
+        "type":  "Normal",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Laser Focus",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Last Resort",
+        "type":  "Normal",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Leer",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Lock-On",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Lovely Kiss",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Lucky Chant",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Me First",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mean Look",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mega Kick",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mega Punch",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Metronome",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Milk Drink",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mimic",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mind Reader",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Minimize",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Morning Sun",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Multi-Attack",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Natural Gift",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Nature Power",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Noble Roar",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Odor Sleuth",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Pain Split",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Pay Day",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Perish Song",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Play Nice",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Population Bomb",
+        "type":  "Normal",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Pound",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Power Shift",
+        "type":  "Normal",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Present",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Protect",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Psych Up",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Quick Attack",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rage",
+        "type":  "Normal",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Raging Bull",
+        "type":  "Normal",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rapid Spin",
+        "type":  "Normal",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Razor Wind",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Recover",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Recycle",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Reflect Type",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Refresh",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Relic Song",
+        "type":  "Normal",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Retaliate",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Return",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Revelation Dance",
+        "type":  "Normal",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Revival Blessing",
+        "type":  "Normal",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Roar",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Rock Climb",
+        "type":  "Normal",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Round",
+        "type":  "Normal",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Safeguard",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Scary Face",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Scratch",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Screech",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Secret Power",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Self-Destruct",
+        "type":  "Normal",
+        "power":  200,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sharpen",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Shed Tail",
+        "type":  "Normal",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Shell Smash",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Simple Beam",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sing",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sketch",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Skull Bash",
+        "type":  "Normal",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Slack Off",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Slam",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Slash",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sleep Talk",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Smelling Salts",
+        "type":  "Normal",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Smokescreen",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Snore",
+        "type":  "Normal",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Soft-Boiled",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sonic Boom",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spike Cannon",
+        "type":  "Normal",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spit Up",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Splash",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Spotlight",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Stockpile",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Stomp",
+        "type":  "Normal",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Strength",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Struggle",
+        "type":  "Normal",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Stuff Cheeks",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Substitute",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Super Fang",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Supersonic",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Swagger",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Swallow",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Sweet Scent",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Swift",
+        "type":  "Normal",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Swords Dance",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Tackle",
+        "type":  "Normal",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tail Slap",
+        "type":  "Normal",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tail Whip",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Take Down",
+        "type":  "Normal",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tearful Look",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Teatime",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Techno Blast",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Teeter Dance",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Tera Blast",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tera Starstorm",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Terrain Pulse",
+        "type":  "Normal",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Thrash",
+        "type":  "Normal",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tickle",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Tidy Up",
+        "type":  "Normal",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Transform",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Tri Attack",
+        "type":  "Normal",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Trump Card",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Uproar",
+        "type":  "Normal",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Vise Grip",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Weather Ball",
+        "type":  "Normal",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Whirlwind",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Wish",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Work Up",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Wrap",
+        "type":  "Normal",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wring Out",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Yawn",
+        "type":  "Normal",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Acid Armor",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Acid Spray",
+        "type":  "Poison",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Acid",
+        "type":  "Poison",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Baneful Bunker",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Barb Barrage",
+        "type":  "Poison",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Belch",
+        "type":  "Poison",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Clear Smog",
+        "type":  "Poison",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Coil",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Corrosive Gas",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Cross Poison",
+        "type":  "Poison",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Dire Claw",
+        "type":  "Poison",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Gastro Acid",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Gunk Shot",
+        "type":  "Poison",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Malignant Chain",
+        "type":  "Poison",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mortal Spin",
+        "type":  "Poison",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Noxious Torque",
+        "type":  "Poison",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Poison Fang",
+        "type":  "Poison",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Poison Gas",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Poison Jab",
+        "type":  "Poison",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Poison Powder",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Poison Sting",
+        "type":  "Poison",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Poison Tail",
+        "type":  "Poison",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Purify",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Shell Side Arm",
+        "type":  "Poison",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sludge Bomb",
+        "type":  "Poison",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sludge Wave",
+        "type":  "Poison",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sludge",
+        "type":  "Poison",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Smog",
+        "type":  "Poison",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Toxic Spikes",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Toxic Thread",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Toxic",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Venom Drench",
+        "type":  "Poison",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Venoshock",
+        "type":  "Poison",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Agility",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Ally Switch",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Amnesia",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Barrier",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Calm Mind",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Confusion",
+        "type":  "Psychic",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Cosmic Power",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Dream Eater",
+        "type":  "Psychic",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Eerie Spell",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Esper Wing",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Expanding Force",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Extrasensory",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Freezing Glare",
+        "type":  "Psychic",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Future Sight",
+        "type":  "Psychic",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Glitzy Glow",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Gravity",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Guard Split",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Guard Swap",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Heal Block",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Heal Pulse",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Healing Wish",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Heart Stamp",
+        "type":  "Psychic",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Heart Swap",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Hyperspace Hole",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hypnosis",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Imprison",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Instruct",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Kinesis",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Light Screen",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Lumina Crash",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Lunar Blessing",
+        "type":  "Psychic",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Lunar Dance",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Luster Purge",
+        "type":  "Psychic",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Magic Coat",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Magic Powder",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Magic Room",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Meditate",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Miracle Eye",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mirror Coat",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mist Ball",
+        "type":  "Psychic",
+        "power":  95,
+        "hasCost":  true
+    },
+    {
+        "name":  "Mystical Power",
+        "type":  "Psychic",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Photon Geyser",
+        "type":  "Psychic",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Power Split",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Power Swap",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Power Trick",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Prismatic Laser",
+        "type":  "Psychic",
+        "power":  160,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psybeam",
+        "type":  "Psychic",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psyblade",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psychic Fangs",
+        "type":  "Psychic",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psychic Noise",
+        "type":  "Psychic",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psychic Terrain",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Psychic",
+        "type":  "Psychic",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psycho Boost",
+        "type":  "Psychic",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psycho Cut",
+        "type":  "Psychic",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psycho Shift",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Psyshield Bash",
+        "type":  "Psychic",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psyshock",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psystrike",
+        "type":  "Psychic",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Psywave",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Reflect",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Rest",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Role Play",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Skill Swap",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Speed Swap",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Stored Power",
+        "type":  "Psychic",
+        "power":  20,
+        "hasCost":  true
+    },
+    {
+        "name":  "Synchronoise",
+        "type":  "Psychic",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Take Heart",
+        "type":  "Psychic",
+        "power":  0,
+        "hasCost":  false
+    },
+    {
+        "name":  "Telekinesis",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Teleport",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Trick Room",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Trick",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Twin Beam",
+        "type":  "Psychic",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wonder Room",
+        "type":  "Psychic",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Zen Headbutt",
+        "type":  "Psychic",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Accelerock",
+        "type":  "Rock",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Ancient Power",
+        "type":  "Rock",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Diamond Storm",
+        "type":  "Rock",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Head Smash",
+        "type":  "Rock",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Meteor Beam",
+        "type":  "Rock",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Power Gem",
+        "type":  "Rock",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rock Blast",
+        "type":  "Rock",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rock Polish",
+        "type":  "Rock",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Rock Slide",
+        "type":  "Rock",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rock Throw",
+        "type":  "Rock",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rock Tomb",
+        "type":  "Rock",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rock Wrecker",
+        "type":  "Rock",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rollout",
+        "type":  "Rock",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Salt Cure",
+        "type":  "Rock",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sandstorm",
+        "type":  "Rock",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Smack Down",
+        "type":  "Rock",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Stealth Rock",
+        "type":  "Rock",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Stone Axe",
+        "type":  "Rock",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Stone Edge",
+        "type":  "Rock",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tar Shot",
+        "type":  "Rock",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Wide Guard",
+        "type":  "Rock",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Anchor Shot",
+        "type":  "Steel",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Autotomize",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Behemoth Bash",
+        "type":  "Steel",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Behemoth Blade",
+        "type":  "Steel",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bullet Punch",
+        "type":  "Steel",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Doom Desire",
+        "type":  "Steel",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flash Cannon",
+        "type":  "Steel",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Gear Grind",
+        "type":  "Steel",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Gyro Ball",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Heavy Slam",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Iron Defense",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Iron Head",
+        "type":  "Steel",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Iron Tail",
+        "type":  "Steel",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Kings Shield",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Magnet Bomb",
+        "type":  "Steel",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Make It Rain",
+        "type":  "Steel",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Metal Burst",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  true
+    },
+    {
+        "name":  "Metal Claw",
+        "type":  "Steel",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Metal Sound",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Mirror Shot",
+        "type":  "Steel",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shift Gear",
+        "type":  "Steel",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Smart Strike",
+        "type":  "Steel",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Spin Out",
+        "type":  "Steel",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Steel Beam",
+        "type":  "Steel",
+        "power":  140,
+        "hasCost":  true
+    },
+    {
+        "name":  "Steel Roller",
+        "type":  "Steel",
+        "power":  130,
+        "hasCost":  true
+    },
+    {
+        "name":  "Steel Wing",
+        "type":  "Steel",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Sunsteel Strike",
+        "type":  "Steel",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tachyon Cutter",
+        "type":  "Steel",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aqua Cutter",
+        "type":  "Water",
+        "power":  70,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aqua Jet",
+        "type":  "Water",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aqua Ring",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Aqua Step",
+        "type":  "Water",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Aqua Tail",
+        "type":  "Water",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bouncy Bubble",
+        "type":  "Water",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Brine",
+        "type":  "Water",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bubble Beam",
+        "type":  "Water",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Bubble",
+        "type":  "Water",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Chilling Water",
+        "type":  "Water",
+        "power":  50,
+        "hasCost":  true
+    },
+    {
+        "name":  "Clamp",
+        "type":  "Water",
+        "power":  35,
+        "hasCost":  true
+    },
+    {
+        "name":  "Crabhammer",
+        "type":  "Water",
+        "power":  100,
+        "hasCost":  true
+    },
+    {
+        "name":  "Fishious Rend",
+        "type":  "Water",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Flip Turn",
+        "type":  "Water",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hydro Cannon",
+        "type":  "Water",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hydro Pump",
+        "type":  "Water",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Hydro Steam",
+        "type":  "Water",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Life Dew",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Liquidation",
+        "type":  "Water",
+        "power":  85,
+        "hasCost":  true
+    },
+    {
+        "name":  "Muddy Water",
+        "type":  "Water",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Octazooka",
+        "type":  "Water",
+        "power":  65,
+        "hasCost":  true
+    },
+    {
+        "name":  "Origin Pulse",
+        "type":  "Water",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Rain Dance",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Razor Shell",
+        "type":  "Water",
+        "power":  75,
+        "hasCost":  true
+    },
+    {
+        "name":  "Scald",
+        "type":  "Water",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Shell Smash",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Shell Trap",
+        "type":  "Water",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Snipe Shot",
+        "type":  "Water",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Soak",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Splishy Splash",
+        "type":  "Water",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Steam Eruption",
+        "type":  "Water",
+        "power":  110,
+        "hasCost":  true
+    },
+    {
+        "name":  "Surf",
+        "type":  "Water",
+        "power":  90,
+        "hasCost":  true
+    },
+    {
+        "name":  "Surging Strikes",
+        "type":  "Water",
+        "power":  25,
+        "hasCost":  true
+    },
+    {
+        "name":  "Tearful Look",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Triple Dive",
+        "type":  "Water",
+        "power":  30,
+        "hasCost":  true
+    },
+    {
+        "name":  "Water Gun",
+        "type":  "Water",
+        "power":  40,
+        "hasCost":  true
+    },
+    {
+        "name":  "Water Pledge",
+        "type":  "Water",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Water Pulse",
+        "type":  "Water",
+        "power":  60,
+        "hasCost":  true
+    },
+    {
+        "name":  "Water Shuriken",
+        "type":  "Water",
+        "power":  15,
+        "hasCost":  true
+    },
+    {
+        "name":  "Water Sport",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    },
+    {
+        "name":  "Water Spout",
+        "type":  "Water",
+        "power":  150,
+        "hasCost":  true
+    },
+    {
+        "name":  "Waterfall",
+        "type":  "Water",
+        "power":  80,
+        "hasCost":  true
+    },
+    {
+        "name":  "Wave Crash",
+        "type":  "Water",
+        "power":  120,
+        "hasCost":  true
+    },
+    {
+        "name":  "Whirlpool",
+        "type":  "Water",
+        "power":  35,
+        "hasCost":  true
+    },
+    {
+        "name":  "Withdraw",
+        "type":  "Water",
+        "power":  null,
+        "hasCost":  false
+    }
+]
